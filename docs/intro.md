@@ -16,12 +16,6 @@ As OCI registries have become ubiquitous nowadays for storing and distributing c
 
 `hauler` capitalizes on this, and leverages the [`oci`](https://github.com/opencontainers) spec to be a simple, zero dependency tool to collect, transport, and distribute your artifacts.
 
-## Getting started
-
-See the [quickstart](docs/walkthrough.md#Quickstart) for a quick way to get started with some of `haulers` capabilities.
-
-For a guided example of all of `haulers` capabilities, check out the [guided example](docs/usage/usage.md#guided-examples).
-
 ## Acknowledgements
 
 `hauler` wouldn't be possible without the open source community, but there are a few dependent projects that stand out:
