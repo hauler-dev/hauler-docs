@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkhauler=self.webpackChunkhauler||[]).push([[139],{6197:e=>{e.exports=JSON.parse('{"title":"Using Hauler","description":"Usage docs for Hauler","slug":"/category/using-hauler","permalink":"/docs/category/using-hauler","navigation":{"previous":{"title":"Hauler","permalink":"/docs/intro"},"next":{"title":"usage","permalink":"/docs/usage/"}}}')}}]);
