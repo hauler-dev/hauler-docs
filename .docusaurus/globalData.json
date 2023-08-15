@@ -1,0 +1,59 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "installation/installation",
+          "docs": [
+            {
+              "id": "installation/installation",
+              "path": "/docs/installation/",
+              "sidebar": "carbideSidebar"
+            },
+            {
+              "id": "intro",
+              "path": "/docs/intro",
+              "sidebar": "carbideSidebar"
+            },
+            {
+              "id": "usage/usage",
+              "path": "/docs/usage/",
+              "sidebar": "carbideSidebar"
+            },
+            {
+              "id": "/category/installation",
+              "path": "/docs/category/installation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/using-hauler",
+              "path": "/docs/category/using-hauler",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/docs/category/installation",
+                "label": "Installation"
+              }
+            },
+            "carbideSidebar": {
+              "link": {
+                "path": "/docs/intro",
+                "label": "intro"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}
