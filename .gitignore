@@ -1,0 +1,14 @@
+# GIT IGNORE OPTIONS:
+# State and list which files in the repository to ignore.
+# This is useful for ignoring large files that you don't want to be part of the repository.
+# The files are ignored in the repository and not pushed to source control.
+
+**/node_modules
+**/build
+**/.docusaurus
+**/.cache-loader
+**/.DS_Store
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

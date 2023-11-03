@@ -1,41 +1,38 @@
-# Website
+# Rancher Government Hauler Docs
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+## Local Development
 
-### Installation
+### Installing Dependencies (docusaurus)
 
-```
-$ yarn
-```
+```bash
+git clone https://github.com/rancherfederal/hauler-docs
+cd hauler-docs
 
-### Local Development
+# install docusaurus & dependencies from package.json
+npm install # make sure you are in the root of the dir containing `package.json`
+# yarn install # if npm install did not work
 
-```
-$ yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
+# test the installation
+npx docusaurus --version
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+### Deploy Locally
 
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
+```bash
+npm run start # this will open your default browser to http://localhost:3000
 ```
 
-Not using SSH:
+## Creating Content
 
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
+[Official Docusaurus Documentation](https://docusaurus.io/docs/creating-pages)
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+## Publishing Content
+
+This docs site is served using github-pages. There is an [action](.github/workflows/deploy.yml) that will trigger upon commit to the `main` branch and deploy the new build to https://rancherfederal.github.io/hauler-docs.
+
+## Contributing
+
+- Fork this repository
+- Make your changes
+- Commit changes and reference the Issue
+- Submit Pull Request with changes
