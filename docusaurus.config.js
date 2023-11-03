@@ -51,6 +51,21 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      require.resolve("@cmfcmf/docusaurus-search-local"),
+      {
+        indexDocs: true,
+        indexDocSidebarParentCategories: 0,
+        indexBlog: true,
+        indexPages: true,
+
+        language: "en",
+        maxSearchResults: 10,
+      }
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -96,11 +111,11 @@ const config = {
               },
               {
                 label: 'Getting Started',
-                to: '/getting-started/intro',
+                to: '/docs/getting-started/intro',
               },
               {
                 label: 'Reference Guides',
-                to: '/reference-guides/intro',
+                to: '/docs/reference-guides/intro',
               },
             ],
           },
