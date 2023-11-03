@@ -6,23 +6,18 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Hauler',
-  tagline: 'airgap without fuss',
-  favicon: 'img/favicon.ico',
-
-  // Set the production url of your site here
+  title: 'Rancher Government Hauler',
+  tagline: 'Airgap Swiss Army Knife',
   url: 'https://rancherfederal.github.io',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/hauler-docs/',
-
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+  favicon: 'img/carbide-logo.ico',
+  trailingSlash: false,
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'rancherfederal', // Usually your GitHub org/user name.
   projectName: 'hauler-docs', // Usually your repo name.
-
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -41,8 +36,13 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/rancherfederal/hauler-docs/edit/main',
+          editUrl: 'https://github.com/rancherfederal/hauler-docs/edit/main/',
+        },
+        blog: {
+          showReadingTime: true,
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl: 'https://github.com/rancherfederal/hauler-docs/edit/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -54,25 +54,32 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      colorMode: {
+        defaultMode: 'light',
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
+      },
       navbar: {
-        title: 'Hauler',
+        // https://docusaurus.io/docs/api/themes/configuration
+        title: '',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'Carbide Logo',
+          src: 'img/rgs-hauler-logo.png',
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Tutorial',
+            to: '/docs/intro',
+            label: 'Documentation',
+            position: 'left'
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
+            to: '/blog',
+            label: 'Blog',
+            position: 'left'
+          },
+          {
+            href: 'https://github.com/rancherfederal/hauler-docs/issues',
+            label: 'Submit Feedback',
             position: 'right',
           },
         ],
@@ -84,8 +91,16 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Hauler Docs',
                 to: '/docs/intro',
+              },
+              {
+                label: 'Getting Started',
+                to: '/getting-started/intro',
+              },
+              {
+                label: 'Reference Guides',
+                to: '/reference-guides/intro',
               },
             ],
           },
@@ -93,34 +108,38 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Rancher',
+                href: 'https://rancher.com',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'Rancher GitHub',
+                href: 'https://github.com/rancher',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: 'Rancher Slack',
+                href: 'https://rancher-users.slack.com',
               },
             ],
           },
           {
-            title: 'More',
+            title: 'Contact',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: 'RGS Blog',
+                to: 'https://ranchergovernment.com/blog',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'RGS GitHub',
+                href: 'https://github.com/rancherfederal',
+              },
+              {
+                label: 'RGS ZenDesk',
+                href: 'https://support.rancherfederal.com',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Rancher Government Solutions. All rights reserved.`,
       },
       prism: {
         theme: lightCodeTheme,

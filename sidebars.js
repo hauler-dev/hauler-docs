@@ -18,19 +18,6 @@ const sidebars = {
 
   // But you can create a sidebar manually
 
-  carbideSidebar: [
-    'intro',
-    {
-      type: 'category',
-      label: 'Docs',
-      collapsed: false,
-      items: [
-        'installation/installation',
-        'usage/usage',]
-        
-    }
-  ],
-
 };
 
 module.exports = sidebars;

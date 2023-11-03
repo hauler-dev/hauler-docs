@@ -1,0 +1,10 @@
+position: 2
+label: 'Getting Started'
+collapsible: true
+collapsed: false
+className: red
+link:
+  type: generated-index
+  title: Getting Started
+customProps:
+  description: Getting Started with Hauler Hauler
