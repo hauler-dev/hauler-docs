@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkhauler=self.webpackChunkhauler||[]).push([[757],{9826:a=>{a.exports=JSON.parse('{"label":"informational","permalink":"/hauler-docs/blog/tags/informational","allTagsPath":"/hauler-docs/blog/tags","count":1}')}}]);
