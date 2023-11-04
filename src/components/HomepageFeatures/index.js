@@ -4,32 +4,29 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Fully Compliant OCI Artifacts',
+    Svg: require('@site/static/img/registry.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Hauler represents every asset as a fully compliant OCI Artifacts, allowing for easy integration with existing tooling and workflows.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Simplifying the Airgap Experience',
+    Svg: require('@site/static/img/airgap-lock-icon.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Hauler is tactically designed and built to solve the challenges of collecting, packaging, and distributing assets in airgapped environments.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Powered by Carbide',
+    Svg: require('@site/static/img/rgs-carbide-shield-black.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Hauler is built for the open-source community, but fully integrated and supported with the hardened features of Rancher Government Carbide.
       </>
     ),
   },

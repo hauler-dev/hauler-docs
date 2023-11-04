@@ -1,17 +1,23 @@
-endi:
-  name: Endilie Yacop Sucipto
-  title: Maintainer of Docusaurus
-  url: https://github.com/endiliey
-  image_url: https://github.com/endiliey.png
+zackbradys:
+  name: Zack Brady
+  title: Field Engineer
+  url: https://github.com/zackbradys
+  image_url: https://github.com/zackbradys.png
 
-yangshun:
-  name: Yangshun Tay
-  title: Front End Engineer @ Facebook
-  url: https://github.com/yangshun
-  image_url: https://github.com/yangshun.png
+bgulla:
+  name: Brandon Gulla
+  title: Vice-President, Chief Technology Officer
+  url: https://github.com/bgulla
+  image_url: https://github.com/bgulla.png
 
-slorber:
-  name: Sébastien Lorber
+dweomer:
+  name: Jacob Blain Christen
+  title: Director of Product Engineering
+  url: https://github.com/dweomer
+  image_url: https://github.com/dweomer.png
+
+amartin120:
+  name: Adam Martin
   title: Docusaurus maintainer
-  url: https://sebastienlorber.com
-  image_url: https://github.com/slorber.png
+  url: https://github.com/amartin120
+  image_url: https://github.com/amartin120.png
