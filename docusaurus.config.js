@@ -89,7 +89,7 @@ const config = {
           },
           {
             to: '/blog',
-            label: 'Blog',
+            label: 'Hauler Blog',
             position: 'left'
           },
           {
@@ -141,7 +141,7 @@ const config = {
             items: [
               {
                 label: 'RGS Blog',
-                to: 'https://ranchergovernment.com/blog',
+                href: 'https://ranchergovernment.com/blog',
               },
               {
                 label: 'RGS GitHub',
