@@ -34,6 +34,7 @@ const sidebars = {
       description: 'Reference Guides for Hauler',
       collapsed: false,
       items: [
+        'reference-guides/intro',
         'reference-guides/quickstart',
         {
           type: 'category',
