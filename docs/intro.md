@@ -7,9 +7,15 @@ sidebar_position: 1
 
 # Rancher Government Hauler
 
-## Airgap Swiss Army Knife
+# Airgap Swiss Army Knife
 
-> ⚠️ This project is still in active development and _not_ Generally Available (GA). Most of the core functionality and features are ready, but may have breaking changes. Please review the [Release Notes](https://github.com/rancherfederal/hauler/releases) for more information!
+:::caution
+
+This project is still in active development and _not_ Generally Available (GA). Most of the core functionality and features are ready for use, but may have breaking changes in future releases. Please review the **[Known Issues and Limitations](/docs/known-limits)**!
+
+:::
+
+## What's Hauler?
 
 `Rancher Government Hauler` simplifies the airgap experience without requiring users to adopt a specific workflow. **Hauler** simplifies the airgapping process, by representing assets (images, charts, files, etc...) as content and collections to allow users to easily fetch, store, package, and distribute these assets with declarative manifests or through the command line.
 

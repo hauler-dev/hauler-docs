@@ -13,10 +13,11 @@ issues here
 
 ## Limitations
 
-issues here
+limitations here
 
 ## Notices
 
 #### Upcoming Deprecated Command(s):
 
-* `hauler download` (alternatively, `hauler dl`) and `hauler serve` (**NOT** `hauler store serve`) commands are deprecated and will be removed in a future release.
+* `hauler download` (alternatively `hauler dl`) is deprecated and will be removed in a future release.
+* `hauler serve` is deprecated and will be removed in a future release.

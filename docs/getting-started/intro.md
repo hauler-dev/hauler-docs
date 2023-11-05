@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: Getting Started Intro Doc for Hauler
+description: Getting Started Intro Documentation for Hauler
 sidebar_label: Introduction
 sidebar_position: 1
 ---

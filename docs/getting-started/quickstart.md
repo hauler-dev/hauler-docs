@@ -1,6 +1,6 @@
 ---
 title: Quickstart Guide
-description: Quickstart Guide for Hauler
+description: Quickstart Documentation and Guide for Hauler
 sidebar_label: Quickstart Guide
 sidebar_position: 2
 ---
