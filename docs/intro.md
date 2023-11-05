@@ -2,7 +2,6 @@
 title: Introduction
 description: Introduction to Rancher Government Hauler
 sidebar_label: Introduction
-sidebar_position: 1
 ---
 
 # Rancher Government Hauler

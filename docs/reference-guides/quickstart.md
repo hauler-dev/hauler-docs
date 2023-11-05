@@ -1,13 +1,10 @@
 ---
 title: Quickstart Guide
-description: Quickstart Documentation and Guide for Hauler
+description: Quickstart Documentation for Hauler
 sidebar_label: Quickstart Guide
-sidebar_position: 2
 ---
 
-## Hauler Quickstart
-
-TLDR for how to use `hauler` to fetch, store, package, validate, and distribute `contents`
+Skipping past most of the documentation? Here's an easy to follow Quick Start Guide:
 
 ```bash
 # fetch some content
