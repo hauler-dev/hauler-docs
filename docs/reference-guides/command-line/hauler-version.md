@@ -6,15 +6,19 @@ sidebar_label: Hauler Version
 
 ### Command Overview
 
+* Print Hauler's current version.
+
 ```yaml
 Usage:
-  hauler version
+  hauler version [flags]
 
-GitVersion:    devel
-GitCommit:     unknown
-GitTreeState:  unknown
-BuildDate:     unknown
-GoVersion:     go1.21.3
-Compiler:      gc
-Platform:      darwin/arm64
+Aliases:
+  version, v
+
+Flags:
+  -h, --help   help for version
+      --json   toggle output in JSON
+
+Global Flags:
+  -l, --log-level string    (default "info")
 ```

@@ -6,6 +6,8 @@ sidebar_label: Hauler
 
 ### Command Overview
 
+* Interact with Hauler's command line.
+
 ```yaml
 Usage:
   hauler [flags]
