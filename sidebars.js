@@ -47,11 +47,12 @@ const sidebars = {
         {
           type: 'category',
           label: 'Hauler Content',
-          description: 'Reference Guide for Hauler Content Objects',
+          description: 'Reference Guide for Hauler Content Types',
           items: [
-            'reference-guides/hauler-content/files',
-            'reference-guides/hauler-content/charts',
+            'reference-guides/hauler-content/intro',
             'reference-guides/hauler-content/images',
+            'reference-guides/hauler-content/charts',
+            'reference-guides/hauler-content/files',
           ],
         },
         {
