@@ -9,7 +9,7 @@ install:
 
 # test and run hauler-docs
 # opens localhost:3000/hauler-docs
-run:
+test:
 	npm run start
 
 # build and compile hauler-docs

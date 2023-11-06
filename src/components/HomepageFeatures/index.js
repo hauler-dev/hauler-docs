@@ -8,7 +8,7 @@ const FeatureList = [
     Svg: require('@site/static/img/registry.svg').default,
     description: (
       <>
-        Hauler represents every asset as a fully compliant OCI Artifacts, allowing for easy integration with existing tooling and workflows.
+        Hauler represents every asset as a fully compliant OCI Artifact, allowing for seamless integration with existing tooling and workflows.
       </>
     ),
   },
@@ -17,7 +17,7 @@ const FeatureList = [
     Svg: require('@site/static/img/airgap-lock-icon.svg').default,
     description: (
       <>
-        Hauler is tactically designed and built to solve the challenges of collecting, packaging, and distributing assets in airgapped environments.
+        Hauler was tactically designed and built to solve the challenges of collecting, packaging, and distributing assets in airgapped environments.
       </>
     ),
   },
@@ -26,7 +26,7 @@ const FeatureList = [
     Svg: require('@site/static/img/rgs-carbide-shield-black.svg').default,
     description: (
       <>
-        Hauler is built for the open-source community, but fully integrated and supported with the hardened features of Rancher Government Carbide.
+        Hauler was created for the open-source community, but is fully integrated with the hardened features of <a href="https://rancherfederal.github.io/carbide-docs">Rancher Government Carbide</a>.
       </>
     ),
   },
