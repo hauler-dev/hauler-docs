@@ -9,7 +9,7 @@ At this point you're probably wondering: what is `content`? In `Hauler` land, th
 * `content`: the fundamental types of `artifacts` that `Hauler` understands
   * `artifact`: anything that can be represented as an `oci artifact`
 
-`OCI Artifacts` are a way of leveraging OCI Registries (container registries) that are compliant with specifications set by the [Open Container Initiative]((https://github.com/opencontainers)), to store arbitrary files.
+`OCI Artifacts` are a way of leveraging OCI Registries (container registries) that are compliant with specifications set by the Open Container Initiative, to store arbitrary files.
 
 As of today, `Hauler` understands three types of `content` objects, one with a strong legacy of community support and consensus `image-spec`, one with a finalized spec and experimental support `chart-spec`, and one generic type created just for `Hauler`.
 
