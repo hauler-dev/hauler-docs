@@ -5,6 +5,6 @@ authors: [zackbradys]
 tags: [informational, update, hauler, rgs]
 ---
 
-# Welcome to Hauler!
+## Welcome to the Hauler Blog!
 
-Welcome to the Blog for Rancher Government Hauler. Please check back later for updates!
+**Welcome to the Blog for Rancher Government Hauler!** We're still hard at work developing the docs and specifically the Hauler Blog. Please back later for updates!

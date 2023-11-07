@@ -1,11 +1,26 @@
+# Makefile for hauler-docs
 
+# run all build commands
+all: install build serve
 
-run:
-	npm start
+# install dependencies
+install:
+	npm install
+
+# test and run hauler-docs
+# opens localhost:3000/hauler-docs
+test:
+	npm run start
+
+# build and compile hauler-docs
 build:
 	npm run build
 
+# server hauler-docs from build
+# opens localhost:5000/hauler-docs
+serve:
+	npm run serve
 
-#  `npm run build`
-#    Bundles your website into static files for production.
-
+# clear build outputs
+clear:
+	npm run clear

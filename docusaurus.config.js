@@ -1,6 +1,3 @@
-// @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
-
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
@@ -14,14 +11,10 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/carbide-logo.ico',
   trailingSlash: false,
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'rancherfederal', // Usually your GitHub org/user name.
-  projectName: 'hauler-docs', // Usually your repo name.
 
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
+  organizationName: 'rancherfederal',
+  projectName: 'hauler-docs',
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -34,14 +27,17 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
+          versions: {
+            current: {
+              label: 'Next 🚧',
+            },
+          },
+
           editUrl: 'https://github.com/rancherfederal/hauler-docs/edit/main/',
+
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl: 'https://github.com/rancherfederal/hauler-docs/edit/main/',
         },
         theme: {
@@ -71,11 +67,10 @@ const config = {
     ({
       colorMode: {
         defaultMode: 'light',
-        disableSwitch: true,
+        disableSwitch: false,
         respectPrefersColorScheme: false,
       },
       navbar: {
-        // https://docusaurus.io/docs/api/themes/configuration
         title: '',
         logo: {
           alt: 'Carbide Logo',
@@ -89,12 +84,16 @@ const config = {
           },
           {
             to: '/blog',
-            label: 'Blog',
+            label: 'Hauler Blog',
             position: 'left'
           },
           {
-            href: 'https://github.com/rancherfederal/hauler-docs/issues',
-            label: 'Submit Feedback',
+            type: 'docsVersionDropdown',
+            position: 'right',
+          },
+          {
+            href: 'https://github.com/rancherfederal/hauler/issues',
+            label: 'Submit an Issue',
             position: 'right',
           },
         ],
@@ -110,12 +109,12 @@ const config = {
                 to: '/docs/intro',
               },
               {
-                label: 'Getting Started',
-                to: '/docs/getting-started/intro',
+                label: 'Quickstart Guide',
+                to: '/docs/introduction/quickstart',
               },
               {
                 label: 'Reference Guides',
-                to: '/docs/reference-guides/intro',
+                to: '/docs/guides-references/intro',
               },
             ],
           },
@@ -141,7 +140,7 @@ const config = {
             items: [
               {
                 label: 'RGS Blog',
-                to: 'https://ranchergovernment.com/blog',
+                href: 'https://ranchergovernment.com/blog',
               },
               {
                 label: 'RGS GitHub',
