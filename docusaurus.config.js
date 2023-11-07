@@ -92,7 +92,7 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://github.com/rancherfederal/hauler-docs/issues',
+            href: 'https://github.com/rancherfederal/hauler/issues',
             label: 'Submit an Issue',
             position: 'right',
           },
@@ -109,12 +109,12 @@ const config = {
                 to: '/docs/intro',
               },
               {
-                label: 'Getting Started',
-                to: '/docs/getting-started/intro',
+                label: 'Quickstart Guide',
+                to: '/docs/introduction/quickstart',
               },
               {
                 label: 'Reference Guides',
-                to: '/docs/reference-guides/intro',
+                to: '/docs/guides-references/intro',
               },
             ],
           },
