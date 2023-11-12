@@ -10,25 +10,32 @@ Hauler is a purpose built to be a single binary with no specific prerequistes or
 
 ## Supported Architectures
 
-| Base Platfor |    Architecture     |                  Latest Release                   |
-| :----------: | :-----------------: | :-----------------------------------------------: |
-|    Linux     | `amd64` and `arm64` | https://github.com/rancherfederal/hauler/releases |
-|    Darwin    | `amd64` and `arm64` | https://github.com/rancherfederal/hauler/releases |
-|    Windows   | `amd64` and `arm64` | https://github.com/rancherfederal/hauler/releases |
+| Base Platform |    Architecture     |                  Latest Release                   |
+| :-----------: | :-----------------: | :-----------------------------------------------: |
+|     Linux     | `amd64` and `arm64` | https://github.com/rancherfederal/hauler/releases |
+|    Darwin     | `amd64` and `arm64` | https://github.com/rancherfederal/hauler/releases |
+|    Windows    | `amd64` and `arm64` | https://github.com/rancherfederal/hauler/releases |
 
 ## Installation Steps
 
+### Linux/Darwin Install
+
 ```bash
-# set the hauler version (i.e. "0.4.0")
-export vHauler=HAULER_VERSION
+# install latest release
+curl -sfL https://get.hauler.dev | sh
 
-# set the specific platform (i.e. "linux")
-export platform=PLATFORM
+# install specific release
+curl -sfL https://get.hauler.dev | HAULER_VERSION=0.4.0 sh
+```
 
-# set the specific arch (i.e. "amd64")
-export arch=ARCH
+### Windows Install
 
-curl -#OL https://github.com/rancherfederal/hauler/releases/download/v${vHauler}/hauler_${vHauler}_${platform}_${arch}.tar.gz
-tar -xf hauler_${vHauler}_${platform}_${arch}.tar.gz
-sudo mv hauler /usr/bin/hauler
+```bash
+# coming soon
+```
+
+### Homebrew Install
+
+```bash
+# coming soon
 ```
