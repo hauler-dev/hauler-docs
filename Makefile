@@ -12,6 +12,11 @@ install:
 test:
 	npm run start
 
+# cut new version of hauler-docs
+# make version v=0.0.0
+version:
+	npm run docusaurus docs:version ${v}
+
 # build and compile hauler-docs
 build:
 	npm run build
