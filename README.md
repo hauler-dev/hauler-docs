@@ -19,7 +19,8 @@ npx docusaurus --version
 ### Deploy Locally
 
 ```bash
-npm run start # this will open your default browser to http://localhost:3000
+# this will open your default browser to http://localhost:3000
+npm run start
 ```
 
 ## Creating Content
@@ -28,11 +29,11 @@ npm run start # this will open your default browser to http://localhost:3000
 
 ## Publishing Content
 
-This docs site is served using github-pages. There is an [action](.github/workflows/deploy.yml) that will trigger upon commit to the `main` branch and deploy the new build to https://rancherfederal.github.io/hauler-docs.
+This docs site is served using github-pages. There is an [action](.github/workflows/deploy.yml) that will trigger upon commit to the `main` branch and deploy the new build to https://hauler.dev (https://rancherfederal.github.io/hauler-docs).
 
 ## Contributing
 
-- Fork this repository
-- Make your changes
-- Commit changes and reference the Issue
-- Submit Pull Request with changes
+- Fork this Repository
+- Make your Changes
+- Commit changes and Reference the Issue
+- Submit Pull Request with Changes

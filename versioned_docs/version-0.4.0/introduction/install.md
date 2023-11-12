@@ -18,7 +18,7 @@ Hauler is a purpose built to be a single binary with no specific prerequistes or
 
 ## Installation Steps
 
-### Linux/Darwin Install
+### Linux/Darwin
 
 ```bash
 # install latest release
@@ -28,14 +28,31 @@ curl -sfL https://get.hauler.dev | sh
 curl -sfL https://get.hauler.dev | HAULER_VERSION=0.4.0 sh
 ```
 
-### Windows Install
+### Windows
 
 ```bash
 # coming soon
 ```
 
-### Homebrew Install
+### Homebrew
 
 ```bash
 # coming soon
+```
+
+## Manual Installation Steps
+
+```bash
+# set the hauler version (i.e. "0.4.0")
+export vHauler=HAULER_VERSION
+
+# set the specific platform (i.e. "linux")
+export platform=PLATFORM
+
+# set the specific arch (i.e. "amd64")
+export arch=ARCH
+
+curl -sOL https://github.com/rancherfederal/hauler/releases/download/v${vHauler}/hauler_${vHauler}_${platform}_${arch}.tar.gz
+tar -xf hauler_${vHauler}_${platform}_${arch}.tar.gz
+sudo mv hauler /usr/bin/hauler
 ```

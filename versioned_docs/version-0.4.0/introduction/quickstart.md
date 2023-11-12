@@ -15,7 +15,9 @@ curl -sfL https://get.hauler.dev | sh
 
 ## Example Use of Hauler
 
-### Add Content to the Hauler Store (via the Command Line)
+### Add Content to the Hauler Store
+
+#### Using the Command Line:
 
 ```bash
 # add a image: neuvector/scanner:latest
@@ -31,7 +33,7 @@ hauler store add chart rancher --repo https://releases.rancher.com/server-charts
 hauler store add file https://get.rke2.io --name install.sh
 ```
 
-### Add Content to the Hauler Store (via a Manifest)
+#### Using a Hauler Manifest:
 
 ```bash
 hauler store sync --files hauler-manfiest.yaml
