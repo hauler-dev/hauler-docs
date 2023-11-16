@@ -23,7 +23,8 @@ const sidebars = {
       description: 'Guides and References Docs for Hauler',
       collapsed: false,
       items: [
-        'guides-references/intro',
+        'guides-references/overview',
+        'guides-references/validation',
         'guides-references/cluster-images',
         {
           type: 'category',

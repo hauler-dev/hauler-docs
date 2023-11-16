@@ -6,23 +6,18 @@ sidebar_label: Quickstart
 
 Skipping past most of the documentation? Here's an easy to follow Quick Start Guide:
 
-:::tip
-
-Please note that we will be using the `linux` and `amd64` binary for Hauler. If you are using a different platform or architecture, take a look at the complete [installation documentation](/docs/introduction/install).
-
-:::
-
 ## Quick Installation
 
 ```bash
-curl -#OL https://github.com/rancherfederal/hauler/releases/download/v0.4.0/hauler_0.4.0_linux_amd64.tar.gz
-tar -xf hauler_0.4.0_linux_amd64.tar.gz
-sudo mv hauler /usr/bin/hauler
+# install latest release
+curl -sfL https://get.hauler.dev | sh
 ```
 
 ## Example Use of Hauler
 
-### Add Content to the Hauler Store (via the Command Line)
+### Add Content to the Hauler Store
+
+#### Using the Command Line:
 
 ```bash
 # add a image: neuvector/scanner:latest
@@ -38,7 +33,7 @@ hauler store add chart rancher --repo https://releases.rancher.com/server-charts
 hauler store add file https://get.rke2.io --name install.sh
 ```
 
-### Add Content to the Hauler Store (via a Manifest)
+#### Using a Hauler Manifest:
 
 ```bash
 hauler store sync --files hauler-manfiest.yaml

@@ -114,7 +114,7 @@ const config = {
               },
               {
                 label: 'Reference Guides',
-                to: '/docs/guides-references/intro',
+                to: '/docs/guides-references/overview',
               },
             ],
           },
