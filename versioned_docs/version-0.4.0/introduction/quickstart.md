@@ -10,7 +10,7 @@ Skipping past most of the documentation? Here's an easy to follow Quick Start Gu
 
 ```bash
 # install latest release
-curl -sfL https://get.hauler.dev | sh
+curl -sfL https://get.hauler.dev | bash
 ```
 
 ## Example Use of Hauler
