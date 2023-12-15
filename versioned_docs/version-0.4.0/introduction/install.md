@@ -22,10 +22,10 @@ Hauler is a purpose built to be a single binary with no specific prerequistes or
 
 ```bash
 # install latest release
-curl -sfL https://get.hauler.dev | sh
+curl -sfL https://get.hauler.dev | bash
 
 # install specific release
-curl -sfL https://get.hauler.dev | HAULER_VERSION=0.4.0 sh
+curl -sfL https://get.hauler.dev | HAULER_VERSION=0.4.0 bash
 ```
 
 ### Windows
