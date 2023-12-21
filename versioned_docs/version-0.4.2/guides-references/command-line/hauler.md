@@ -14,7 +14,7 @@ Usage:
   hauler [command]
 
 Available Commands:
-  completion  Generate the autocompletion script for the specified shell
+  completion  Generates completion scripts for various shells
   download    Download OCI content from a registry and populate it on disk
   help        Help about any command
   serve       Run one or more of hauler's embedded servers types

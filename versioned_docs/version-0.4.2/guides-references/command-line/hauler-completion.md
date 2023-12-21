@@ -13,10 +13,10 @@ Usage:
   hauler completion [command]
 
 Available Commands:
-  bash        Generate the autocompletion script for bash
-  fish        Generate the autocompletion script for fish
-  powershell  Generate the autocompletion script for powershell
-  zsh         Generate the autocompletion script for zsh
+  bash        Generates bash completion scripts
+  fish        Generates fish completion scripts
+  powershell  Generates powershell completion scripts
+  zsh         Generates zsh completion scripts
 
 Flags:
   -h, --help   help for completion

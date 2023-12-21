@@ -8,7 +8,7 @@ sidebar_label: Core Concepts
 
 ## Haul
 
-:::tip TLDR:
+:::tip SUMMARY:
 
 `Hauls` are Compressed Archive (Tarball) of Hauler Collections and Content.
 
@@ -18,7 +18,7 @@ At the heart of Hauler lies the concept of a `Haul`. A `Haul` is a compressed ar
 
 ## Collections
 
-:::tip TLDR:
+:::tip SUMMARY:
 
 `Collections` are Grouping of one or more Hauler Contents.
 
@@ -36,7 +36,7 @@ While `collections` (and `contents`) are built into Hauler, our goal is to empow
 
 ## Content
 
-:::tip TLDR:
+:::tip SUMMARY:
 
 `Contents` are Artifacts such as Images, Charts, or Files.
 

@@ -28,13 +28,15 @@ curl -sfL https://get.hauler.dev | bash
 curl -sfL https://get.hauler.dev | HAULER_VERSION=0.4.2 bash
 ```
 
-### Windows
+### Homebrew
 
 ```bash
-# coming soon
+# installs latest release
+brew tap rancherfederal/homebrew-tap
+brew install hauler
 ```
 
-### Homebrew
+### Windows
 
 ```bash
 # coming soon

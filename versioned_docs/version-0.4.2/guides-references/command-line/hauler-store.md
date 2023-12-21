@@ -82,7 +82,7 @@ Flags:
 Global Flags:
       --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
   -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")
+  -s, --store string       Location to create store at (default "store")h
 ```
 
 #### `hauler store extract`:
@@ -120,6 +120,7 @@ Aliases:
 Flags:
   -h, --help            help for info
   -o, --output string   Output format (table, json) (default "table")
+  -t, --type string     Filter on type (image, chart, file) (default "all")
 
 Global Flags:
       --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
@@ -200,5 +201,5 @@ Flags:
 Global Flags:
       --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
   -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")
+  -s, --store string       Location to create store at (default "store")h
 ```

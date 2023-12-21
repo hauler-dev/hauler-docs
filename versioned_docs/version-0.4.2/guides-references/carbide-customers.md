@@ -81,13 +81,3 @@ hauler store sync --products neuvector=v2.6.6 --key carbide-key.pub
 # without signature verification
 hauler store sync --products neuvector=v2.6.6
 ```
-
-### Example Workflow for Kubewarden
-
-```bash
-# with signature verification
-hauler store sync --products kubewarden=v1.3.2 --key carbide-key.pub
-
-# without signature verification
-hauler store sync --products kubewarden=v1.3.2
-```
