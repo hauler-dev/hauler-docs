@@ -26,6 +26,7 @@ const sidebars = {
         'guides-references/overview',
         'guides-references/validation',
         'guides-references/cluster-images',
+        'guides-references/carbide-customers',
         {
           type: 'category',
           label: 'Hauler Collections',
