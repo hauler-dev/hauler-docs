@@ -46,10 +46,10 @@ hauler store sync --products k3s=v1.26.11-k3s2 --platform linux/amd64
 
 ```bash
 # with signature verification
-hauler store sync --products rancher=v2.7.9 --key carbide-key.pub --platform linux/amd64
+hauler store sync --products rancher=v2.8.1 --key carbide-key.pub --platform linux/amd64
 
 # without signature verification
-hauler store sync --products rancher=v2.7.9 --platform linux/amd64
+hauler store sync --products rancher=v2.8.1 --platform linux/amd64
 ```
 
 ### Example Workflow for Cert-Manager
