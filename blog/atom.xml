@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://rancherfederal.github.io/hauler-docs/blog</id>
     <title>Rancher Government Hauler Blog</title>
-    <updated>2023-12-21T22:38:04.000Z</updated>
+    <updated>2024-02-01T14:23:42.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://rancherfederal.github.io/hauler-docs/blog"/>
     <subtitle>Rancher Government Hauler Blog</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[Welcome]]></title>
         <id>https://rancherfederal.github.io/hauler-docs/blog/welcome</id>
         <link href="https://rancherfederal.github.io/hauler-docs/blog/welcome"/>
-        <updated>2023-12-21T22:38:04.000Z</updated>
+        <updated>2024-02-01T14:23:42.000Z</updated>
         <summary type="html"><![CDATA[Welcome to the Hauler Blog!]]></summary>
         <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="welcome-to-the-hauler-blog">Welcome to the Hauler Blog!<a href="#welcome-to-the-hauler-blog" class="hash-link" aria-label="Direct link to Welcome to the Hauler Blog!" title="Direct link to Welcome to the Hauler Blog!">​</a></h2><p><strong>Welcome to the Blog for Rancher Government Hauler!</strong> We're still hard at work developing the docs and specifically the Hauler Blog. Please back later for updates!</p>]]></content>
         <author>
