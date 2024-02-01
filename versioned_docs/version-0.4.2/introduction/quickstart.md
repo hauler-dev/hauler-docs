@@ -26,8 +26,8 @@ hauler store add image neuvector/scanner:latest
 # add a image with supply chain artifacts
 hauler store add image rgcrprod.azurecr.us/longhornio/longhorn-ui:v1.5.2 --key carbide-key.pub
 
-# add a chart: rancher-stable/rancher (v2.8.0)
-hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable --version 2.8.0
+# add a chart: rancher-stable/rancher (v2.7.9)
+hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable --version 2.7.9
 
 # add a file: rke2-install.sh
 hauler store add file https://get.rke2.io --name install.sh
@@ -58,7 +58,7 @@ spec:
   charts:
     - name: rancher
       repoURL: https://releases.rancher.com/server-charts/stable
-      version: 2.8.0
+      version: 2.7.9
 ---
 apiVersion: content.hauler.cattle.io/v1alpha1
 kind: Files
