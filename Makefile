@@ -28,4 +28,4 @@ serve:
 
 # clear build outputs
 clear:
-	npm run clear
+	npm run clear && rm -rf node_modules
