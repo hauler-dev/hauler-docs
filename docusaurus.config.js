@@ -36,10 +36,6 @@ const config = {
           editUrl: 'https://github.com/rancherfederal/hauler-docs/edit/main/',
 
         },
-        blog: {
-          showReadingTime: true,
-          editUrl: 'https://github.com/rancherfederal/hauler-docs/edit/main/',
-        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -53,7 +49,6 @@ const config = {
       {
         indexDocs: true,
         indexDocSidebarParentCategories: 0,
-        indexBlog: true,
         indexPages: true,
 
         language: "en",
@@ -80,11 +75,6 @@ const config = {
           {
             to: '/docs/intro',
             label: 'Documentation',
-            position: 'left'
-          },
-          {
-            to: '/blog',
-            label: 'Hauler Blog',
             position: 'left'
           },
           {
