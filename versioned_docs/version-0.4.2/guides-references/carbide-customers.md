@@ -10,7 +10,7 @@ For all supported customers of Rancher Government Solutions, under the umbrella 
 
 RGS Carbide Setup Documentation: https://rancherfederal.github.io/carbide-docs/docs/intro
 
-RGS Carbide Public Key: https://github.com/rancherfederal/carbide-releases/releases/download/0.1.1/carbide-key.pub
+RGS Carbide Public Key: https://raw.githubusercontent.com/rancherfederal/carbide-releases/main/carbide-key.pub
 
 ### Example Workflow for Carbide
 
