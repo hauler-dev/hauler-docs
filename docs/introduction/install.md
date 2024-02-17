@@ -6,7 +6,7 @@ sidebar_label: Installation
 
 ## Overview
 
-Hauler is a purpose built to be a single binary with no specific prerequistes or depedencies. It's installation is very simple and easy to follow. To view the latest release, please view our [GitHub Release](https://github.com/rancherfederal/hauler/releases) page.
+Hauler is a purpose built to be a single binary with no specific prerequistes, depedencies, or runtime environment. It's installation is very simple and easy to follow. To view the latest release, please view our [GitHub Release](https://github.com/rancherfederal/hauler/releases) page.
 
 ## Supported Architectures
 
@@ -25,7 +25,7 @@ Hauler is a purpose built to be a single binary with no specific prerequistes or
 curl -sfL https://get.hauler.dev | bash
 
 # install specific release
-curl -sfL https://get.hauler.dev | HAULER_VERSION=0.4.3 bash
+curl -sfL https://get.hauler.dev | HAULER_VERSION=1.0.0 bash
 ```
 
 ### Homebrew
@@ -44,8 +44,10 @@ brew install hauler
 
 ## Manual Installation Steps
 
+### Linux/Darwin
+
 ```bash
-# set the hauler version (i.e. "0.4.3")
+# set the hauler version (i.e. "1.0.0")
 export vHauler=HAULER_VERSION
 
 # set the specific platform (i.e. "linux")
@@ -57,4 +59,16 @@ export arch=ARCH
 curl -sOL https://github.com/rancherfederal/hauler/releases/download/v${vHauler}/hauler_${vHauler}_${platform}_${arch}.tar.gz
 tar -xf hauler_${vHauler}_${platform}_${arch}.tar.gz
 sudo mv hauler /usr/bin/hauler
+```
+
+### Homebrew
+
+```bash
+# not applicable
+```
+
+### Windows
+
+```bash
+# coming soon
 ```

@@ -6,12 +6,17 @@ sidebar_label: Fetch Cluster Images
 
 It may be difficult to understand exactly what `content` is actively within your environment. Below is a simple way to generate a list of all images running in your environment, store it as an environment variable, and show the list by echoing the environment variable.
 
+## Fetch Cluster Images
+
 ```bash
 export IMAGE_LIST=$(kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}" |tr -s '[[:space:]]' '\n' |sort |uniq -c | cut -c 9-)
-echo "$IMAGE_LIST"
 ```
 
-### Example Output
+## Example Output
+
+```bash
+cat $IMAGE_LIST
+```
 
 ```yaml
 index.docker.io/rancher/hardened-etcd:v3.5.1-k3s1-build20220112
@@ -26,31 +31,29 @@ rancher/klipper-helm:v0.7.0-build20220315
 rancher/nginx-ingress-controller:nginx-1.0.2-hardened4
 ```
 
-### Hauler Manifest using the Images
+## Generate Hauler Manifest
 
-```yaml
-IMAGE_LIST_MODIFIED=$(cat "$IMAGE_LIST" | sed 's/^/  - name: /')
-# sed, stream editor, appends 2 spaces of indentation denotes
-# an entry in a list, then adds name: to match expected syntax
-```
+```bash
+export IMAGE_LIST_MODIFIED=$(cat "${IMAGE_LIST}" | sed 's/^/  - name: /')
 
-```yaml title="hauler-manfiest.yaml"
+cat <<EOF > hauler-manifest.yaml
 apiVersion: content.hauler.cattle.io/v1alpha1
 kind: Images
 metadata:
-  name: hauler-cluster-images-example
+  name: hauler-cluster-images
 spec:
   images:
-$IMAGE_LIST_MODIFIED
+${IMAGE_LIST_MODIFIED}
+EOF
 ```
 
-### Resulting Hauler Manifest
+## Resulting Hauler Manifest
 
 ```yaml title="hauler-manfiest.yaml"
 apiVersion: content.hauler.cattle.io/v1alpha1
 kind: Images
 metadata:
-  name: hauler-cluster-images-example
+  name: hauler-cluster-images
 spec:
   images:
     - name: index.docker.io/rancher/hardened-etcd:v3.5.1-k3s1-build20220112

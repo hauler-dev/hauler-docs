@@ -13,11 +13,10 @@ sidebar_label: Known Issues/Limits
 
 ## Limitations
 
-- No "known" limitations at this time but as a reminder, Hauler and the Hauler Documentation are in active development and not Generally Available (GA).
+- When using a `store` for `hauler` that has the same name of a `helm` chart, `hauler` will fail to fetch the chart.
+  - For example, if you tried to use a `store` name of `rancher` with a `helm` chart name `rancher`, the fetch will fail due to the fact that `helm` defaults to using an exisiting local directory, if it matches the name of the chart.
+  - https://github.com/helm/helm/blob/e81f6140ddb22bc99a08f7409522a8dbe5338ee3/pkg/action/install.go#L714-L815
 
 ## Notices
 
-#### Upcoming Deprecated Command(s):
-
-- `hauler download` (alternatively `hauler dl`) is deprecated and will be removed in a future release.
-- `hauler serve` is deprecated and will be removed in a future release.
+- No Notices at this time.

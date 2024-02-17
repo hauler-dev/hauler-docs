@@ -9,6 +9,8 @@ sidebar_label: Hauler Store
 * Interact with Hauler's embedded content store.
 
 ```yaml
+Interact with hauler's embedded content store
+
 Usage:
   hauler store [flags]
   hauler store [command]
@@ -23,7 +25,7 @@ Available Commands:
   info        Print out information about the store
   load        Load a content store from a store archive
   save        Save a content store to a store archive
-  serve       Expose the content of a local store through an OCI compliant server
+  serve       Expose the content of a local store through an OCI compliant registry or file server
   sync        Sync content to the embedded content store
 
 Flags:
@@ -61,6 +63,25 @@ Global Flags:
   -s, --store string       Location to create store at (default "store")
 
 Use "hauler store add [command] --help" for more information about a command.
+```
+
+#### `hauler store add image`:
+
+* Add an image to the content store.
+
+```yaml
+Usage:
+  hauler store add image [flags]
+
+Flags:
+  -h, --help              help for image
+  -k, --key string        (Optional) Path to the key for digital signature verification
+  -p, --platform string   (Optional) Specific platform to save. i.e. linux/amd64. Defaults to all if flag is omitted.
+
+Global Flags:
+      --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
+  -l, --log-level string    (default "info")
+  -s, --store string       Location to create store at (default "store")
 ```
 
 #### `hauler store add chart`:
@@ -122,25 +143,6 @@ Global Flags:
   -s, --store string       Location to create store at (default "store")
 ```
 
-#### `hauler store add image`:
-
-* Add an image to the content store.
-
-```yaml
-Usage:
-  hauler store add image [flags]
-
-Flags:
-  -h, --help              help for image
-  -k, --key string        (Optional) Path to the key for digital signature verification
-  -p, --platform string   (Optional) Specific platform to save. i.e. linux/amd64. Defaults to all if flag is omitted.
-
-Global Flags:
-      --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
-  -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")
-```
-
 #### `hauler store copy`:
 
 * Copy all store contents to another OCI registry.
@@ -159,7 +161,7 @@ Flags:
 Global Flags:
       --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
   -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")h
+  -s, --store string       Location to create store at (default "store")
 ```
 
 #### `hauler store extract`:
@@ -197,7 +199,7 @@ Aliases:
 Flags:
   -h, --help            help for info
   -o, --output string   Output format (table, json) (default "table")
-  -t, --type string     Filter on type (image, chart, file) (default "all")
+  -t, --type string     Filter on type (image, chart, file, sigs, atts, sbom) (default "all")
 
 Global Flags:
       --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
@@ -231,8 +233,29 @@ Usage:
   hauler store save [flags]
 
 Flags:
-  -f, --filename string   Name of archive (default "pkg.tar.zst")
+  -f, --filename string   Name of archive (default "haul.tar.zst")
   -h, --help              help for save
+
+Global Flags:
+      --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
+  -l, --log-level string    (default "info")
+  -s, --store string       Location to create store at (default "store")
+```
+
+#### `hauler store sync`:
+
+* Sync content to the embedded content store.
+
+```yaml
+Usage:
+  hauler store sync [flags]
+
+Flags:
+  -f, --files strings      Path to content files
+  -h, --help               help for sync
+  -k, --key string         (Optional) Path to the key for signature verification
+  -p, --platform string    (Optional) Specific platform to save. i.e. linux/amd64. Defaults to all if flag is omitted.
+      --products strings   Used for RGS Carbide customers to supply a product and version and Hauler will retrieve the images. i.e. '--product rancher=v2.7.6'
 
 Global Flags:
       --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
@@ -242,23 +265,26 @@ Global Flags:
 
 #### `hauler store serve`:
 
-* Expose the content of a local store through an OCI compliant server.
+* Expose the content of a local store through an OCI compliant registry or file server.
 
 ```yaml
 Usage:
   hauler store serve [flags]
+  hauler store serve [command]
 
 Available Commands:
   fileserver  Serve the file server
   registry    Serve the embedded registry
 
 Flags:
-  -h, --help               help for serve
+  -h, --help   help for serve
 
 Global Flags:
       --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
   -l, --log-level string    (default "info")
   -s, --store string       Location to create store at (default "store")
+
+Use "hauler store serve [command] --help" for more information about a command.
 ```
 
 #### `hauler store serve registry`:
@@ -298,25 +324,4 @@ Global Flags:
       --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
   -l, --log-level string    (default "info")
   -s, --store string       Location to create store at (default "store")
-```
-
-#### `hauler store sync`:
-
-* Sync content to the embedded content store.
-
-```yaml
-Usage:
-  hauler store sync [flags]
-
-Flags:
-  -f, --files strings      Path to content files
-  -h, --help               help for sync
-  -k, --key string         (Optional) Path to the key for signature verification
-  -p, --platform string    (Optional) Specific platform to save. i.e. linux/amd64. Defaults to all if flag is omitted.
-      --products strings   Used for RGS Carbide customers to supply a product and version and Hauler will retrieve the images. i.e. '--product rancher=v2.7.6'
-
-Global Flags:
-      --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
-  -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")h
 ```

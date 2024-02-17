@@ -10,9 +10,9 @@ sidebar_label: Introduction
 
 :::caution
 
-**Note: Hauler and the Hauler Documentation are in active development and _not Generally Available (GA)_.**
+**Please Note:** Hauler and the Hauler Documentation are recently Generally Available (GA).
 
-Most of the core functionality and features are ready for use, but may have breaking changes in future releases. Please help us by submitting any issues via **[GitHub Issues](https://github.com/rancherfederal/hauler-docs/issues)** and make sure to review the **[Known Issues and Limitations](/docs/known-limits)**!
+Please help us by submitting any issues via **[GitHub Issues](https://github.com/rancherfederal/hauler-docs/issues)** and make sure to review the **[Known Issues and Limitations](/docs/known-limits)**!
 
 :::
 
@@ -26,6 +26,6 @@ Most of the core functionality and features are ready for use, but may have brea
 
 `Hauler` wouldn't be possible without the open-source community, but there are a few projects that stand out:
 
-- [go-containerregistry](https://github.com/google/go-containerregistry)
 - [oras cli](https://github.com/oras-project/oras)
 - [cosign](https://github.com/sigstore/cosign)
+- [go-containerregistry](https://github.com/google/go-containerregistry)

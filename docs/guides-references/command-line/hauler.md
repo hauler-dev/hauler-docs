@@ -15,9 +15,8 @@ Usage:
 
 Available Commands:
   completion  Generates completion scripts for various shells
-  download    Download OCI content from a registry and populate it on disk
   help        Help about any command
-  serve       Run one or more of hauler's embedded servers types
+  login       Log in to a registry
   store       Interact with hauler's embedded content store
   version     Print the current version
 
