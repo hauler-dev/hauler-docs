@@ -32,7 +32,7 @@ const sidebars = {
           label: 'Hauler Collections',
           description: 'Guides and References for Hauler Collections',
           items: [
-            'guides-references/hauler-collections/collections',
+            'guides-references/hauler-collections/community-collections',
           ],
         },
         {
