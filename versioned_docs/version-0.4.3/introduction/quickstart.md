@@ -36,7 +36,7 @@ hauler store add file https://get.rke2.io --name install.sh
 #### Using a Hauler Manifest:
 
 ```bash
-hauler store sync --files hauler-manfiest.yaml 
+hauler store sync --files hauler-manfiest.yaml
 ```
 
 ```yaml title="hauler-manfiest.yaml"
@@ -87,7 +87,7 @@ hauler store save --filename haul.tar.zst
 
 ---
 
-**<-- airgap the `haul.tar.zst` to the disconnected environment -->**
+**airgap the `haul.tar.zst` to the disconnected environment**
 
 ---
 

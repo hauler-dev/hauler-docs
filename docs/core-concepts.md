@@ -28,7 +28,7 @@ At the heart of Hauler lies the concept of a `Haul`. A `Haul` is a compressed ar
 
 ### Community Collections
 
-While `collections` (and `contents`) are built into Hauler, our goal is to empower users to define their own `collections`. This way, you can tailor Hauler to your unique requirements and take full control of your artifacts.
+While `collections` (and `contents`) are built into Hauler, our goal is to empower operators to define their own `collections`. This way, you can tailor Hauler to your unique requirements and take full control of your artifacts.
 
 ### RGS Carbide Collections
 
@@ -45,9 +45,9 @@ While `collections` (and `contents`) are built into Hauler, our goal is to empow
 In Hauler's terminology, `content` refers to artifacts such as images, charts, or files. These are the fundamental types of resources that Hauler understands and manages. To understand the term better, let's break it down:
 
 - `Content`: The fundamental type of artifacts that Hauler recognizes (images, charts, and files).
-- `Artifact`: Anything that can be represented as an OCI (Open Container Initiative) artifact.
-  - OCI Artifacts provide a standardized way to store arbitrary files, making it easier to manage content efficiently.
+- `Artifact`: Anything that can be represented as an OCI (Open Container Initiative) Compliant Artifact.
+  - OCI Compliant Artifacts provide a standardized way to store arbitrary files, making it easier to manage content efficiently.
 
 ### Declaritive Content
 
-While manually adding content to `Hauler` is a straightforward way to get started, we recommend a much more sustainable approach. `Hauler` provides a declaritive approach for each `content` type, allowing you to define all the `content` within a manifest. This approach ensures a more reproducable workflow for managing the lifecycle of your `hauls`.
+While manually adding content to `Hauler` is a straight forward way to get started, we recommend a much more sustainable approach... `Hauler` provides a declaritive and programmatic approach by allowing operators to define `content` within a configuration file, known as a manifest. This approach ensures a more reproducable workflow for managing the lifecycle of your `hauls`. Check it out [here](guides-references/manifests.md)

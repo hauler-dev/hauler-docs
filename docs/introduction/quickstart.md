@@ -87,7 +87,7 @@ hauler store save --filename haul.tar.zst
 
 ---
 
-**<-- airgap the `haul.tar.zst` to the disconnected environment -->**
+**airgap the `haul.tar.zst` to the disconnected environment**
 
 ---
 
@@ -102,9 +102,11 @@ hauler store load haul.tar.zst
 
 ```bash
 # serve the content as a registry from the hauler store
+# defaults to <FQDN or IP>:5000
 hauler store serve registry
 
 # serve the file content as a fileserver from the hauler store
+# defaults to <FQDN or IP>:8080
 hauler store serve fileserver
 ```
 
@@ -112,6 +114,7 @@ hauler store serve fileserver
 
 ```bash
 # copy the content to a registry from the hauler store
+# copies oci compliant artifacts
 hauler store copy registry://harbor.example.com
 ```
 
@@ -119,5 +122,6 @@ hauler store copy registry://harbor.example.com
 
 ```bash
 # copy the content to a directory from the hauler store
+# copies non oci compliant artifacts
 hauler store copy dir://hauler-files
 ```
