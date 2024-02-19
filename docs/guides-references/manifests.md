@@ -8,14 +8,14 @@ sidebar_label: Hauler Manifests
 
 Please review the Hauler Content Pages for [Images](hauler-content/images.md) for more detailed information.
 
-```yaml title="hauler-image-manfiest.yaml"
+```yaml title="hauler-image-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1alpha1
 kind: Images
 metadata:
   name: hauler-content-images-example
   annotations:
-    # global flags that will apply for each image
-    # will be overwrote by specific image flags
+    # global flags for all images in the manifest
+    # image flags override global flags
     hauler.dev/key: <cosign public key>
     hauler.dev/platform: <platform>
     hauler.dev/registry: <registry>
@@ -40,7 +40,7 @@ spec:
 
 Please review the Hauler Content Pages for [Charts](hauler-content/charts.md) for more detailed information.
 
-```yaml title="hauler-chart-manfiest.yaml"
+```yaml title="hauler-chart-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1alpha1
 kind: Charts
 metadata:
@@ -60,7 +60,7 @@ spec:
 
 Please review the Hauler Content Pages for [Files](hauler-content/files.md) for more detailed information.
 
-```yaml title="hauler-file-manfiest.yaml"
+```yaml title="hauler-file-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1alpha1
 kind: Files
 metadata:

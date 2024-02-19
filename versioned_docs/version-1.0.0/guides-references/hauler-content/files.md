@@ -4,17 +4,27 @@ description: Hauler Content - Files Documentation
 sidebar_label: Files
 ---
 
-
-
 ## Hauler Command Line for Files
 
 ```bash
 hauler store add file <file> --name <name>
 ```
 
+## Example Command for Images
+
+```bash
+# fetch helm chart
+hauler store add file https://get.rke2.io
+
+# fetch helm chart with specific version
+hauler store add file https://get.rke2.io --name install.sh
+```
+
+---
+
 ## Hauler Manifest for Files
 
-```yaml title="hauler-file-manfiest.yaml"
+```yaml title="hauler-file-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1alpha1
 kind: Files
 metadata:
@@ -27,7 +37,7 @@ spec:
 
 ## Example Manifest for Files
 
-```yaml title="hauler-file-manfiest.yaml"
+```yaml title="hauler-file-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1alpha1
 kind: Files
 metadata:

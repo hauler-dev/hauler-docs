@@ -17,29 +17,30 @@ curl -sfL https://get.hauler.dev | bash
 
 ### Add Content to the Hauler Store
 
-#### Using the Command Line:
+<details open>
+<summary><b>Using the Command Line:</b></summary>
 
 ```bash
-# add a image: neuvector/scanner:latest
-hauler store add image neuvector/scanner:latest --platform linux/amd64
+# add a image... defaults to docker.io
+hauler store add image neuvector/scanner:latest
 
-# add a image with supply chain artifacts
-hauler store add image rgcrprod.azurecr.us/longhornio/longhorn-ui:v1.5.2 --key carbide-key.pub --platform linux/amd64
+# add a image with a specific platform and with supply chain artifacts
+# may not work for all users due to the specified registry
+hauler store add image rgcrprod.azurecr.us/longhornio/longhorn-ui:v1.5.2 --platform linux/amd64 --key carbide-key.pub
 
-# add a chart: rancher-stable/rancher (v2.8.2)
+# add a helm chart with a specific version
 hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable --version 2.8.2
 
-# add a file: rke2-install.sh
+# add a file and assign it a new name
 hauler store add file https://get.rke2.io --name install.sh
 ```
 
-#### Using a Hauler Manifest:
+</details>
 
-```bash
-hauler store sync --files hauler-manfiest.yaml
-```
+<details>
+<summary><b>Using a Hauler Manifest:</b></summary>
 
-```yaml title="hauler-manfiest.yaml"
+```yaml title="hauler-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1alpha1
 kind: Images
 metadata:
@@ -70,6 +71,13 @@ spec:
     - path: https://get.rke2.io
       name: install.sh
 ```
+
+```bash
+# fetch the content from hauler manifest
+hauler store sync --files hauler-manifest.yaml
+```
+
+</details>
 
 ### View the Hauler Store
 
@@ -110,17 +118,13 @@ hauler store serve registry
 hauler store serve fileserver
 ```
 
-### Copy the Hauler Store to a Registry
+### Copy the Hauler Store
 
 ```bash
 # copy the content to a registry from the hauler store
 # copies oci compliant artifacts
 hauler store copy registry://harbor.example.com
-```
 
-### Copy the Hauler Store to a Directory
-
-```bash
 # copy the content to a directory from the hauler store
 # copies non oci compliant artifacts
 hauler store copy dir://hauler-files

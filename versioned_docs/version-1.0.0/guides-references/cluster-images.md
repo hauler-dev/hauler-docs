@@ -9,16 +9,15 @@ It may be difficult to understand exactly what `content` is actively within your
 ## Fetch Cluster Images
 
 ```bash
-export IMAGE_LIST=$(kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}" |tr -s '[[:space:]]' '\n' |sort |uniq -c | cut -c 9-)
+# fetch all images in the cluster, remove duplicates, alphabetize, and put on a newline
+export IMAGE_LIST=$(kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}" | sed 's/ /\n/g' | sort | uniq)
 ```
 
 ## Example Output
 
 ```bash
-cat $IMAGE_LIST
-```
-
-```yaml
+# view the list of images from the cluster
+echo $IMAGE_LIST
 index.docker.io/rancher/hardened-etcd:v3.5.1-k3s1-build20220112
 index.docker.io/rancher/hardened-kubernetes:v1.23.5-rke2r1-build20220316
 index.docker.io/rancher/rke2-cloud-provider:v0.0.3-build20211118
@@ -34,22 +33,24 @@ rancher/nginx-ingress-controller:nginx-1.0.2-hardened4
 ## Generate Hauler Manifest
 
 ```bash
-export IMAGE_LIST_MODIFIED=$(cat "${IMAGE_LIST}" | sed 's/^/  - name: /')
+# add the required formatting for the image list
+export IMAGE_LIST_MODIFIED=$(echo "${IMAGE_LIST} | sed 's/^/    - name: /'")
 
-cat <<EOF > hauler-manifest.yaml
+# create the hauler manifest with the updated image list
+cat << EOF >> hauler-manifest.yaml
 apiVersion: content.hauler.cattle.io/v1alpha1
 kind: Images
 metadata:
   name: hauler-cluster-images
 spec:
   images:
-${IMAGE_LIST_MODIFIED}
+$IMAGE_LIST_MODIFIED
 EOF
 ```
 
 ## Resulting Hauler Manifest
 
-```yaml title="hauler-manfiest.yaml"
+```yaml title="hauler-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1alpha1
 kind: Images
 metadata:
