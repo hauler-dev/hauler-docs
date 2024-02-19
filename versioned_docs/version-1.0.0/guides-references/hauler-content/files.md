@@ -10,17 +10,15 @@ sidebar_label: Files
 hauler store add file <file> --name <name>
 ```
 
-## Example Command for Images
+## Example Commands for Files
 
 ```bash
-# fetch helm chart
+# fetch remote file
 hauler store add file https://get.rke2.io
 
-# fetch helm chart with specific version
-hauler store add file https://get.rke2.io --name install.sh
+# fetch local file and assign new name
+hauler store add file path/to/local/file.txt --name local-file.txt
 ```
-
----
 
 ## Hauler Manifest for Files
 
@@ -45,13 +43,13 @@ metadata:
 spec:
   files:
     # fetch remote file
-    - path: https://get.rke2.io/install.sh
-    # fetch remote file and new name
     - path: https://get.rke2.io
-      name: remote-install.sh
+    # fetch remote file and assign new name
+    - path: https://get.rke2.io
+      name: install.sh
     # fetch local file
-    - path: rke2-install.sh
-    # fetch remote file and new name
-    - path: rke2-install.sh
-      name: local-install.sh
+    - path: path/to/local/file.txt
+    # fetch local file and assign new name
+    - path: path/to/local/file.txt
+      name: local-file.txt
 ```

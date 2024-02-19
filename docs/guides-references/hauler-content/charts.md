@@ -10,7 +10,7 @@ sidebar_label: Charts
 hauler store add chart <chart name> --repo <chart repository> --version <chart version>
 ```
 
-## Example Command for Images
+## Example Commands for Charts
 
 ```bash
 # fetch helm chart

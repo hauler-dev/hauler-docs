@@ -17,7 +17,8 @@ curl -sfL https://get.hauler.dev | bash
 
 ### Add Content to the Hauler Store
 
-#### Using the Command Line:
+<details open>
+<summary><b>Using the Command Line:</b></summary>
 
 ```bash
 # add a image... defaults to docker.io
@@ -34,11 +35,10 @@ hauler store add chart rancher --repo https://releases.rancher.com/server-charts
 hauler store add file https://get.rke2.io --name install.sh
 ```
 
-#### Using a Hauler Manifest:
+</details>
 
-```bash
-hauler store sync --files hauler-manifest.yaml
-```
+<details>
+<summary><b>Using a Hauler Manifest:</b></summary>
 
 ```yaml title="hauler-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1alpha1
@@ -71,6 +71,13 @@ spec:
     - path: https://get.rke2.io
       name: install.sh
 ```
+
+```bash
+# fetch the content from hauler manifest
+hauler store sync --files hauler-manifest.yaml
+```
+
+</details>
 
 ### View the Hauler Store
 

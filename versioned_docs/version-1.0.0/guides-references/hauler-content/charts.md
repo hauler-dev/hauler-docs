@@ -10,7 +10,7 @@ sidebar_label: Charts
 hauler store add chart <chart name> --repo <chart repository> --version <chart version>
 ```
 
-## Example Command for Images
+## Example Commands for Charts
 
 ```bash
 # fetch helm chart
@@ -19,8 +19,6 @@ hauler store add chart rancher --repo https://releases.rancher.com/server-charts
 # fetch helm chart with specific version
 hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable --version 2.8.2
 ```
-
----
 
 ## Hauler Manifest for Charts
 

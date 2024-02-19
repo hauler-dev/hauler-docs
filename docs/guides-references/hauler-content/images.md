@@ -10,7 +10,7 @@ sidebar_label: Images
 hauler store add image <image reference> --platform <platform> --key <cosign public key>
 ```
 
-## Example Command for Images
+## Example Commands for Images
 
 ```bash
 # fetch image

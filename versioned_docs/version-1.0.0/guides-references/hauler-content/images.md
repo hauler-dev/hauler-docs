@@ -10,7 +10,7 @@ sidebar_label: Images
 hauler store add image <image reference> --platform <platform> --key <cosign public key>
 ```
 
-## Example Command for Images
+## Example Commands for Images
 
 ```bash
 # fetch image
@@ -28,8 +28,6 @@ hauler store add image docker.io/longhornio/longhorn-ui:v1.6.0 --platform: linux
 # fetch image with full image reference, specific version, specific platform, and signature verification
 hauler store add image docker.io/longhornio/longhorn-manager:v1.6.0 --platform linux/amd64 --key cosign-public-key.pub
 ```
-
----
 
 ## Hauler Manifest for Images
 

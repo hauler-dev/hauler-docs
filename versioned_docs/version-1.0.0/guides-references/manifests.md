@@ -32,7 +32,7 @@ spec:
       platform: linux/amd64
     # fetch image with full image reference, specific version, specific platform, and signature verification
     - name: docker.io/longhornio/longhorn-manager:v1.6.0
-      key: <cosign public key>
+      key: cosign-public-key.pub
       platform: linux/amd64
 ```
 
@@ -68,13 +68,13 @@ metadata:
 spec:
   files:
     # fetch remote file
-    - path: https://get.rke2.io/install.sh
-    # fetch remote file and new name
     - path: https://get.rke2.io
-      name: remote-install.sh
+    # fetch remote file and assign new name
+    - path: https://get.rke2.io
+      name: install.sh
     # fetch local file
-    - path: rke2-install.sh
-    # fetch remote file and new name
-    - path: rke2-install.sh
-      name: local-install.sh
+    - path: path/to/local/file.txt
+    # fetch local file and assign new name
+    - path: path/to/local/file.txt
+      name: local-file.txt
 ```
