@@ -1,5 +1,5 @@
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require('prism-react-renderer').themes.github;
+const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -44,17 +44,13 @@ const config = {
   ],
 
   plugins: [
-    [
-      require.resolve("@cmfcmf/docusaurus-search-local"),
+    [ require.resolve('docusaurus-lunr-search'),
       {
-        indexDocs: true,
-        indexDocSidebarParentCategories: 0,
-        indexPages: true,
-
-        language: "en",
-        maxSearchResults: 10,
+        languages: ['en'],
+        indexBaseUrl: true,
+        highlightResult: true
       }
-    ],
+    ]
   ],
 
   themeConfig:

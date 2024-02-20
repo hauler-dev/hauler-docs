@@ -21,6 +21,7 @@
       "collapsed": false,
       "items": [
         "guides-references/overview",
+        "guides-references/manifests",
         "guides-references/cluster-images",
         "guides-references/carbide-customers",
         {
@@ -28,7 +29,7 @@
           "label": "Hauler Collections",
           "description": "Guides and References for Hauler Collections",
           "items": [
-            "guides-references/hauler-collections/overview"
+            "guides-references/hauler-collections/community-collections"
           ]
         },
         {
@@ -36,7 +37,6 @@
           "label": "Hauler Content",
           "description": "Guides and References for Hauler Content Types",
           "items": [
-            "guides-references/hauler-content/overview",
             "guides-references/hauler-content/images",
             "guides-references/hauler-content/charts",
             "guides-references/hauler-content/files"
@@ -55,6 +55,7 @@
         }
       ]
     },
-    "known-limits"
+    "known-limits",
+    "feedback"
   ]
 }

@@ -24,7 +24,7 @@ const sidebars = {
       collapsed: false,
       items: [
         'guides-references/overview',
-        'guides-references/validation',
+        'guides-references/manifests',
         'guides-references/cluster-images',
         'guides-references/carbide-customers',
         {
@@ -32,7 +32,7 @@ const sidebars = {
           label: 'Hauler Collections',
           description: 'Guides and References for Hauler Collections',
           items: [
-            'guides-references/hauler-collections/overview',
+            'guides-references/hauler-collections/community-collections',
           ],
         },
         {
@@ -40,7 +40,6 @@ const sidebars = {
           label: 'Hauler Content',
           description: 'Guides and References for Hauler Content Types',
           items: [
-            'guides-references/hauler-content/overview',
             'guides-references/hauler-content/images',
             'guides-references/hauler-content/charts',
             'guides-references/hauler-content/files',
@@ -60,6 +59,7 @@ const sidebars = {
       ],
     },
     'known-limits',
+    'feedback',
   ],
 };
 

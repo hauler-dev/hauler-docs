@@ -87,7 +87,7 @@ hauler store save --filename haul.tar.zst
 
 ---
 
-**<-- airgap the `haul.tar.zst` to the disconnected environment -->**
+**airgap the `haul.tar.zst` to the disconnected environment**
 
 ---
 

@@ -25,7 +25,7 @@ Hauler is a purpose built to be a single binary with no specific prerequistes or
 curl -sfL https://get.hauler.dev | bash
 
 # install specific release
-curl -sfL https://get.hauler.dev | HAULER_VERSION=0.4.3 bash
+curl -sfL https://get.hauler.dev | HAULER_VERSION=0.4.4 bash
 ```
 
 ### Homebrew
@@ -45,7 +45,7 @@ brew install hauler
 ## Manual Installation Steps
 
 ```bash
-# set the hauler version (i.e. "0.4.3")
+# set the hauler version (i.e. "0.4.4")
 export vHauler=HAULER_VERSION
 
 # set the specific platform (i.e. "linux")
