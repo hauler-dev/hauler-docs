@@ -65,7 +65,7 @@ const config = {
         title: '',
         logo: {
           alt: 'Carbide Logo',
-          src: 'img/rgs-hauler-logo-transparent.png',
+          src: 'img/rgs-hauler-logo.png',
         },
         items: [
           {
