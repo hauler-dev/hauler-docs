@@ -1,5 +1,7 @@
 # Rancher Government Hauler Docs
 
+![rancher-government-hauler-logo](/static/img/rgs-hauler-logo.png)
+
 ## Local Development
 
 ### Installing Dependencies (docusaurus)
