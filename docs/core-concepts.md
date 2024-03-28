@@ -48,6 +48,6 @@ In Hauler's terminology, `content` refers to artifacts such as **container image
 - `Artifact`: Anything that can be represented as an OCI (Open Container Initiative) Compliant Artifact.
   - OCI Compliant Artifacts provide a standardized way to store arbitrary files, making it easier to manage content efficiently.
 
-### Declaritive Content
+### Declarative Content
 
-While manually adding content to `Hauler` is an easy way to get started, there is a more sustainable approach... `Hauler` provides a declaritive and programmatic approach by allowing operators to define `content` within a configuration file, known as a manifest. This approach ensures a more reproducable workflow for managing the lifecycle of your `hauls`. Check it out [here](guides-references/manifests.md)!
+While manually adding content to `Hauler` is an easy way to get started, there is a more sustainable approach... `Hauler` provides a declarative and programmatic approach by allowing operators to define `content` within a configuration file, known as a manifest. This approach ensures a more reproducable workflow for managing the lifecycle of your `hauls`. Check it out [here](guides-references/manifests.md)!
