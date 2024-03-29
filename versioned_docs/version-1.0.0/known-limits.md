@@ -6,10 +6,7 @@ sidebar_label: Known Issues/Limits
 
 ## Issues
 
-- Copying SBOMS to AWS Elastic Container Registry (AWS ECR):
-  - When using `hauler store copy` to AWS ECR, the Software Bill of Materials (SBOM) attachement will fail to copy due to changes in the way `cosign` handles attachments. **We are investigating a way forward to address this issue.**
-  - https://github.com/sigstore/cosign/blob/main/specs/SBOM_SPEC.md
-  - https://github.com/sigstore/cosign/issues/2755
+- No Issues at this time.
 
 ## Limitations
 
