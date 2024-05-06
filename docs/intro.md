@@ -8,13 +8,7 @@ sidebar_label: Introduction
 
 # Airgap Swiss Army Knife
 
-:::caution
-
-**Please Note:** Hauler and the Hauler Documentation are recently Generally Available (GA).
-
-Please help us by submitting any issues via **[GitHub Issues](https://github.com/rancherfederal/hauler-docs/issues)** and make sure to review the **[Known Issues and Limitations](/docs/known-limits)**!
-
-:::
+![hauler-logo](/img/rgs-hauler-logo.png)
 
 ## What's Hauler?
 
