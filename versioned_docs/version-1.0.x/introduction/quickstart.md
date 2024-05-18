@@ -123,7 +123,7 @@ hauler store serve fileserver
 ```bash
 # copy the content to a registry from the hauler store
 # copies oci compliant artifacts
-hauler store copy registry://harbor.example.com
+hauler store copy registry://registry.example.com
 
 # copy the content to a directory from the hauler store
 # copies non oci compliant artifacts

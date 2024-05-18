@@ -9,16 +9,20 @@ sidebar_label: Hauler Version
 * Print Hauler's current version.
 
 ```yaml
-Usage:
-  hauler version [flags]
+ __    __       ___       __    __   __       _______ .______
+|  |  |  |     /   \     |  |  |  | |  |     |   ____||   _  \
+|  |__|  |    /  ^  \    |  |  |  | |  |     |  |__   |  |_)  |
+|   __   |   /  /_\  \   |  |  |  | |  |     |   __|  |      /
+|  |  |  |  /  _____  \  |  `--'  | |  `----.|  |____ |  |\  \----.
+|__|  |__| /__/     \__\  \______/  |_______||_______|| _| `._____|
 
-Aliases:
-  version, v
+hauler: Airgap Swiss Army Knife
 
-Flags:
-  -h, --help   help for version
-      --json   toggle output in JSON
-
-Global Flags:
-  -l, --log-level string    (default "info")
+GitVersion:    1.0.3
+GitCommit:     f7c24f6
+GitTreeState:  clean
+BuildDate:     2024-04-24T16:50:33Z
+GoVersion:     go1.21.9
+Compiler:      gc
+Platform:      darwin/arm64
 ```

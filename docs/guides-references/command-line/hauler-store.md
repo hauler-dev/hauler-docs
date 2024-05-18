@@ -9,8 +9,6 @@ sidebar_label: Hauler Store
 * Interact with Hauler's embedded content store.
 
 ```yaml
-Interact with hauler's embedded content store
-
 Usage:
   hauler store [flags]
   hauler store [command]
@@ -29,7 +27,7 @@ Available Commands:
   sync        Sync content to the embedded content store
 
 Flags:
-      --cache string   Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
+      --cache string   (deprecated flag and currently not used)
   -h, --help           help for store
   -s, --store string   Location to create store at (default "store")
 
@@ -58,7 +56,7 @@ Flags:
   -h, --help   help for add
 
 Global Flags:
-      --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
+      --cache string       (deprecated flag and currently not used)
   -l, --log-level string    (default "info")
   -s, --store string       Location to create store at (default "store")
 
@@ -79,7 +77,7 @@ Flags:
   -p, --platform string   (Optional) Specific platform to save. i.e. linux/amd64. Defaults to all if flag is omitted.
 
 Global Flags:
-      --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
+      --cache string       (deprecated flag and currently not used)
   -l, --log-level string    (default "info")
   -s, --store string       Location to create store at (default "store")
 ```
@@ -120,7 +118,7 @@ Flags:
       --version string             specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest version is used
 
 Global Flags:
-      --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
+      --cache string       (deprecated flag and currently not used)
   -l, --log-level string    (default "info")
   -s, --store string       Location to create store at (default "store")
 ```
@@ -138,7 +136,7 @@ Flags:
   -n, --name string   (Optional) Name to assign to file in store
 
 Global Flags:
-      --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
+      --cache string       (deprecated flag and currently not used)
   -l, --log-level string    (default "info")
   -s, --store string       Location to create store at (default "store")
 ```
@@ -159,7 +157,7 @@ Flags:
   -u, --username string   Username when copying to an authenticated remote registry
 
 Global Flags:
-      --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
+      --cache string       (deprecated flag and currently not used)
   -l, --log-level string    (default "info")
   -s, --store string       Location to create store at (default "store")
 ```
@@ -180,7 +178,7 @@ Flags:
   -o, --output string   Directory to save contents to (defaults to current directory)
 
 Global Flags:
-      --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
+      --cache string       (deprecated flag and currently not used)
   -l, --log-level string    (default "info")
   -s, --store string       Location to create store at (default "store")
 ```
@@ -202,7 +200,7 @@ Flags:
   -t, --type string     Filter on type (image, chart, file, sigs, atts, sbom) (default "all")
 
 Global Flags:
-      --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
+      --cache string       (deprecated flag and currently not used)
   -l, --log-level string    (default "info")
   -s, --store string       Location to create store at (default "store")
 ```
@@ -216,10 +214,11 @@ Usage:
   hauler store load [flags]
 
 Flags:
-  -h, --help   help for load
+  -h, --help             help for load
+  -t, --tempdir string   overrides the default directory for temporary files, as returned by your OS.
 
 Global Flags:
-      --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
+      --cache string       (deprecated flag and currently not used)
   -l, --log-level string    (default "info")
   -s, --store string       Location to create store at (default "store")
 ```
@@ -237,7 +236,7 @@ Flags:
   -h, --help              help for save
 
 Global Flags:
-      --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
+      --cache string       (deprecated flag and currently not used)
   -l, --log-level string    (default "info")
   -s, --store string       Location to create store at (default "store")
 ```
@@ -251,15 +250,16 @@ Usage:
   hauler store sync [flags]
 
 Flags:
-  -f, --files strings      Path to content files
-  -h, --help               help for sync
-  -k, --key string         (Optional) Path to the key for signature verification
-  -p, --platform string    (Optional) Specific platform to save. i.e. linux/amd64. Defaults to all if flag is omitted.
-      --products strings   Used for RGS Carbide customers to supply a product and version and Hauler will retrieve the images. i.e. '--product rancher=v2.7.6'
-  -r, --registry string    (Optional) Default pull registry for image refs that are not specifying a registry name.
+  -f, --files strings             Path to content files
+  -h, --help                      help for sync
+  -k, --key string                (Optional) Path to the key for signature verification
+  -p, --platform string           (Optional) Specific platform to save. i.e. linux/amd64. Defaults to all if flag is omitted.
+  -c, --product-registry string   (Optional) Specific Product Registry to use. Defaults to RGS Carbide Registry (rgcrprod.azurecr.us).
+      --products strings          Used for RGS Carbide customers to supply a product and version and Hauler will retrieve the images. i.e. '--product rancher=v2.7.6'
+  -r, --registry string           (Optional) Default pull registry for image refs that are not specifying a registry name.
 
 Global Flags:
-      --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
+      --cache string       (deprecated flag and currently not used)
   -l, --log-level string    (default "info")
   -s, --store string       Location to create store at (default "store")
 ```
@@ -281,7 +281,7 @@ Flags:
   -h, --help   help for serve
 
 Global Flags:
-      --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
+      --cache string       (deprecated flag and currently not used)
   -l, --log-level string    (default "info")
   -s, --store string       Location to create store at (default "store")
 
@@ -303,7 +303,7 @@ Flags:
   -p, --port int           Port to listen on. (default 5000)
 
 Global Flags:
-      --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
+      --cache string       (deprecated flag and currently not used)
   -l, --log-level string    (default "info")
   -s, --store string       Location to create store at (default "store")
 ```
@@ -317,12 +317,12 @@ Usage:
   hauler store serve fileserver [flags]
 
 Flags:
-      --directory string   Directory to use for backend.  Defaults to $PWD/store-files (default "store-files")
+      --directory string   Directory to use for backend.  Defaults to $PWD/fileserver (default "fileserver")
   -h, --help               help for fileserver
   -p, --port int           Port to listen on. (default 8080)
 
 Global Flags:
-      --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
+      --cache string       (deprecated flag and currently not used)
   -l, --log-level string    (default "info")
   -s, --store string       Location to create store at (default "store")
 ```
