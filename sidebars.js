@@ -24,9 +24,19 @@ const sidebars = {
       collapsed: false,
       items: [
         'guides-references/overview',
-        'guides-references/manifests',
         'guides-references/cluster-images',
         'guides-references/carbide-customers',
+        {
+          type: 'category',
+          label: 'Bootstrapping Utilities',
+          description: 'Guides and References for Hauler Bootstrapping Utilities',
+          collapsed: false,
+          items: [
+            'guides-references/utilities/registry',
+            'guides-references/utilities/fileserver',
+          ],
+        },
+        'guides-references/manifests',
         {
           type: 'category',
           label: 'Hauler Collections',
@@ -47,7 +57,7 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'Command Line Interface',
+          label: 'Hauler Command Line',
           description: 'Guides and References for the Hauler Command Line',
           items: [
             'guides-references/command-line/hauler',
