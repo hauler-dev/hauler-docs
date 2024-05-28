@@ -320,6 +320,7 @@ Flags:
       --directory string   Directory to use for backend.  Defaults to $PWD/store-files (default "store-files")
   -h, --help               help for fileserver
   -p, --port int           Port to listen on. (default 8080)
+  -t, --timeout int        Set the http request timeout duration in seconds for both reads and write. (default 60)
 
 Global Flags:
       --cache string       Location of where to store cache data (defaults to $XDG_CACHE_DIR/hauler)
