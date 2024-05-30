@@ -8,12 +8,12 @@ Additional Overview Documentation pending a future release!
 
 ## Hauler Guides & Reference Documentation
 
-|                Guide or Reference Documentation                |                      Description                       |
-| :------------------------------------------------------------: | :----------------------------------------------------: |
-|                 [Hauler Manifests](manifests)                  |                Example Hauler Manifests                |
-|                [Cluster Images](cluster-images)                |     Create a Hauler Store from Images on a Cluster     |
-| [Hauler Collections](hauler-collections/community-collections) |             Overview of Hauler Collections             |
-|        [Hauler Content - Images](hauler-content/images)        |              Hauler Content Type - Images              |
-|        [Hauler Content - Charts](hauler-content/charts)        |              Hauler Content Type - Charts              |
-|         [Hauler Content - Files](hauler-content/files)         |              Hauler Content Type - Files               |
-|           [Hauler Command Line](command-line/hauler)           | Detailed Overview of the Hauler Command Line Interface |
+|                Guide or Reference Documentation                |                  Description                  |
+| :------------------------------------------------------------: | :-------------------------------------------: |
+|             [Fetch Cluster Images](cluster-images)             |         Fetch All Images on a Cluster         |
+|           [RGS Carbide Customers](carbide-customers)           |   Overview of Addons for Carbide Customers    |
+|         [Bootstrapping Utilities](utilities/registry)          |  Overview of Hauler Bootstrapping Utilities   |
+|                 [Hauler Manifests](manifests)                  |         Overview of Hauler Manifests          |
+| [Hauler Collections](hauler-collections/community-collections) |        Overview of Hauler Collections         |
+|            [Hauler Content](hauler-content/images)             |       Overview of Hauler Content Types        |
+|           [Hauler Command Line](command-line/hauler)           | Overview of the Hauler Command Line Interface |
