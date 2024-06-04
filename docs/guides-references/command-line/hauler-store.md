@@ -320,6 +320,7 @@ Flags:
       --directory string   Directory to use for backend.  Defaults to $PWD/fileserver (default "fileserver")
   -h, --help               help for fileserver
   -p, --port int           Port to listen on. (default 8080)
+  -t, --timeout int        Set the http request timeout duration in seconds for both reads and write. (default 60)
 
 Global Flags:
       --cache string       (deprecated flag and currently not used)
