@@ -19,6 +19,9 @@ hauler store serve registry --port <port>
 
 # serve registry on specific port with custom config
 hauler store serve registry --port <port> --config <path-to-config>
+
+# serve registry in writeable mode
+hauler store serve registry --readonly=false
 ```
 
 ## Example Config for the Hauler Registry
