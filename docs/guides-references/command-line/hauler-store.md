@@ -301,6 +301,7 @@ Flags:
       --directory string   Directory to use for backend.  Defaults to $PWD/registry (default "registry")
   -h, --help               help for registry
   -p, --port int           Port to listen on. (default 5000)
+      --readonly           Run the registry as readonly. (default true)
 
 Global Flags:
       --cache string       (deprecated flag and currently not used)

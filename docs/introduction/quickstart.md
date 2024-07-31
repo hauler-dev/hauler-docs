@@ -109,7 +109,7 @@ hauler store load haul.tar.zst
 ### Serve the Hauler Store
 
 ```bash
-# serve the content as a registry from the hauler store
+# serve the content as a readonly registry from the hauler store
 # defaults to <FQDN or IP>:5000
 hauler store serve registry
 
