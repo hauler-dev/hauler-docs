@@ -34,7 +34,7 @@ rancher/nginx-ingress-controller:nginx-1.0.2-hardened4
 
 ```bash
 # add the required formatting for the image list
-export IMAGE_LIST_MODIFIED=$(echo "${IMAGE_LIST} | sed 's/^/    - name: /'")
+export IMAGE_LIST_MODIFIED=$(echo "${IMAGE_LIST}" | sed 's/^/    - name: /')
 
 # create the hauler manifest with the updated image list
 cat << EOF >> hauler-manifest.yaml
