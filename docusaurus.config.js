@@ -5,14 +5,14 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 const config = {
   title: 'Rancher Government Hauler',
   tagline: 'Airgap Swiss Army Knife',
-  url: 'https://rancherfederal.github.io',
-  baseUrl: '/hauler-docs/',
+  url: 'https://hauler.dev',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/carbide-logo.ico',
   trailingSlash: false,
 
-  organizationName: 'rancherfederal',
+  organizationName: 'hauler-dev',
   projectName: 'hauler-docs',
 
   i18n: {
@@ -33,7 +33,7 @@ const config = {
             },
           },
 
-          editUrl: 'https://github.com/rancherfederal/hauler-docs/edit/main/',
+          editUrl: 'https://github.com/hauler-dev/hauler-docs/edit/main/',
 
         },
         theme: {
@@ -78,7 +78,7 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://github.com/rancherfederal/hauler/issues',
+            href: 'https://github.com/hauler-dev/hauler/issues',
             label: 'Submit an Issue',
             position: 'right',
           },
