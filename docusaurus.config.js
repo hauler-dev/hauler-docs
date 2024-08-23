@@ -5,7 +5,7 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 const config = {
   title: 'Rancher Government Hauler',
   tagline: 'Airgap Swiss Army Knife',
-  url: 'https://hauler.dev',
+  url: 'https://docs.hauler.dev',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
