@@ -139,7 +139,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Rancher Government Solutions. All rights reserved.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Rancher Government. All rights reserved.`,
       },
       prism: {
         theme: lightCodeTheme,
