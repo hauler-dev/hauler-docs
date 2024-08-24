@@ -16,6 +16,7 @@ metadata:
   annotations:
     # global flags for all images in the manifest
     # image flags override global flags
+    # example, hauler.dev/registry: will only prepend if the server reference is missing
     hauler.dev/key: <cosign public key>
     hauler.dev/platform: <platform>
     hauler.dev/registry: <registry>
