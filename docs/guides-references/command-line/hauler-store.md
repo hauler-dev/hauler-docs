@@ -302,6 +302,8 @@ Flags:
   -h, --help               help for registry
   -p, --port int           Port to listen on. (default 5000)
       --readonly           Run the registry as readonly. (default true)
+      --tls-cert string    Location of the TLS Certificate
+      --tls-key string     Location of the TLS Key
 
 Global Flags:
       --cache string       (deprecated flag and currently not used)
@@ -322,6 +324,8 @@ Flags:
   -h, --help               help for fileserver
   -p, --port int           Port to listen on. (default 8080)
   -t, --timeout int        Set the http request timeout duration in seconds for both reads and write. (default 60)
+      --tls-cert string    Location of the TLS Certificate
+      --tls-key string     Location of the TLS Key
 
 Global Flags:
       --cache string       (deprecated flag and currently not used)
