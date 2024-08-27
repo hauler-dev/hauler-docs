@@ -14,19 +14,19 @@ hauler store add image <image reference> --platform <platform> --key <cosign pub
 
 ```bash
 # fetch image
-hauler store add image neuvector/scanner
+hauler store add image busybox
 
-# fetch image with full image reference
-hauler store add image name: docker.io/neuvector/updater:latest
+# fetch image with repository and tag
+hauler store add image library/busybox:stable
 
-# fetch image with full image reference with digest
-hauler store add image docker.io/neuvector/updater@sha256:0076b356368c9988eec5f3cead771d29a377074b982f22800f4d9c8c3b215a56
+# fetch image with full image reference and specific platform
+hauler store add image ghcr.io/hauler-dev/hauler-debug:v1.0.7 --platform linux/amd74
 
-# fetch image with full image reference, specific version, specific platform
-hauler store add image docker.io/longhornio/longhorn-ui:v1.6.0 --platform: linux/amd64
+# fetch image with full image reference via digest
+hauler store add image gcr.io/distroless/base@sha256:7fa7445dfbebae4f4b7ab0e6ef99276e96075ae42584af6286ba080750d6dfe5
 
-# fetch image with full image reference, specific version, specific platform, and signature verification
-hauler store add image docker.io/longhornio/longhorn-manager:v1.6.0 --platform linux/amd64 --key cosign-public-key.pub
+# fetch image with full image reference, specific platform, and signature verification
+hauler store add image rgcrprod.azurecr.us/hauler/rke2-manifest.yaml:v1.28.12-rke2r1 --platform linux/amd64 --key carbide-key.pub
 ```
 
 ## Hauler Manifest for Images

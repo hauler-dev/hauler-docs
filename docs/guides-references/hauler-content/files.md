@@ -13,11 +13,14 @@ hauler store add file <file> --name <name>
 ## Example Commands for Files
 
 ```bash
-# fetch remote file
-hauler store add file https://get.rke2.io
+# fetch local file
+hauler store add file file.txt
 
-# fetch local file and assign new name
-hauler store add file path/to/local/file.txt --name local-file.txt
+# fetch remote file
+hauler store add file https://get.rke2.io/install.sh
+
+# fetch remote file and assign new name
+hauler store add file https://get.hauler.dev --name hauler-install.sh
 ```
 
 ## Hauler Manifest for Files

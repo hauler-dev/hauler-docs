@@ -6,7 +6,7 @@ sidebar_label: Hauler Version
 
 ### Command Overview
 
-* Print Hauler's current version.
+* Print Hauler's current version
 
 ```yaml
  __    __       ___       __    __   __       _______ .______
@@ -18,11 +18,11 @@ sidebar_label: Hauler Version
 
 hauler: Airgap Swiss Army Knife
 
-GitVersion:    1.0.3
-GitCommit:     f7c24f6
+GitVersion:    1.1.0
+GitCommit:     16fa03f
 GitTreeState:  clean
-BuildDate:     2024-04-24T16:50:33Z
-GoVersion:     go1.21.9
+BuildDate:     2024-08-26T21:37:33Z
+GoVersion:     go1.21.13
 Compiler:      gc
-Platform:      darwin/arm64
+Platform:      linux/amd64
 ```

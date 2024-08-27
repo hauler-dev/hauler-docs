@@ -6,7 +6,7 @@ sidebar_label: Hauler
 
 ### Command Overview
 
-* Interact with Hauler's command line.
+* Interact with Hauler's command line
 
 ```yaml
 Usage:
@@ -14,10 +14,10 @@ Usage:
   hauler [command]
 
 Available Commands:
-  completion  Generates completion scripts for various shells
+  completion  Generate autocompletion scripts for various shells
   help        Help about any command
-  login       Log in to a registry
-  store       Interact with hauler's embedded content store
+  login       Login into a registry
+  store       Interact with the embedded content store
   version     Print the current version
 
 Flags:

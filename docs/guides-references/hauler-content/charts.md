@@ -13,11 +13,23 @@ hauler store add chart <chart name> --repo <chart repository> --version <chart v
 ## Example Commands for Charts
 
 ```bash
-# fetch helm chart
+# fetch local helm chart
+hauler store add chart path/to/chart/directory
+
+# fetch local compressed helm chart
+hauler store add chart path/to/chart.tar.gz
+
+# fetch remote oci helm chart
+hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev
+
+# fetch remote oci helm chart with version
+hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --version 1.0.6
+
+# fetch remote helm chart
 hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable
 
-# fetch helm chart with specific version
-hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable --version 2.8.2
+# fetch remote helm chart with specific version
+hauler store add chart rancher --repo https://releases.rancher.com/server-charts/latest --version 2.9.1
 ```
 
 ## Hauler Manifest for Charts

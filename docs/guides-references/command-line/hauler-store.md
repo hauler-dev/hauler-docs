@@ -6,7 +6,7 @@ sidebar_label: Hauler Store
 
 ### Command Overview
 
-* Interact with Hauler's embedded content store.
+* Interact with Hauler's embedded content store
 
 ```yaml
 Usage:
@@ -17,8 +17,8 @@ Aliases:
   store, s
 
 Available Commands:
-  add         Add content to store
-  copy        Copy all store contents to another OCI registry
+  add         Add content to the store
+  copy        Copy all content outside the store
   extract     Extract content from the store to disk
   info        Print out information about the store
   load        Load a content store from a store archive
@@ -29,10 +29,10 @@ Available Commands:
 Flags:
       --cache string   (deprecated flag and currently not used)
   -h, --help           help for store
-  -s, --store string   Location to create store at (default "store")
+  -s, --store string   (Optional) Specify the directory to use for the content store (default "store")
 
 Global Flags:
-  -l, --log-level string    (default "info")
+  -l, --log-level string   (default "info")
 
 Use "hauler store [command] --help" for more information about a command.
 ```
@@ -40,7 +40,7 @@ Use "hauler store [command] --help" for more information about a command.
 
 #### `hauler store add`:
 
-* Add content to store.
+* Add content to the store
 
 ```yaml
 Usage:
@@ -48,102 +48,132 @@ Usage:
   hauler store add [command]
 
 Available Commands:
-  chart       Add a local or remote chart to the content store
-  file        Add a file to the content store
-  image       Add an image to the content store
+  chart       Add a helm chart to the store
+  file        Add a file to the store
+  image       Add a image to the store
 
 Flags:
   -h, --help   help for add
 
 Global Flags:
       --cache string       (deprecated flag and currently not used)
-  -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")
+  -l, --log-level string   (default "info")
+  -s, --store string       (Optional) Specify the directory to use for the content store (default "store")
 
 Use "hauler store add [command] --help" for more information about a command.
 ```
 
 #### `hauler store add image`:
 
-* Add an image to the content store.
+* Add a image to the store
 
 ```yaml
 Usage:
   hauler store add image [flags]
 
+Examples:
+# fetch image
+hauler store add image busybox
+
+# fetch image with repository and tag
+hauler store add image library/busybox:stable
+
+# fetch image with full image reference and specific platform
+hauler store add image ghcr.io/hauler-dev/hauler-debug:v1.0.7 --platform linux/amd74
+
+# fetch image with full image reference via digest
+hauler store add image gcr.io/distroless/base@sha256:7fa7445dfbebae4f4b7ab0e6ef99276e96075ae42584af6286ba080750d6dfe5
+
+# fetch image with full image reference, specific platform, and signature verification
+hauler store add image rgcrprod.azurecr.us/hauler/rke2-manifest.yaml:v1.28.12-rke2r1 --platform linux/amd64 --key carbide-key.pub
+
 Flags:
   -h, --help              help for image
-  -k, --key string        (Optional) Path to the key for digital signature verification
-  -p, --platform string   (Optional) Specific platform to save. i.e. linux/amd64. Defaults to all if flag is omitted.
+  -k, --key string        (Optional) Location of public key to use for signature verification
+  -p, --platform string   (Optional) Specifiy the platform of the image... i.e. linux/amd64 (defaults to all)
 
 Global Flags:
       --cache string       (deprecated flag and currently not used)
-  -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")
+  -l, --log-level string   (default "info")
+  -s, --store string       (Optional) Specify the directory to use for the content store (default "store")
 ```
 
 #### `hauler store add chart`:
 
-* Add a local or remote chart to the content store.
+* Add a helm chart to the store
 
 ```yaml
 Usage:
   hauler store add chart [flags]
 
 Examples:
-
-# add a local chart
+# fetch local helm chart
 hauler store add chart path/to/chart/directory
 
-# add a local compressed chart
+# fetch local compressed helm chart
 hauler store add chart path/to/chart.tar.gz
 
-# add a remote chart
-hauler store add chart longhorn --repo "https://charts.longhorn.io"
+# fetch remote oci helm chart
+hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev
 
-# add a specific version of a chart
-hauler store add chart rancher --repo "https://releases.rancher.com/server-charts/latest" --version "2.6.2"
+# fetch remote oci helm chart with version
+hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --version 1.0.6
 
+# fetch remote helm chart
+hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable
+
+# fetch remote helm chart with specific version
+hauler store add chart rancher --repo https://releases.rancher.com/server-charts/latest --version 2.9.1
 
 Flags:
-      --ca-file string             verify certificates of HTTPS-enabled servers using this CA bundle
-      --cert-file string           identify HTTPS client using this SSL certificate file
+      --ca-file string             (Optional) Location of CA Bundle to enable certification verification
+      --cert-file string           (Optional) Location of the TLS Certificate to use for client authenication
   -h, --help                       help for chart
-      --insecure-skip-tls-verify   skip tls certificate checks for the chart download
-      --key-file string            identify HTTPS client using this SSL key file
-      --password string            chart repository password where to locate the requested chart
-      --repo string                chart repository url where to locate the requested chart
-      --username string            chart repository username where to locate the requested chart
-      --verify                     verify the package before using it
-      --version string             specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest version is used
+      --insecure-skip-tls-verify   (Optional) Skip TLS certificate verification
+      --key-file string            (Optional) Location of the TLS Key to use for client authenication
+      --password string            (Optional) Password to use for authentication
+      --repo string                Location of the chart (https:// | http:// | oci://)
+      --username string            (Optional) Username to use for authentication
+      --verify                     (Optional) Verify the chart before fetching it
+      --version string             (Optional) Specifiy the version of the chart (v1.0.0 | 2.0.0 | ^2.0.0)
 
 Global Flags:
       --cache string       (deprecated flag and currently not used)
-  -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")
+  -l, --log-level string   (default "info")
+  -s, --store string       (Optional) Specify the directory to use for the content store (default "store")
 ```
 
 #### `hauler store add file`:
 
-* Add a file to the content store.
+* Add a file to the store
 
 ```yaml
 Usage:
   hauler store add file [flags]
 
+Examples:
+# fetch local file
+hauler store add file file.txt
+
+# fetch remote file
+hauler store add file https://get.rke2.io/install.sh
+
+# fetch remote file and assign new name
+hauler store add file https://get.hauler.dev --name hauler-install.sh
+
 Flags:
   -h, --help          help for file
-  -n, --name string   (Optional) Name to assign to file in store
+  -n, --name string   (Optional) Rewrite the name of the file
 
 Global Flags:
       --cache string       (deprecated flag and currently not used)
-  -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")
+  -l, --log-level string   (default "info")
+  -s, --store string       (Optional) Specify the directory to use for the content store (default "store")
 ```
 
 #### `hauler store copy`:
 
-* Copy all store contents to another OCI registry.
+* Copy all store content outside the store
 
 ```yaml
 Usage:
@@ -151,20 +181,20 @@ Usage:
 
 Flags:
   -h, --help              help for copy
-      --insecure          Toggle allowing insecure connections when copying to a remote registry
-  -p, --password string   Password when copying to an authenticated remote registry
-      --plain-http        Toggle allowing plain http connections when copying to a remote registry
-  -u, --username string   Username when copying to an authenticated remote registry
+      --insecure          (Optional) Allow insecure connections
+  -p, --password string   (Optional) Password to use for authentication
+      --plain-http        (Optional) Allow plain HTTP connections
+  -u, --username string   (Optional) Username to use for authentication
 
 Global Flags:
       --cache string       (deprecated flag and currently not used)
-  -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")
+  -l, --log-level string   (default "info")
+  -s, --store string       (Optional) Specify the directory to use for the content store (default "store")
 ```
 
 #### `hauler store extract`:
 
-* Extract content from the store to disk.
+* Extract individual content outside the store to disk
 
 ```yaml
 Usage:
@@ -175,17 +205,17 @@ Aliases:
 
 Flags:
   -h, --help            help for extract
-  -o, --output string   Directory to save contents to (defaults to current directory)
+  -o, --output string   (Optional) Specify the directory to output (defaults to current directory)
 
 Global Flags:
       --cache string       (deprecated flag and currently not used)
-  -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")
+  -l, --log-level string   (default "info")
+  -s, --store string       (Optional) Specify the directory to use for the content store (default "store")
 ```
 
 #### `hauler store info`:
 
-* Print out information about the store.
+* Print out information about the store
 
 ```yaml
 Usage:
@@ -196,18 +226,19 @@ Aliases:
 
 Flags:
   -h, --help            help for info
-  -o, --output string   Output format (table, json) (default "table")
-  -t, --type string     Filter on type (image, chart, file, sigs, atts, sbom) (default "all")
+      --list-repos      (Optional) List all repository names
+  -o, --output string   (Optional) Specify the output format (table | json) (default "table")
+  -t, --type string     (Optional) Filter on content type (image | chart | file | sigs | atts | sbom) (default "all")
 
 Global Flags:
       --cache string       (deprecated flag and currently not used)
-  -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")
+  -l, --log-level string   (default "info")
+  -s, --store string       (Optional) Specify the directory to use for the content store (default "store")
 ```
 
 #### `hauler store load`:
 
-* Load a content store from a store archive.
+* Load a content store from a store archive
 
 ```yaml
 Usage:
@@ -215,58 +246,58 @@ Usage:
 
 Flags:
   -h, --help             help for load
-  -t, --tempdir string   overrides the default directory for temporary files, as returned by your OS.
+  -t, --tempdir string   (Optional) Override the default temporary directiory determined by the OS
 
 Global Flags:
       --cache string       (deprecated flag and currently not used)
-  -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")
+  -l, --log-level string   (default "info")
+  -s, --store string       (Optional) Specify the directory to use for the content store (default "store")
 ```
 
 #### `hauler store save`:
 
-* Save a content store to a store archive.
+* Save a content store to a store archive
 
 ```yaml
 Usage:
   hauler store save [flags]
 
 Flags:
-  -f, --filename string   Name of archive (default "haul.tar.zst")
+  -f, --filename string   (Optional) Specify the name of outputted archive (default "haul.tar.zst")
   -h, --help              help for save
 
 Global Flags:
       --cache string       (deprecated flag and currently not used)
-  -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")
+  -l, --log-level string   (default "info")
+  -s, --store string       (Optional) Specify the directory to use for the content store (default "store")
 ```
 
 #### `hauler store sync`:
 
-* Sync content to the embedded content store.
+* Sync content to the embedded content store
 
 ```yaml
 Usage:
   hauler store sync [flags]
 
 Flags:
-  -f, --files strings             Path to content files
+  -f, --files strings             Location of content manifests (files)... i.e. --files ./rke2-files.yaml
   -h, --help                      help for sync
-  -k, --key string                (Optional) Path to the key for signature verification
-  -p, --platform string           (Optional) Specific platform to save. i.e. linux/amd64. Defaults to all if flag is omitted.
-  -c, --product-registry string   (Optional) Specific Product Registry to use. Defaults to RGS Carbide Registry (rgcrprod.azurecr.us).
-      --products strings          Used for RGS Carbide customers to supply a product and version and Hauler will retrieve the images. i.e. '--product rancher=v2.7.6'
-  -r, --registry string           (Optional) Default pull registry for image refs that are not specifying a registry name.
+  -k, --key string                (Optional) Location of public key to use for signature verification
+  -p, --platform string           (Optional) Specify the platform of the image... i.e linux/amd64 (defaults to all)
+  -c, --product-registry string   (Optional) Specify the product registry. Defaults to RGS Carbide Registry (rgcrprod.azurecr.us)
+      --products strings          (Optional) Specify the product name to fetch collections from the product registry i.e. rancher=v2.8.5,rke2=v1.28.11+rke2r1
+  -r, --registry string           (Optional) Specify the registry of the image for images that do not alredy define one
 
 Global Flags:
       --cache string       (deprecated flag and currently not used)
-  -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")
+  -l, --log-level string   (default "info")
+  -s, --store string       (Optional) Specify the directory to use for the content store (default "store")
 ```
 
 #### `hauler store serve`:
 
-* Expose the content of a local store through an OCI compliant registry or file server.
+* Expose the local content store via an OCI Compliant Registry or Fileserver
 
 ```yaml
 Usage:
@@ -282,53 +313,53 @@ Flags:
 
 Global Flags:
       --cache string       (deprecated flag and currently not used)
-  -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")
+  -l, --log-level string   (default "info")
+  -s, --store string       (Optional) Specify the directory to use for the content store (default "store")
 
 Use "hauler store serve [command] --help" for more information about a command.
 ```
 
 #### `hauler store serve registry`:
 
-* Serve the embedded registry
+* Expose the embedded OCI Compliant Registry
 
 ```yaml
 Usage:
   hauler store serve registry [flags]
 
 Flags:
-  -c, --config string      Path to a config file, will override all other configs
-      --directory string   Directory to use for backend.  Defaults to $PWD/registry (default "registry")
+  -c, --config string      (Optional) Location of config file (overrides all flags)
+      --directory string   (Optional) Directory to use for backend. Defaults to $PWD/registry (default "registry")
   -h, --help               help for registry
-  -p, --port int           Port to listen on. (default 5000)
-      --readonly           Run the registry as readonly. (default true)
-      --tls-cert string    Location of the TLS Certificate
-      --tls-key string     Location of the TLS Key
+  -p, --port int           (Optional) Specify the port to use for incoming connections (default 5000)
+      --readonly           (Optional) Run the registry as readonly (default true)
+      --tls-cert string    (Optional) Location of the TLS Certificate to use for server authenication
+      --tls-key string     (Optional) Location of the TLS Key to use for server authenication
 
 Global Flags:
       --cache string       (deprecated flag and currently not used)
-  -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")
+  -l, --log-level string   (default "info")
+  -s, --store string       (Optional) Specify the directory to use for the content store (default "store")
 ```
 
 #### `hauler store serve fileserver`:
 
-* Serve the fileserver
+* Expose the embedded Fileserver
 
 ```yaml
 Usage:
   hauler store serve fileserver [flags]
 
 Flags:
-      --directory string   Directory to use for backend.  Defaults to $PWD/fileserver (default "fileserver")
+      --directory string   (Optional) Directory to use for backend. Defaults to $PWD/fileserver (default "fileserver")
   -h, --help               help for fileserver
-  -p, --port int           Port to listen on. (default 8080)
-  -t, --timeout int        Set the http request timeout duration in seconds for both reads and write. (default 60)
-      --tls-cert string    Location of the TLS Certificate
-      --tls-key string     Location of the TLS Key
+  -p, --port int           (Optional) Specify the port to use for incoming connections (default 8080)
+  -t, --timeout int        (Optional) Timeout duration for HTTP Requests in seconds for both reads/writes (default 60)
+      --tls-cert string    (Optional) Location of the TLS Certificate to use for server authenication
+      --tls-key string     (Optional) Location of the TLS Key to use for server authenication
 
 Global Flags:
       --cache string       (deprecated flag and currently not used)
-  -l, --log-level string    (default "info")
-  -s, --store string       Location to create store at (default "store")
+  -l, --log-level string   (default "info")
+  -s, --store string       (Optional) Specify the directory to use for the content store (default "store")
 ```
