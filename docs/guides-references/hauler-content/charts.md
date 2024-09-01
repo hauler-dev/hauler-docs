@@ -14,10 +14,10 @@ hauler store add chart <chart name> --repo <chart repository> --version <chart v
 
 ```bash
 # fetch local helm chart
-hauler store add chart path/to/chart/directory
+hauler store add chart path/to/chart/directory --repo .
 
 # fetch local compressed helm chart
-hauler store add chart path/to/chart.tar.gz
+hauler store add chart path/to/chart.tar.gz --repo .
 
 # fetch remote oci helm chart
 hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev
