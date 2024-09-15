@@ -17,7 +17,7 @@ Available Commands:
   completion  Generate autocompletion scripts for various shells
   help        Help about any command
   login       Login into a registry
-  store       Interact with the embedded content store
+  store       Interact with the content store
   version     Print the current version
 
 Flags:

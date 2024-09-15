@@ -24,7 +24,7 @@ Available Commands:
   load        Load a content store from a store archive
   save        Save a content store to a store archive
   serve       Expose the content of a local store through an OCI compliant registry or file server
-  sync        Sync content to the embedded content store
+  sync        Sync content to the content store
 
 Flags:
       --cache string   (deprecated flag and currently not used)
@@ -173,7 +173,7 @@ Global Flags:
 
 #### `hauler store copy`:
 
-* Copy all store content outside the store
+* Copy all store content to another location
 
 ```yaml
 Usage:
@@ -194,7 +194,7 @@ Global Flags:
 
 #### `hauler store extract`:
 
-* Extract individual content outside the store to disk
+* Extract artifacts from the store to disk
 
 ```yaml
 Usage:
@@ -274,7 +274,7 @@ Global Flags:
 
 #### `hauler store sync`:
 
-* Sync content to the embedded content store
+* Sync content to the content store
 
 ```yaml
 Usage:
@@ -297,7 +297,7 @@ Global Flags:
 
 #### `hauler store serve`:
 
-* Expose the local content store via an OCI Compliant Registry or Fileserver
+* Expose the content store via an OCI Compliant Registry or Fileserver
 
 ```yaml
 Usage:
@@ -321,7 +321,7 @@ Use "hauler store serve [command] --help" for more information about a command.
 
 #### `hauler store serve registry`:
 
-* Expose the embedded OCI Compliant Registry
+* Expose the OCI Compliant Registry
 
 ```yaml
 Usage:
@@ -344,7 +344,7 @@ Global Flags:
 
 #### `hauler store serve fileserver`:
 
-* Expose the embedded Fileserver
+* Expose the Fileserver
 
 ```yaml
 Usage:
