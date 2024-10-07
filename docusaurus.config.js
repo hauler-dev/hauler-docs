@@ -9,7 +9,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/carbide-logo.ico',
+  favicon: 'img/hauler.ico',
   trailingSlash: false,
 
   organizationName: 'hauler-dev',
