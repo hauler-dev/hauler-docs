@@ -9,7 +9,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Introduction',
-      description: 'Introduction Docs for Hauler',
+      description: 'Docs for Hauler, An Airgap Swiss-Army Knife provided by Rancher Government',
       collapsed: false,
       items: [
         'introduction/quickstart',
