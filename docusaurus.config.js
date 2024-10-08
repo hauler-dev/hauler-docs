@@ -61,6 +61,10 @@ const config = {
         disableSwitch: false,
         respectPrefersColorScheme: false,
       },
+      metadata: [
+        { name: 'keywords', content: 'hauler, dev, airgap, air-gap, docs, documentation' },
+        { name: 'description', content: 'Docs for Hauler, An Airgap Swiss-Army Knife provided by Rancher Government' },
+      ],
       navbar: {
         title: '',
         logo: {
