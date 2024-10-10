@@ -1,7 +1,7 @@
 ---
 title: Overview
 sidebar_label: Overview
-description: Reference Guides Overview Documentation for Hauler
+description: Usage Documentation for Hauler Store
 ---
 
 import DocCardList from '@theme/DocCardList';

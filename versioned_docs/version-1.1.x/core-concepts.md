@@ -50,4 +50,4 @@ In Hauler's terminology, `content` refers to artifacts such as **container image
 
 ### Declarative Content
 
-While manually adding content to `Hauler` is an easy way to get started, there is a more sustainable approach... `Hauler` provides a declarative and programmatic approach by allowing operators to define `content` within a configuration file, known as a manifest. This approach ensures a more reproducable workflow for managing the lifecycle of your `hauls`. Check it out [here](guides-references/manifests.md)!
+While manually adding content to `Hauler` is an easy way to get started, there is a more sustainable approach... `Hauler` provides a declarative and programmatic approach by allowing operators to define `content` within a configuration file, known as a manifest. This approach ensures a more reproducable workflow for managing the lifecycle of your `hauls`. Check it out [here](guides-references/hauler-manifests.md)!

@@ -6,7 +6,7 @@
     {
       "type": "category",
       "label": "Introduction",
-      "description": "Introduction Docs for Hauler",
+      "description": "Docs for Hauler, An Airgap Swiss-Army Knife provided by Rancher Government",
       "collapsed": false,
       "items": [
         "introduction/quickstart",
@@ -16,53 +16,64 @@
     },
     {
       "type": "category",
-      "label": "Guides & References",
-      "description": "Guides and References Docs for Hauler",
+      "label": "Hauler Usage",
+      "description": "Usage Documentation for Hauler",
       "collapsed": false,
+      "items": [
+        "hauler-usage/overview",
+        "hauler-usage/help",
+        "hauler-usage/login",
+        {
+          "type": "category",
+          "label": "Hauler Store",
+          "description": "Usage Documentation for Hauler Store",
+          "collapsed": true,
+          "items": [
+            "hauler-usage/store/overview",
+            {
+              "type": "category",
+              "label": "Add",
+              "description": "Usage Documentation for Hauler Store Add",
+              "collapsed": true,
+              "items": [
+                "hauler-usage/store/add/image",
+                "hauler-usage/store/add/chart",
+                "hauler-usage/store/add/file"
+              ]
+            },
+            "hauler-usage/store/copy",
+            "hauler-usage/store/extract",
+            "hauler-usage/store/load",
+            "hauler-usage/store/save",
+            {
+              "type": "category",
+              "label": "Serve",
+              "description": "Usage Documentation for Hauler Store Serve",
+              "collapsed": true,
+              "items": [
+                "hauler-usage/store/serve/registry",
+                "hauler-usage/store/serve/fileserver"
+              ]
+            },
+            "hauler-usage/store/sync"
+          ]
+        },
+        "hauler-usage/completion",
+        "hauler-usage/version"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Guides & References",
+      "description": "Reference Guides Documentation for Hauler",
+      "collapsed": true,
       "items": [
         "guides-references/overview",
         "guides-references/cluster-images",
         "guides-references/carbide-customers",
-        {
-          "type": "category",
-          "label": "Bootstrapping Utilities",
-          "description": "Guides and References for Hauler Bootstrapping Utilities",
-          "collapsed": false,
-          "items": [
-            "guides-references/utilities/registry",
-            "guides-references/utilities/fileserver"
-          ]
-        },
-        "guides-references/manifests",
-        {
-          "type": "category",
-          "label": "Hauler Collections",
-          "description": "Guides and References for Hauler Collections",
-          "items": [
-            "guides-references/hauler-collections/community-collections"
-          ]
-        },
-        {
-          "type": "category",
-          "label": "Hauler Content",
-          "description": "Guides and References for Hauler Content Types",
-          "items": [
-            "guides-references/hauler-content/images",
-            "guides-references/hauler-content/charts",
-            "guides-references/hauler-content/files"
-          ]
-        },
-        {
-          "type": "category",
-          "label": "Hauler Command Line",
-          "description": "Guides and References for the Hauler Command Line",
-          "items": [
-            "guides-references/command-line/hauler",
-            "guides-references/command-line/hauler-store",
-            "guides-references/command-line/hauler-completion",
-            "guides-references/command-line/hauler-version"
-          ]
-        }
+        "guides-references/hauler-manifests",
+        "guides-references/hauler-content",
+        "guides-references/hauler-collections"
       ]
     },
     "known-limits",
