@@ -1,12 +1,12 @@
 ---
-title: Hauler (Command)
-description: Hauler CLI Reference for hauler
-sidebar_label: Hauler
+title: Hauler Help
+description: Hauler Usage Documentation
+sidebar_label: Hauler Help
 ---
 
-### Command Overview
+`hauler` is the airgap swiss army knife.
 
-* Interact with Hauler's command line.
+### Command Overview
 
 ```yaml
 Usage:
@@ -14,10 +14,10 @@ Usage:
   hauler [command]
 
 Available Commands:
-  completion  Generates completion scripts for various shells
+  completion  Generate auto-completion scripts for various shells
   help        Help about any command
-  login       Log in to a registry
-  store       Interact with hauler's embedded content store
+  login       Login to a registry
+  store       Interact with the content store
   version     Print the current version
 
 Flags:

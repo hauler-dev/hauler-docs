@@ -6,7 +6,7 @@ sidebar_label: Hauler Manifests
 
 ## Example Manifest for Images
 
-Please review the Hauler Content Pages for [Images](hauler-content/images.md) for more detailed information.
+Please review the Hauler Content Pages for [Images](../hauler-usage/store/add/image.md) for more detailed information.
 
 ```yaml title="hauler-image-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1alpha1
@@ -41,7 +41,7 @@ spec:
 
 ## Example Manifest for Charts
 
-Please review the Hauler Content Pages for [Charts](hauler-content/charts.md) for more detailed information.
+Please review the Hauler Content Pages for [Charts](../hauler-usage/store/add/chart.md) for more detailed information.
 
 ```yaml title="hauler-chart-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1alpha1
@@ -61,7 +61,7 @@ spec:
 
 ## Example Manifest for Files
 
-Please review the Hauler Content Pages for [Files](hauler-content/files.md) for more detailed information.
+Please review the Hauler Content Pages for [Files](../hauler-usage/store/add/file.md) for more detailed information.
 
 ```yaml title="hauler-file-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1alpha1

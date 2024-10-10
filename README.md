@@ -7,12 +7,15 @@
 ### Installing Dependencies (docusaurus)
 
 ```bash
-git clone https://github.com/rancherfederal/hauler-docs
+git clone https://github.com/hauler-dev/hauler-docs
 cd hauler-docs
 
 # install docusaurus & dependencies from package.json
-npm install # make sure you are in the root of the dir containing `package.json`
-# yarn install # if npm install did not work
+# make sure you are in the root directory
+npm install
+
+# if npm install did not work
+# yarn install
 
 # test the installation
 npx docusaurus --version
@@ -21,7 +24,7 @@ npx docusaurus --version
 ### Deploy Locally
 
 ```bash
-# this will open your default browser to http://localhost:3000
+# this will build the docs and open your default browser to http://localhost:3000
 npm run start
 ```
 
@@ -31,7 +34,7 @@ npm run start
 
 ## Publishing Content
 
-This docs site is served using github-pages. There is an [action](.github/workflows/deploy.yml) that will trigger upon commit to the `main` branch and deploy the new build to https://hauler.dev (https://rancherfederal.github.io/hauler-docs).
+This docs site is served using `GitHub Pages`. There is an [action](.github/workflows/deploy.yaml) that will trigger upon commit to the `main` branch and deploy the new build to https://docs.hauler.dev (previously https://hauler.dev).
 
 ## Contributing
 

@@ -26,7 +26,7 @@ const FeatureList = [
     Svg: require('@site/static/img/rgs-carbide-shield-black.svg').default,
     description: (
       <>
-        Hauler was created for the open-source community, but is fully integrated with the hardened features of <a href="https://rancherfederal.github.io/carbide-docs">Rancher Government Carbide</a>.
+        Hauler was created for the open-source community, but is fully integrated with the hardened features of <a href="http://docs.ranchercarbide.dev">Rancher Government Carbide</a>.
       </>
     ),
   },

@@ -12,7 +12,7 @@ sidebar_label: Introduction
 
 **Please Note:** Hauler and the Hauler Documentation are recently Generally Available (GA).
 
-Please help us by submitting any issues via **[GitHub Issues](https://github.com/rancherfederal/hauler-docs/issues)** and make sure to review the **[Known Issues and Limitations](/docs/known-limits)**!
+Please help us by submitting any issues via **[GitHub Issues](https://github.com/hauler-dev/hauler-docs/issues)** and make sure to review the **[Known Issues and Limitations](/docs/known-limits)**!
 
 :::
 

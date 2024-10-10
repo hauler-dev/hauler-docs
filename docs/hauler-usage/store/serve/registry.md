@@ -1,12 +1,39 @@
 ---
-title: Hauler Registry
-description: Hauler Registry Documentation
-sidebar_label: Hauler Registry
+title: Hauler Store Serve Registry
+description: Hauler Store Serve Registry Usage Documentation
+sidebar_label: Registry
 ---
 
-## Overview
+### Overview
 
-Hauler Registry docs are pending a future release!
+`hauler store serve registry` serves the OCI Compliant registry.
+
+**An example with available flags...**
+
+```bash
+hauler store serve fileserver --port <port> --timeout <timeout> --readonly --tls-cert <cert> --tls-key <key>
+```
+
+### Command Overview
+
+```yaml
+Usage:
+  hauler store serve registry [flags]
+
+Flags:
+  -c, --config string      (Optional) Location of config file (overrides all flags)
+      --directory string   (Optional) Directory to use for backend. Defaults to $PWD/registry (default "registry")
+  -h, --help               help for registry
+  -p, --port int           (Optional) Specify the port to use for incoming connections (default 5000)
+      --readonly           (Optional) Run the registry as readonly (default true)
+      --tls-cert string    (Optional) Location of the TLS Certificate to use for server authenication
+      --tls-key string     (Optional) Location of the TLS Key to use for server authenication
+
+Global Flags:
+      --cache string       (deprecated flag and currently not used)
+  -l, --log-level string    (default "info")
+  -s, --store string       (Optional) Specify the directory to use for the content store (default "store")
+```
 
 ## Example Commands for the Hauler Registry
 

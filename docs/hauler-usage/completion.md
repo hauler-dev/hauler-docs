@@ -1,12 +1,14 @@
 ---
-title: Hauler Completion (Command)
-description: Hauler CLI Reference for hauler completion
+title: Hauler Completion
+description: Hauler Completion Usage Documentation
 sidebar_label: Hauler Completion
 ---
 
-### Command Overview
+### Overview
 
-* Generate an autocompletion script for hauler for the specified shell.
+`hauler completion` generate auto-completion scripts for various shells.
+
+### Command Overview
 
 ```yaml
 Usage:
