@@ -12,7 +12,7 @@ sidebar_label: Introduction
 
 **Note: Hauler and the Hauler Documentation are in active development and _not Generally Available (GA)_.**
 
-Most of the core functionality and features are ready for use, but may have breaking changes in future releases. Please help us by submitting any issues via **[GitHub Issues](https://github.com/rancherfederal/hauler-docs/issues)** and make sure to review the **[Known Issues and Limitations](/docs/known-limits)**!
+Most of the core functionality and features are ready for use, but may have breaking changes in future releases. Please help us by submitting any issues via **[GitHub Issues](https://github.com/hauler-dev/hauler-docs/issues)** and make sure to review the **[Known Issues and Limitations](/docs/known-limits)**!
 
 :::
 
