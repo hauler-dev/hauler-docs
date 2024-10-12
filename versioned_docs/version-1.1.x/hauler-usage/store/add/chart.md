@@ -11,7 +11,7 @@ sidebar_label: Chart
 **An example with available flags...**
 
 ```bash
-hauler store add chart <chart name> --repo <chart repository> --version <chart version>
+hauler store add chart <chart-name> --repo <chart-repository> --version <chart version>
 ```
 
 ### Command Overview
@@ -89,9 +89,11 @@ metadata:
 spec:
   charts:
     # fetch helm chart
-    - name: <chart name>
-      repoURL: <chart repository>
-      version: <chart version>
+    - name: <chart-name>
+      # https:// or http:// or oci://
+      repoURL: <chart-repository>
+      # semver complaint
+      version: <chart-version>
 ```
 
 ### Example Manifest for Charts
@@ -107,7 +109,7 @@ spec:
     - name: rancher
       repoURL: https://releases.rancher.com/server-charts/stable
     # fetch helm chart with specific version
-    - name: rancher
-      repoURL: https://releases.rancher.com/server-charts/stable
-      version: 2.8.2
+    - name: rancher-cluster-templates
+      repoURL: oci://ghcr.io/rancherfederal/charts
+      version: 0.5.2
 ```

@@ -11,7 +11,7 @@ sidebar_label: Save
 **An example with available flags...**
 
 ```bash
-
+hauler store save --filename <file-name-with-extension>
 ```
 
 ### Command Overview

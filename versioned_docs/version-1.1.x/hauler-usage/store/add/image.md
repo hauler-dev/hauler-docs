@@ -11,7 +11,7 @@ sidebar_label: Image
 **An example with available flags...**
 
 ```bash
-hauler store add image <image reference> --platform <platform> --key <cosign public key>
+hauler store add image <image-reference> --platform <platform> --key <cosign-public-key>
 ```
 
 ### Command Overview
@@ -50,7 +50,7 @@ Global Flags:
 ### Hauler Command Line for Images
 
 ```bash
-hauler store add image <image reference> --platform <platform> --key <cosign public key>
+hauler store add image <image-reference> --platform <platform> --key <cosign-public-key>
 ```
 
 ### Example Commands for Images
@@ -85,13 +85,13 @@ metadata:
     # example: key set globally, but not observed if set per image
     # example: platform set globally, but not observed if set per image
     # example: registry set globally, but not observed if set per image
-    hauler.dev/key: <cosign public key>
+    hauler.dev/key: <cosign-public-key>
     hauler.dev/platform: <platform>
     hauler.dev/registry: <registry>
 spec:
   images:
-    - name: <image reference>
-      key: <cosign public key>
+    - name: <image-reference>
+      key: <cosign-public-key>
       platform: <platform>
 ```
 
@@ -108,7 +108,7 @@ metadata:
     # example: key set globally, but not observed if set per image
     # example: platform set globally, but not observed if set per image
     # example: registry set globally, but not observed if set per image
-    hauler.dev/key: <cosign public key>
+    hauler.dev/key: <cosign-public-key>
     hauler.dev/platform: <platform>
     hauler.dev/registry: <registry>
 spec:

@@ -19,7 +19,7 @@ metadata:
     # example: key set globally, but not observed if set per image
     # example: platform set globally, but not observed if set per image
     # example: registry set globally, but not observed if set per image
-    hauler.dev/key: <cosign public key>
+    hauler.dev/key: <cosign-public-key>
     hauler.dev/platform: <platform>
     hauler.dev/registry: <registry>
 spec:
@@ -54,9 +54,9 @@ spec:
     - name: rancher
       repoURL: https://releases.rancher.com/server-charts/stable
     # fetch helm chart with specific version
-    - name: rancher
-      repoURL: https://releases.rancher.com/server-charts/stable
-      version: 2.8.2
+    - name: rancher-cluster-templates
+      repoURL: oci://ghcr.io/rancherfederal/charts
+      version: 0.5.2
 ```
 
 ## Example Manifest for Files

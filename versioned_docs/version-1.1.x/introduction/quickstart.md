@@ -13,7 +13,7 @@ Skipping past most of the documentation? Here's an easy to follow Quick Start Gu
 curl -sfL https://get.hauler.dev | bash
 ```
 
-## Example Use of Hauler
+## Getting Started with Hauler
 
 ### Add Content to the Hauler Store
 
@@ -26,10 +26,10 @@ hauler store add image neuvector/scanner:latest
 
 # add a image with a specific platform and with supply chain artifacts
 # may not work for all users due to the specified registry
-hauler store add image rgcrprod.azurecr.us/longhornio/longhorn-ui:v1.5.2 --platform linux/amd64 --key carbide-key.pub
+hauler store add image rgcrprod.azurecr.us/longhornio/longhorn-ui:v1.7.1 --platform linux/amd64 --key carbide-key.pub
 
 # add a helm chart with a specific version
-hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable --version 2.8.2
+hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable --version 2.9.2
 
 # add a file and assign it a new name
 hauler store add file https://get.rke2.io --name install.sh
@@ -40,6 +40,13 @@ hauler store add file https://get.rke2.io --name install.sh
 <details>
 <summary><b>Using a Hauler Manifest:</b></summary>
 
+```bash
+# fetch the content via a declarative manifest
+hauler store sync --files hauler-manifest.yaml
+```
+
+---
+
 ```yaml title="hauler-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1alpha1
 kind: Images
@@ -47,10 +54,10 @@ metadata:
   name: hauler-content-images-example
 spec:
   images:
-    - name: neuvector/scanner:latest
-    - name: rgcrprod.azurecr.us/longhornio/longhorn-ui:v1.6.0
-      key: carbide-key.pub
+    - name: busybox
+    - name: busybox:stable
       platform: linux/amd64
+    - name: gcr.io/distroless/base@sha256:7fa7445dfbebae4f4b7ab0e6ef99276e96075ae42584af6286ba080750d6dfe5
 ---
 apiVersion: content.hauler.cattle.io/v1alpha1
 kind: Charts
@@ -60,7 +67,9 @@ spec:
   charts:
     - name: rancher
       repoURL: https://releases.rancher.com/server-charts/stable
-      version: 2.8.2
+      version: 2.9.2
+    - name: hauler-helm
+      repoURL: oci://ghcr.io/hauler-dev
 ---
 apiVersion: content.hauler.cattle.io/v1alpha1
 kind: Files
@@ -70,11 +79,7 @@ spec:
   files:
     - path: https://get.rke2.io
       name: install.sh
-```
-
-```bash
-# fetch the content from hauler manifest
-hauler store sync --files hauler-manifest.yaml
+    - path: hauler-manifest.yaml
 ```
 
 </details>
@@ -94,9 +99,15 @@ hauler store save --filename haul.tar.zst
 ```
 
 ---
+---
+---
 
-**airgap the `haul.tar.zst` to the disconnected environment**
+### Airgap the `haul.tar.zst` (aka the "haul")
 
+For this quickstart and example use of `hauler`, we can simulate airgapping to the disconnected environment by deleting the "store" directory with the following command: `rm -rf store`
+
+---
+---
 ---
 
 ### Load the Airgapped Hauler Store
@@ -128,4 +139,11 @@ hauler store copy registry://registry.example.com
 # copy the content to a directory from the hauler store
 # copies non oci compliant artifacts
 hauler store copy dir://hauler-files
+```
+
+### Extract Content from the Hauler Store
+
+```bash
+# extracts artifacts from the hauler store to disk
+hauler store extract hauler/rancher:2.9.2
 ```

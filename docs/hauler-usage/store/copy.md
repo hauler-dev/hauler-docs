@@ -11,7 +11,9 @@ sidebar_label: Copy
 **An example with available flags...**
 
 ```bash
+hauler store copy registry://<registry-url>
 
+hauler store copy dir://<directory-path>
 ```
 
 ### Command Overview
