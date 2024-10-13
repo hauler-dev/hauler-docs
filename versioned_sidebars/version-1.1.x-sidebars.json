@@ -66,11 +66,13 @@
       "type": "category",
       "label": "Guides & References",
       "description": "Reference Guides Documentation for Hauler",
-      "collapsed": true,
+      "collapsed": false,
       "items": [
         "guides-references/overview",
         "guides-references/cluster-images",
         "guides-references/carbide-customers",
+        "guides-references/container-runtimes",
+        "guides-references/bootstraping-utilities",
         "guides-references/hauler-manifests",
         "guides-references/hauler-content",
         "guides-references/hauler-collections"
