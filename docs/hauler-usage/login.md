@@ -21,7 +21,7 @@ Usage:
   hauler login [flags]
 
 Examples:
-# Log into registry.example.com
+# login to registry.example.com
 hauler login registry.example.com -u bob -p haulin
 
 Flags:
@@ -31,5 +31,7 @@ Flags:
   -u, --username string   (Optional) Username to use for authentication
 
 Global Flags:
-  -l, --log-level string    (default "info")
+  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
+  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
 ```

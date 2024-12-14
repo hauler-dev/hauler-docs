@@ -56,7 +56,7 @@ spec:
     # fetch helm chart with specific version
     - name: rancher-cluster-templates
       repoURL: oci://ghcr.io/rancherfederal/charts
-      version: 0.5.2
+      version: 0.6.1
 ```
 
 ## Example Manifest for Files

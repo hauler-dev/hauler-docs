@@ -15,16 +15,18 @@ Usage:
   hauler completion [command]
 
 Available Commands:
-  bash        Generates bash completion scripts
-  fish        Generates fish completion scripts
-  powershell  Generates powershell completion scripts
-  zsh         Generates zsh completion scripts
+  bash        Generates auto-completion scripts for bash
+  fish        Generates auto-completion scripts for fish
+  powershell  Generates auto-completion scripts for powershell
+  zsh         Generates auto-completion scripts for zsh
 
 Flags:
   -h, --help   help for completion
 
 Global Flags:
-  -l, --log-level string    (default "info")
+  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
+  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
 
 Use "hauler completion [command] --help" for more information about a command.
 ```
@@ -36,31 +38,26 @@ Use "hauler completion [command] --help" for more information about a command.
   * **Note:** This script depends on the 'bash-completion' package.
 
 ```yaml
-To load completions in your current shell session:
-
-        source <(hauler completion bash)
-
-To load completions for every new session, execute once:
-
-#### Linux:
-
-        hauler completion bash > /etc/bash_completion.d/hauler
-
-#### macOS:
-
-        hauler completion bash > $(brew --prefix)/etc/bash_completion.d/hauler
-
-You will need to start a new shell for this setup to take effect.
-
 Usage:
-  hauler completion bash
+  hauler completion bash [flags]
+
+Examples:
+To load completion run
+
+        . <(hauler completion bash)
+
+        To configure your bash shell to load completions for each session add to your bashrc
+
+        # ~/.bashrc or ~/.profile
+        command -v hauler >/dev/null && . <(hauler completion bash)
 
 Flags:
-  -h, --help              help for bash
-      --no-descriptions   disable completion descriptions
+  -h, --help   help for bash
 
 Global Flags:
-  -l, --log-level string    (default "info")
+  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
+  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
 ```
 
 #### `hauler completion fish`:
@@ -68,48 +65,23 @@ Global Flags:
 * Generate the autocompletion script for the fish shell.
 
 ```yaml
-To load completions in your current shell session:
-
-        hauler completion fish | source
-
-To load completions for every new session, execute once:
-
-        hauler completion fish > ~/.config/fish/completions/hauler.fish
-
-You will need to start a new shell for this setup to take effect.
-
 Usage:
   hauler completion fish [flags]
 
-Flags:
-  -h, --help              help for fish
-      --no-descriptions   disable completion descriptions
+Examples:
+To configure your fish shell to load completions for each session write this script to your completions dir:
 
-Global Flags:
-  -l, --log-level string    (default "info")
-```
+        hauler completion fish > ~/.config/fish/completions/hauler.fish
 
-#### `hauler completion powershell`:
-
-* Generate the autocompletion script for powershell.
-
-```yaml
-To load completions in your current shell session:
-
-        hauler completion powershell | Out-String | Invoke-Expression
-
-To load completions for every new session, add the output of the above command
-to your powershell profile.
-
-Usage:
-  hauler completion powershell [flags]
+        See http://fishshell.com/docs/current/index.html#completion-own for more details
 
 Flags:
-  -h, --help              help for powershell
-      --no-descriptions   disable completion descriptions
+  -h, --help   help for fish
 
 Global Flags:
-  -l, --log-level string    (default "info")
+  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
+  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
 ```
 
 #### `hauler completion zsh`:
@@ -118,28 +90,66 @@ Global Flags:
   * **Note:** If shell completion is not already enabled in your environment you will need to enable it.
 
 ```yaml
-To load completions in your current shell session:
-
-        source <(hauler completion zsh)
-
-To load completions for every new session, execute once:
-
-#### Linux:
-
-        hauler completion zsh > "${fpath[1]}/_hauler"
-
-#### macOS:
-
-        hauler completion zsh > $(brew --prefix)/share/zsh/site-functions/_hauler
-
-You will need to start a new shell for this setup to take effect.
-
 Usage:
   hauler completion zsh [flags]
 
+Examples:
+To load completion run
+
+        . <(hauler completion zsh)
+
+        To configure your zsh shell to load completions for each session add to your zshrc
+
+        # ~/.zshrc or ~/.profile
+        command -v hauler >/dev/null && . <(hauler completion zsh)
+
+        or write a cached file in one of the completion directories in your ${fpath}:
+
+        echo "${fpath// /\n}" | grep -i completion
+        hauler completion zsh > _hauler
+
+        mv _hauler ~/.oh-my-zsh/completions  # oh-my-zsh
+        mv _hauler ~/.zprezto/modules/completion/external/src/  # zprezto
+
 Flags:
-  -h, --help              help for zsh
-      --no-descriptions   disable completion descriptions
+  -h, --help   help for zsh
 
 Global Flags:
+  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
+  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
+```
+
+#### `hauler completion powershell`:
+
+* Generate the autocompletion script for powershell.
+
+```yaml
+Usage:
+  hauler completion powershell [flags]
+
+Examples:
+To load completion run
+
+        . <(hauler completion powershell)
+
+        To configure your powershell shell to load completions for each session add to your powershell profile
+
+        Windows:
+
+        cd "$env:USERPROFILE\Documents\WindowsPowerShell\Modules"
+        hauler completion powershell >> hauler-completion.ps1
+
+        Linux:
+
+        cd "${XDG_CONFIG_HOME:-"$HOME/.config/"}/powershell/modules"
+        hauler completion powershell >> hauler-completions.ps1
+
+Flags:
+  -h, --help   help for powershell
+
+Global Flags:
+  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
+  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
 ```
