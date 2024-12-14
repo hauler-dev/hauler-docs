@@ -25,10 +25,12 @@ Aliases:
 
 Flags:
   -h, --help            help for extract
-  -o, --output string   (Optional) Specify the directory to output (defaults to current directory)
+  -o, --output string   (Optional) Set the directory to output (defaults to current directory)
 
 Global Flags:
-      --cache string       (deprecated flag and currently not used)
-  -l, --log-level string   (default "info")
-  -s, --store string       (Optional) Specify the directory to use for the content store (default "store")
+  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
+  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
+  -r, --retries int        Set the number of retries for operations (default 3)
+  -s, --store string       Set the directory to use for the content store
 ```
