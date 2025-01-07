@@ -22,22 +22,22 @@ Usage:
 
 Examples:
 # fetch local helm chart
-hauler store add chart path/to/chart/directory
+hauler store add chart path/to/chart/directory --repo .
 
 # fetch local compressed helm chart
-hauler store add chart path/to/chart.tar.gz
+hauler store add chart path/to/chart.tar.gz --repo .
 
 # fetch remote oci helm chart
 hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev
 
 # fetch remote oci helm chart with version
-hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --version 1.0.6
+hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --version 1.1.0
 
 # fetch remote helm chart
 hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable
 
 # fetch remote helm chart with specific version
-hauler store add chart rancher --repo https://releases.rancher.com/server-charts/latest --version 2.9.1
+hauler store add chart rancher --repo https://releases.rancher.com/server-charts/latest --version 2.9.3
 
 Flags:
       --ca-file string             (Optional) Location of CA Bundle to enable certification verification
@@ -52,9 +52,11 @@ Flags:
       --version string             (Optional) Specifiy the version of the chart (v1.0.0 | 2.0.0 | ^2.0.0)
 
 Global Flags:
-      --cache string       (deprecated flag and currently not used)
-  -l, --log-level string   (default "info")
-  -s, --store string       (Optional) Specify the directory to use for the content store (default "store")
+  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
+  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
+  -r, --retries int        Set the number of retries for operations (default 3)
+  -s, --store string       Set the directory to use for the content store
 ```
 
 ### Example Commands for Charts
@@ -70,13 +72,13 @@ hauler store add chart path/to/chart.tar.gz --repo .
 hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev
 
 # fetch remote oci helm chart with version
-hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --version 1.0.6
+hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --version 1.1.0
 
 # fetch remote helm chart
 hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable
 
 # fetch remote helm chart with specific version
-hauler store add chart rancher --repo https://releases.rancher.com/server-charts/latest --version 2.9.1
+hauler store add chart rancher --repo https://releases.rancher.com/server-charts/latest --version 2.9.3
 ```
 
 ### Hauler Manifest for Charts
@@ -111,5 +113,5 @@ spec:
     # fetch helm chart with specific version
     - name: rancher-cluster-templates
       repoURL: oci://ghcr.io/rancherfederal/charts
-      version: 0.5.2
+      version: 0.6.1
 ```

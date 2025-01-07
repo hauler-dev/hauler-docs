@@ -29,7 +29,7 @@ hauler store add image neuvector/scanner:latest
 hauler store add image rgcrprod.azurecr.us/longhornio/longhorn-ui:v1.7.1 --platform linux/amd64 --key carbide-key.pub
 
 # add a helm chart with a specific version
-hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable --version 2.9.2
+hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable --version 2.9.3
 
 # add a file and assign it a new name
 hauler store add file https://get.rke2.io --name install.sh
@@ -67,7 +67,7 @@ spec:
   charts:
     - name: rancher
       repoURL: https://releases.rancher.com/server-charts/stable
-      version: 2.9.2
+      version: 2.9.3
     - name: hauler-helm
       repoURL: oci://ghcr.io/hauler-dev
 ---
@@ -145,5 +145,5 @@ hauler store copy dir://hauler-files
 
 ```bash
 # extracts artifacts from the hauler store to disk
-hauler store extract hauler/rancher:2.9.2
+hauler store extract hauler/rancher:2.9.3
 ```

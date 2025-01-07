@@ -28,7 +28,7 @@ hauler store add image busybox
 hauler store add image library/busybox:stable
 
 # fetch image with full image reference and specific platform
-hauler store add image ghcr.io/hauler-dev/hauler-debug:v1.0.7 --platform linux/amd74
+hauler store add image ghcr.io/hauler-dev/hauler-debug:v1.0.7 --platform linux/amd64
 
 # fetch image with full image reference via digest
 hauler store add image gcr.io/distroless/base@sha256:7fa7445dfbebae4f4b7ab0e6ef99276e96075ae42584af6286ba080750d6dfe5
@@ -42,9 +42,11 @@ Flags:
   -p, --platform string   (Optional) Specifiy the platform of the image... i.e. linux/amd64 (defaults to all)
 
 Global Flags:
-      --cache string       (deprecated flag and currently not used)
-  -l, --log-level string   (default "info")
-  -s, --store string       (Optional) Specify the directory to use for the content store (default "store")
+  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
+  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
+  -r, --retries int        Set the number of retries for operations (default 3)
+  -s, --store string       Set the directory to use for the content store
 ```
 
 ### Hauler Command Line for Images

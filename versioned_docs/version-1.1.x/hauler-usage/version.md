@@ -19,10 +19,12 @@ Aliases:
 
 Flags:
   -h, --help   help for version
-      --json   toggle output in JSON
+      --json   Set the output format to JSON
 
 Global Flags:
-  -l, --log-level string    (default "info")
+  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
+  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
 ```
 
 ### Example Outputs
@@ -37,23 +39,23 @@ Global Flags:
 
 hauler: Airgap Swiss Army Knife
 
-GitVersion:    1.1.0
-GitCommit:     3406d54
+GitVersion:    1.1.1
+GitCommit:     090f4dc
 GitTreeState:  clean
-BuildDate:     2024-10-04T22:33:32Z
-GoVersion:     go1.23.2 X:boringcrypto
+BuildDate:     2024-12-09T13:36:45Z
+GoVersion:     go1.23.4 X:boringcrypto
 Compiler:      gc
-Platform:      linux/amd64
+Platform:      darwin/arm64
 ```
 
 ```json
 {
-  "gitVersion": "1.1.0",
-  "gitCommit": "3406d54",
+  "gitVersion": "1.1.1",
+  "gitCommit": "090f4dc",
   "gitTreeState": "clean",
-  "buildDate": "2024-10-04T22:33:32Z",
-  "goVersion": "go1.23.2 X:boringcrypto",
+  "buildDate": "2024-12-09T13:36:45Z",
+  "goVersion": "go1.23.4 X:boringcrypto",
   "compiler": "gc",
-  "platform": "linux/amd64"
+  "platform": "darwin/arm64"
 }
 ```
