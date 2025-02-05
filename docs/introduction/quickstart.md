@@ -15,7 +15,7 @@ curl -sfL https://get.hauler.dev | bash
 
 ## Getting Started with Hauler
 
-### Add Content to the Hauler Store
+### Add Artifacts to the Hauler Store
 
 <details open>
 <summary><b>Using the Command Line:</b></summary>
@@ -29,7 +29,7 @@ hauler store add image neuvector/scanner:latest
 hauler store add image rgcrprod.azurecr.us/longhornio/longhorn-ui:v1.7.1 --platform linux/amd64 --key carbide-key.pub
 
 # add a helm chart with a specific version
-hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable --version 2.9.3
+hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable --version 2.20.1
 
 # add a file and assign it a new name
 hauler store add file https://get.rke2.io --name install.sh
@@ -42,13 +42,11 @@ hauler store add file https://get.rke2.io --name install.sh
 
 ```bash
 # fetch the content via a declarative manifest
-hauler store sync --files hauler-manifest.yaml
+hauler store sync --filename hauler-manifest.yaml
 ```
-
 ---
-
 ```yaml title="hauler-manifest.yaml"
-apiVersion: content.hauler.cattle.io/v1alpha1
+apiVersion: content.hauler.cattle.io/v1
 kind: Images
 metadata:
   name: hauler-content-images-example
@@ -59,7 +57,7 @@ spec:
       platform: linux/amd64
     - name: gcr.io/distroless/base@sha256:7fa7445dfbebae4f4b7ab0e6ef99276e96075ae42584af6286ba080750d6dfe5
 ---
-apiVersion: content.hauler.cattle.io/v1alpha1
+apiVersion: content.hauler.cattle.io/v1
 kind: Charts
 metadata:
   name: hauler-content-charts-example
@@ -67,11 +65,11 @@ spec:
   charts:
     - name: rancher
       repoURL: https://releases.rancher.com/server-charts/stable
-      version: 2.9.3
+      version: 2.10.1
     - name: hauler-helm
       repoURL: oci://ghcr.io/hauler-dev
 ---
-apiVersion: content.hauler.cattle.io/v1alpha1
+apiVersion: content.hauler.cattle.io/v1
 kind: Files
 metadata:
   name: hauler-content-files-example
@@ -114,17 +112,19 @@ For this quickstart and example use of `hauler`, we can simulate airgapping to t
 
 ```bash
 # load and import the airgapped content to the new local hauler store
-hauler store load haul.tar.zst
+hauler store load --filename haul.tar.zst
 ```
 
 ### Serve the Hauler Store
 
 ```bash
 # serve the content as a readonly registry from the hauler store
+# if you have an existing registry, please see the next step
 # defaults to <FQDN or IP>:5000
 hauler store serve registry
 
 # serve the file content as a fileserver from the hauler store
+# if you have an existing fileserver, please see the next step
 # defaults to <FQDN or IP>:8080
 hauler store serve fileserver
 ```
@@ -132,18 +132,21 @@ hauler store serve fileserver
 ### Copy the Hauler Store
 
 ```bash
+# optional step to authenicate into your registry
+hauler login <registry-url> --username <username> --password <password>
+
 # copy the content to a registry from the hauler store
 # copies oci compliant artifacts
-hauler store copy registry://registry.example.com
+hauler store copy registry://<registry-url>
 
 # copy the content to a directory from the hauler store
 # copies non oci compliant artifacts
-hauler store copy dir://hauler-files
+hauler store copy dir://<path/to/directory>
 ```
 
 ### Extract Content from the Hauler Store
 
 ```bash
 # extracts artifacts from the hauler store to disk
-hauler store extract hauler/rancher:2.9.3
+hauler store extract hauler/rancher:2.10.1
 ```

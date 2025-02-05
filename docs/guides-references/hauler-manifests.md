@@ -9,7 +9,7 @@ sidebar_label: Hauler Manifests
 Please review the Hauler Content Pages for [Images](../hauler-usage/store/add/image.md) for more detailed information.
 
 ```yaml title="hauler-image-manifest.yaml"
-apiVersion: content.hauler.cattle.io/v1alpha1
+apiVersion: content.hauler.cattle.io/v1
 kind: Images
 metadata:
   name: hauler-content-images-example
@@ -44,7 +44,7 @@ spec:
 Please review the Hauler Content Pages for [Charts](../hauler-usage/store/add/chart.md) for more detailed information.
 
 ```yaml title="hauler-chart-manifest.yaml"
-apiVersion: content.hauler.cattle.io/v1alpha1
+apiVersion: content.hauler.cattle.io/v1
 kind: Charts
 metadata:
   name: hauler-content-charts-example
@@ -64,7 +64,7 @@ spec:
 Please review the Hauler Content Pages for [Files](../hauler-usage/store/add/file.md) for more detailed information.
 
 ```yaml title="hauler-file-manifest.yaml"
-apiVersion: content.hauler.cattle.io/v1alpha1
+apiVersion: content.hauler.cattle.io/v1
 kind: Files
 metadata:
   name: hauler-content-files-example

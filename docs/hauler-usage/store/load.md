@@ -11,7 +11,7 @@ sidebar_label: Load
 **An example with available flags...**
 
 ```bash
-hauler store load <haul-name>
+hauler store load --filename <haul-name>
 ```
 
 ### Command Overview

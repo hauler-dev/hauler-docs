@@ -31,13 +31,13 @@ hauler store add chart path/to/chart.tar.gz --repo .
 hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev
 
 # fetch remote oci helm chart with version
-hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --version 1.1.0
+hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --version 1.1.1
 
 # fetch remote helm chart
 hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable
 
 # fetch remote helm chart with specific version
-hauler store add chart rancher --repo https://releases.rancher.com/server-charts/latest --version 2.9.3
+hauler store add chart rancher --repo https://releases.rancher.com/server-charts/latest --version 2.10.1
 
 Flags:
       --ca-file string             (Optional) Location of CA Bundle to enable certification verification
@@ -72,19 +72,19 @@ hauler store add chart path/to/chart.tar.gz --repo .
 hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev
 
 # fetch remote oci helm chart with version
-hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --version 1.1.0
+hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --version 1.1.1
 
 # fetch remote helm chart
 hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable
 
 # fetch remote helm chart with specific version
-hauler store add chart rancher --repo https://releases.rancher.com/server-charts/latest --version 2.9.3
+hauler store add chart rancher --repo https://releases.rancher.com/server-charts/latest --version 2.10.1
 ```
 
 ### Hauler Manifest for Charts
 
 ```yaml title="hauler-chart-manifest.yaml"
-apiVersion: content.hauler.cattle.io/v1alpha1
+apiVersion: content.hauler.cattle.io/v1
 kind: Charts
 metadata:
   name: hauler-content-charts-example
@@ -101,7 +101,7 @@ spec:
 ### Example Manifest for Charts
 
 ```yaml title="hauler-chart-manifest.yaml"
-apiVersion: content.hauler.cattle.io/v1alpha1
+apiVersion: content.hauler.cattle.io/v1
 kind: Charts
 metadata:
   name: hauler-content-charts-example

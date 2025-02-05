@@ -38,7 +38,7 @@ export IMAGE_LIST_MODIFIED=$(echo "${IMAGE_LIST}" | sed 's/^/    - name: /')
 
 # create the hauler manifest with the updated image list
 cat << EOF >> hauler-manifest.yaml
-apiVersion: content.hauler.cattle.io/v1alpha1
+apiVersion: content.hauler.cattle.io/v1
 kind: Images
 metadata:
   name: hauler-cluster-images
@@ -51,7 +51,7 @@ EOF
 ## Resulting Hauler Manifest
 
 ```yaml title="hauler-manifest.yaml"
-apiVersion: content.hauler.cattle.io/v1alpha1
+apiVersion: content.hauler.cattle.io/v1
 kind: Images
 metadata:
   name: hauler-cluster-images

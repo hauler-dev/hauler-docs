@@ -58,7 +58,7 @@ hauler store add file https://get.hauler.dev --name hauler-install.sh
 ### Hauler Manifest for Files
 
 ```yaml title="hauler-file-manifest.yaml"
-apiVersion: content.hauler.cattle.io/v1alpha1
+apiVersion: content.hauler.cattle.io/v1
 kind: Files
 metadata:
   name: hauler-content-files-example
@@ -71,7 +71,7 @@ spec:
 ### Example Manifest for Files
 
 ```yaml title="hauler-file-manifest.yaml"
-apiVersion: content.hauler.cattle.io/v1alpha1
+apiVersion: content.hauler.cattle.io/v1
 kind: Files
 metadata:
   name: hauler-content-files-example

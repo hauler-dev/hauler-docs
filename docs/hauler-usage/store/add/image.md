@@ -77,7 +77,7 @@ hauler store add image rgcrprod.azurecr.us/hauler/rke2-manifest.yaml:v1.28.12-rk
 ### Hauler Manifest for Images
 
 ```yaml title="hauler-image-manifest.yaml"
-apiVersion: content.hauler.cattle.io/v1alpha1
+apiVersion: content.hauler.cattle.io/v1
 kind: Images
 metadata:
   name: hauler-content-images-example
@@ -100,7 +100,7 @@ spec:
 ### Example Manifest for Images
 
 ```yaml title="hauler-image-manifest.yaml"
-apiVersion: content.hauler.cattle.io/v1alpha1
+apiVersion: content.hauler.cattle.io/v1
 kind: Images
 metadata:
   name: hauler-content-images-example
