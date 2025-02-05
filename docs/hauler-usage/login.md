@@ -18,17 +18,17 @@ hauler login <registry-url> --username <username> --password <password>
 
 ```yaml
 Usage:
-  hauler login [flags]
+  hauler login [OPTIONS] [SERVER] [flags]
 
 Examples:
-# login to registry.example.com
-hauler login registry.example.com -u bob -p haulin
+  # Log in to reg.example.com
+  hauler login reg.example.com -u AzureDiamond -p hunter2
 
 Flags:
   -h, --help              help for login
-  -p, --password string   (Optional) Password to use for authentication
-      --password-stdin    (Optional) Password to use for authentication (from stdin)
-  -u, --username string   (Optional) Username to use for authentication
+  -p, --password string   Password
+      --password-stdin    Take the password from stdin
+  -u, --username string   Username
 
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)

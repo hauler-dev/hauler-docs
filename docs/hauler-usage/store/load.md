@@ -21,8 +21,9 @@ Usage:
   hauler store load [flags]
 
 Flags:
-  -h, --help             help for load
-  -t, --tempdir string   (Optional) Override the default temporary directiory determined by the OS
+  -f, --filename strings   (Optional) Specify the name of inputted haul(s) (default [haul.tar.zst])
+  -h, --help               help for load
+  -t, --tempdir string     (Optional) Override the default temporary directiory determined by the OS
 
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)

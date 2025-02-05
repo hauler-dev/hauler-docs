@@ -18,33 +18,23 @@ hauler store serve fileserver --port <port> --timeout <timeout> --readonly --tls
 
 ```yaml
 Usage:
-  hauler store [flags]
-  hauler store [command]
-
-Aliases:
-  store, s
-
-Available Commands:
-  add         Add content to the store
-  copy        Copy all store content to another location
-  extract     Extract artifacts from the content store to disk
-  info        Print out information about the store
-  load        Load a content store from a store archive
-  save        Save a content store to a store archive
-  serve       Serve the content store via an OCI Compliant Registry or Fileserver
-  sync        Sync content to the content store
+  hauler store serve registry [flags]
 
 Flags:
-  -h, --help           help for store
-  -r, --retries int    Set the number of retries for operations (default 3)
-  -s, --store string   Set the directory to use for the content store
+  -c, --config string      (Optional) Location of config file (overrides all flags)
+      --directory string   (Optional) Directory to use for backend. Defaults to $PWD/registry (default "registry")
+  -h, --help               help for registry
+  -p, --port int           (Optional) Set the port to use for incoming connections (default 5000)
+      --readonly           (Optional) Run the registry as readonly (default true)
+      --tls-cert string    (Optional) Location of the TLS Certificate to use for server authenication
+      --tls-key string     (Optional) Location of the TLS Key to use for server authenication
 
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
       --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
   -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
-
-Use "hauler store [command] --help" for more information about a command.
+  -r, --retries int        Set the number of retries for operations (default 3)
+  -s, --store string       Set the directory to use for the content store
 ```
 
 ## Example Commands for the Hauler Registry

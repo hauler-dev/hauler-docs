@@ -20,7 +20,7 @@ Examples:
 Available Commands:
   completion  Generate auto-completion scripts for various shells
   help        Help about any command
-  login       Login to a registry
+  login       Log in to a registry
   store       Interact with the content store
   version     Print the current version
 

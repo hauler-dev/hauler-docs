@@ -31,7 +31,7 @@ hauler store add chart path/to/chart.tar.gz --repo .
 hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev
 
 # fetch remote oci helm chart with version
-hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --version 1.1.1
+hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --version 1.2.0
 
 # fetch remote helm chart
 hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable

@@ -24,17 +24,17 @@ Hauler is a purpose built to be a single binary with no prerequistes, depedencie
 # install latest release
 curl -sfL https://get.hauler.dev | bash
 
+# install with debug mode
+curl -sfL https://get.hauler.dev | HAULER_DEBUG=true bash
+
 # install specific release
-curl -sfL https://get.hauler.dev | HAULER_VERSION=1.1.1 bash
+curl -sfL https://get.hauler.dev | HAULER_VERSION=1.2.0 bash
 
 # install at different directory
 curl -sfL https://get.hauler.dev | HAULER_INSTALL_DIR=/usr/bin bash
 
 # install with different hauler directory
 curl -sfL https://get.hauler.dev | HAULER_DIR=$HOME/.hauler bash
-
-# install with debug mode
-curl -sfL https://get.hauler.dev | HAULER_DEBUG=true bash
 ```
 
 ### Homebrew
@@ -46,7 +46,7 @@ brew install hauler
 
 # install specific release
 brew tap hauler-dev/homebrew-tap
-brew install hauler@1.1.1
+brew install hauler@1.2.0
 ```
 
 ### Windows
@@ -60,7 +60,7 @@ brew install hauler@1.1.1
 ### Linux/Darwin
 
 ```bash
-# set the hauler version (i.e. HAULER_VERSION=1.1.1)
+# set the hauler version (i.e. HAULER_VERSION=1.2.0)
 export vHauler=HAULER_VERSION
 
 # set the specific platform (i.e. PLATFORM=linux)

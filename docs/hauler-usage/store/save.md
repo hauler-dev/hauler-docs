@@ -21,7 +21,7 @@ Usage:
   hauler store save [flags]
 
 Flags:
-  -f, --filename string   (Optional) Specify the name of outputted archive (default "haul.tar.zst")
+  -f, --filename string   (Optional) Specify the name of outputted haul (default "haul.tar.zst")
   -h, --help              help for save
   -p, --platform string   (Optional) Specify the platform for runtime imports... i.e. linux/amd64 (unspecified implies all)
 
