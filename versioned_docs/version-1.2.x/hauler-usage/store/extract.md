@@ -1,29 +1,31 @@
 ---
-title: Hauler Store Save
-description: Hauler Store Save Usage Documentation
-sidebar_label: Save
+title: Hauler Store Extract
+description: Hauler Store Extract Usage Documentation
+sidebar_label: Extract
 ---
 
 ### Overview
 
-`hauler store save` saves a content store to a store archive.
+`hauler store extract` extracts artifacts from the store to disk.
 
 **An example with available flags...**
 
 ```bash
-hauler store save --filename <file-name-with-extension>
+hauler store extract <artifact-name>
 ```
 
 ### Command Overview
 
 ```yaml
 Usage:
-  hauler store save [flags]
+  hauler store extract [flags]
+
+Aliases:
+  extract, x
 
 Flags:
-  -f, --filename string   (Optional) Specify the name of outputted haul (default "haul.tar.zst")
-  -h, --help              help for save
-  -p, --platform string   (Optional) Specify the platform for runtime imports... i.e. linux/amd64 (unspecified implies all)
+  -h, --help            help for extract
+  -o, --output string   (Optional) Set the directory to output (defaults to current directory)
 
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
