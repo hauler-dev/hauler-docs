@@ -16,12 +16,15 @@ metadata:
   annotations:
     # global flags for all images in the manifest
     # image flags override global flags
-    # example: key set globally, but not observed if set per image
     # example: platform set globally, but not observed if set per image
     # example: registry set globally, but not observed if set per image
-    hauler.dev/key: <cosign-public-key>
     hauler.dev/platform: <platform>
     hauler.dev/registry: <registry>
+    # example: keyless signature validation set globally, but not observed if set per image
+    hauler.dev/certificate-identity-regexp: <certificate-identity>
+    hauler.dev/certificate-oidc-issuer: <certificate-issuer>
+    # certificate repository for GH actions workflows
+    hauler.dev/certificate-github-workflow-repository: <GH-repo>
 spec:
   images:
     # fetch image
@@ -48,6 +51,10 @@ apiVersion: content.hauler.cattle.io/v1
 kind: Charts
 metadata:
   name: hauler-content-charts-example
+  annotations:
+  # example: key set globally, but not observed if set per image
+  hauler.dev/key: <cosign-public-key>
+  hauler.dev/registry: <registry>
 spec:
   charts:
     # fetch helm chart

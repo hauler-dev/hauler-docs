@@ -38,9 +38,14 @@ curl -sfOL https://raw.githubusercontent.com/rancherfederal/carbide-releases/mai
 hauler store add image rgcrprod.azurecr.us/rancher/rke2-runtime:v1.31.5-rke2r1 --platform linux/amd64 --key carbide-key.pub
 
 Flags:
-  -h, --help              help for image
-  -k, --key string        (Optional) Location of public key to use for signature verification
-  -p, --platform string   (Optional) Specifiy the platform of the image... i.e. linux/amd64 (defaults to all)
+  -h, --help               help for image
+  -k, --key string         (Optional) Location of public key to use for signature verification
+  -p, --platform string    (Optional) Specifiy the platform of the image... i.e. linux/amd64 (defaults to all)
+
+Flags for Keyless Verification:
+  --certificate-identity-regexp string               (Optional) OIDC identity tied to certificate
+  --certificate-oidc-issuer string                   (Optional) OIDC issuer
+  --certificate-github-workflow-repository string    (Optional) If using GitHub actions, specify workflow repository
 
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
