@@ -23,7 +23,7 @@ metadata:
     # example: keyless signature validation set globally, but not observed if set per image
     hauler.dev/certificate-identity-regexp: <certificate-identity>
     hauler.dev/certificate-oidc-issuer: <certificate-issuer>
-    # certificate repository for GH actions workflows
+    # repository claim from GH identity token for GitHub workflows
     hauler.dev/certificate-github-workflow-repository: <GH-repo>
 spec:
   images:
