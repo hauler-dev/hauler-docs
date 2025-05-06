@@ -42,6 +42,11 @@ Flags:
   -k, --key string        (Optional) Location of public key to use for signature verification
   -p, --platform string   (Optional) Specifiy the platform of the image... i.e. linux/amd64 (defaults to all)
 
+Flags for Keyless Verification:
+  --certificate-identity-regexp string               (Optional) OIDC identity tied to certificate
+  --certificate-oidc-issuer string                   (Optional) OIDC issuer
+  --certificate-github-workflow-repository string    (Optional) Repository claim from GH identity token for GitHub workflows
+
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
       --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)

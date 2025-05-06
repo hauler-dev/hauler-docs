@@ -40,9 +40,9 @@ hauler store add chart rancher --repo https://releases.rancher.com/server-charts
 hauler store add chart rancher --repo https://releases.rancher.com/server-charts/latest --version 2.10.1
 
 Flags:
+      -h, --help                   help for chart
       --ca-file string             (Optional) Location of CA Bundle to enable certification verification
       --cert-file string           (Optional) Location of the TLS Certificate to use for client authenication
-  -h, --help                       help for chart
       --insecure-skip-tls-verify   (Optional) Skip TLS certificate verification
       --key-file string            (Optional) Location of the TLS Key to use for client authenication
       --password string            (Optional) Password to use for authentication
@@ -50,6 +50,11 @@ Flags:
       --username string            (Optional) Username to use for authentication
       --verify                     (Optional) Verify the chart before fetching it
       --version string             (Optional) Specifiy the version of the chart (v1.0.0 | 2.0.0 | ^2.0.0)
+
+Flags for Keyless Verification:
+  --certificate-identity-regexp string               (Optional) OIDC identity tied to certificate
+  --certificate-oidc-issuer string                   (Optional) OIDC issuer
+  --certificate-github-workflow-repository string    (Optional) Repository claim from GH identity token for GitHub workflows
 
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
