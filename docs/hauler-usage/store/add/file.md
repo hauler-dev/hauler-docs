@@ -34,6 +34,11 @@ Flags:
   -h, --help          help for file
   -n, --name string   (Optional) Rewrite the name of the file
 
+Flags for Keyless Verification:
+  --certificate-identity-regexp string               (Optional) OIDC identity tied to certificate
+  --certificate-oidc-issuer string                   (Optional) OIDC issuer
+  --certificate-github-workflow-repository string    (Optional) Repository claim from GH identity token for GitHub workflows
+
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
       --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
