@@ -14,6 +14,9 @@ sidebar_label: Copy
 hauler store copy registry://<registry-url>
 
 hauler store copy dir://<directory-path>
+
+# copies only image signatures and attestations
+hauler store copy registry://<registry-url> --only sig, att
 ```
 
 ### Command Overview
@@ -28,6 +31,7 @@ Flags:
   -p, --password string   (Optional) Password to use for authentication
       --plain-http        (Optional) Allow plain HTTP connections
   -u, --username string   (Optional) Username to use for authentication
+  -o, --only string       (Optional) Copy only signature (sig) or attestation (att) for image
 
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)

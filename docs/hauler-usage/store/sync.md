@@ -29,6 +29,7 @@ Flags:
       --products strings          (Optional) Specify the product name to fetch collections from the product registry i.e. rancher=v2.10.1,rke2=v1.31.5+rke2r1
   -g, --registry string           (Optional) Specify the registry of the image for images that do not alredy define one
   -t, --tempdir string            (Optional) Override the default temporary directiory determined by the OS
+  --use-tlog-verify bool          (Optional) Set transparency log verification (defaults false)
 
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)

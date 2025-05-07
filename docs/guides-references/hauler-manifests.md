@@ -25,6 +25,8 @@ metadata:
     hauler.dev/certificate-oidc-issuer: <certificate-issuer>
     # repository claim from GH identity token for GitHub workflows
     hauler.dev/certificate-github-workflow-repository: <GH-repo>
+    # example: set transparency log verificaton to true (not compatible with airgap)
+    hauler.dev/use-tlog-verify: true
 spec:
   images:
     # fetch image
