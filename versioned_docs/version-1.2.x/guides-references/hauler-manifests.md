@@ -22,6 +22,8 @@ metadata:
     hauler.dev/key: <cosign-public-key>
     hauler.dev/platform: <platform>
     hauler.dev/registry: <registry>
+    # example: set transparency log verificaton to true (not compatible with airgap)
+    hauler.dev/use-tlog-verify: true
 spec:
   images:
     # fetch image
