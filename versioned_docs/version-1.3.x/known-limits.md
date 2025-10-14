@@ -22,7 +22,8 @@ hauler store copy registry://<registry-url>/<path>
 ---
 - `Hauler` will default to write temporary directories and files to `/tmp`. If you do not have the same (or more) amount of space available in your `/tmp` compared to the size of the `store` or `haul`, then `hauler` may error.
   - **Recommendation:** Ensure there is enough space availabe in `/tmp` or change the default temporary directory with `--tempdir`, before running the command `hauler store load --filename haul.tar.zst`.
-
+---
+- `hauler store load` with a Podman-saved tarball is not currently supported.
 
 ## Notices
 
