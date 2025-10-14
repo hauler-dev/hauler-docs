@@ -8,10 +8,6 @@ sidebar_label: Load
 
 `hauler store load` loads a content store from a store archive.
 
-As of v1.3, Hauler now supports loading content from a Docker-saved tarball. 
-
-> Note: Podman-saved tarballs are not currently supported.
-
 **An example with available flags...**
 
 ```bash
