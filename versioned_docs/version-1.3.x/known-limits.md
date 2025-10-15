@@ -25,7 +25,6 @@ hauler store copy registry://<registry-url>/<path>
 ---
 - `hauler store load` with a Podman-saved tarball is not currently supported.
 
-
 ## Notices
 
 ### In Hauler v1.2.0...
