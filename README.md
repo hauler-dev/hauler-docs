@@ -1,4 +1,4 @@
-# Rancher Government Hauler Docs
+# Hauler Docs
 
 ![rancher-government-hauler-logo](/static/img/rgs-hauler-logo.png)
 

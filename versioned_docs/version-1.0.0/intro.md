@@ -4,7 +4,7 @@ description: Docs for Hauler, An Airgap Swiss-Army Knife provided by Rancher Gov
 sidebar_label: Introduction
 ---
 
-# Rancher Government Hauler
+# Hauler
 
 # Airgap Swiss Army Knife
 
@@ -18,7 +18,7 @@ Please help us by submitting any issues via **[GitHub Issues](https://github.com
 
 ## What's Hauler?
 
-`Rancher Government Hauler` simplifies the airgap experience without requiring operators to adopt a specific workflow. `Hauler` simplifies the airgapping process, by representing assets (images, charts, files, etc...) as content and collections to allow operators to easily fetch, store, package, and distribute these assets with declarative manifests or through the command line.
+`Hauler` simplifies the airgap experience without requiring operators to adopt a specific workflow. `Hauler` simplifies the airgapping process, by representing assets (images, charts, files, etc...) as content and collections to allow operators to easily fetch, store, package, and distribute these assets with declarative manifests or through the command line.
 
 `Hauler` does this by storing contents and collections as OCI Artifacts and allows operators to serve contents and collections with an embedded registry and fileserver. Additionally, `Hauler` has the ability to store and inspect various non-image OCI Artifacts.
 
