@@ -37,11 +37,15 @@ hauler store add image gcr.io/distroless/base@sha256:7fa7445dfbebae4f4b7ab0e6ef9
 curl -sfOL https://raw.githubusercontent.com/rancherfederal/carbide-releases/main/carbide-key.pub
 hauler store add image rgcrprod.azurecr.us/rancher/rke2-runtime:v1.31.5-rke2r1 --platform linux/amd64 --key carbide-key.pub
 
+# fetch image and rewrite path
+hauler store add image busybox --rewrite custom-path/busybox:latest
+
 Flags:
-  -h, --help               help for image
-  -k, --key string         (Optional) Location of public key to use for signature verification
-  -p, --platform string    (Optional) Specifiy the platform of the image... i.e. linux/amd64 (defaults to all)
-  --use-tlog-verify bool   (Optional) Set transparency log verification (defaults false)
+  -h, --help              help for image
+  -k, --key string        (Optional) Location of public key to use for signature verification
+  -p, --platform string   (Optional) Specifiy the platform of the image... i.e. linux/amd64 (defaults to all)
+  --use-tlog-verify bool  (Optional) Set transparency log verification (defaults false)
+  --rewrite               (Optional) Rewrite the chart reference in the store
 
 Flags for Keyless Verification:
   --certificate-identity-regexp string               (Optional) OIDC identity tied to certificate
@@ -79,6 +83,9 @@ hauler store add image gcr.io/distroless/base@sha256:7fa7445dfbebae4f4b7ab0e6ef9
 
 # fetch image with full image reference, specific platform, and signature verification
 hauler store add image rgcrprod.azurecr.us/hauler/rke2-manifest.yaml:v1.28.12-rke2r1 --platform linux/amd64 --key carbide-key.pub
+
+# fetch image and rewrite path
+hauler store add image busybox --rewrite custom-path/busybox:latest
 ```
 
 ### Hauler Manifest for Images
@@ -135,4 +142,28 @@ spec:
     - name: docker.io/longhornio/longhorn-manager:v1.6.0
       key: cosign-public-key.pub
       platform: linux/amd64
+```
+
+### Example Manifest with Rewrite
+
+```yaml title="hauler-image-manifest.yaml"
+apiVersion: content.hauler.cattle.io/v1
+kind: Images
+metadata:
+  name: hauler-content-images-example
+  annotations:
+    # global flags for all images in the manifest
+    # image flags override global flags
+    # example: key set globally, but not observed if set per image
+    # example: platform set globally, but not observed if set per image
+    # example: registry set globally, but not observed if set per image
+    hauler.dev/key: <cosign-public-key>
+    hauler.dev/platform: <platform>
+    hauler.dev/registry: <registry>
+spec:
+  images:
+    - name: <image-reference>
+      rewrite: <desired-image-reference>
+      key: <cosign-public-key>
+      platform: <platform>
 ```

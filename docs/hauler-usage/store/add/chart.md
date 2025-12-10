@@ -39,8 +39,11 @@ hauler store add chart rancher --repo https://releases.rancher.com/server-charts
 # fetch remote helm chart with specific version
 hauler store add chart rancher --repo https://releases.rancher.com/server-charts/latest --version 2.10.1
 
+# fetch remote helm chart and rewrite path
+hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --rewrite custom-path/hauler-chart:latest
+
 Flags:
-      --help, -h                   help for chart
+      -h, --help                   help for chart
       --ca-file string             (Optional) Location of CA Bundle to enable certification verification
       --cert-file string           (Optional) Location of the TLS Certificate to use for client authenication
       --insecure-skip-tls-verify   (Optional) Skip TLS certificate verification
@@ -50,6 +53,7 @@ Flags:
       --username string            (Optional) Username to use for authentication
       --verify                     (Optional) Verify the chart before fetching it
       --version string             (Optional) Specifiy the version of the chart (v1.0.0 | 2.0.0 | ^2.0.0)
+      --rewrite                    (Optional) Rewrite the chart reference in the store
 
 Flags for Keyless Verification:
   --certificate-identity-regexp string               (Optional) OIDC identity tied to certificate
@@ -84,6 +88,9 @@ hauler store add chart rancher --repo https://releases.rancher.com/server-charts
 
 # fetch remote helm chart with specific version
 hauler store add chart rancher --repo https://releases.rancher.com/server-charts/latest --version 2.10.1
+
+# fetch remote helm chart and rewrite path
+hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --rewrite custom-path/hauler-chart:latest
 ```
 
 ### Hauler Manifest for Charts
@@ -119,4 +126,23 @@ spec:
     - name: rancher-cluster-templates
       repoURL: oci://ghcr.io/rancherfederal/charts
       version: 0.6.1
+```
+
+### Example Manifest with Rewrite
+
+```yaml title="hauler-chart-manifest.yaml"
+apiVersion: content.hauler.cattle.io/v1
+kind: Charts
+metadata:
+  name: hauler-content-charts-example
+spec:
+  charts:
+    # fetch helm chart
+    - name: <chart-name>
+      # https:// or http:// or oci://
+      repoURL: <chart-repository>
+      # semver complaint
+      version: <chart-version>
+      # rewrite in store
+      rewrite: <desired-chart-reference>
 ```
