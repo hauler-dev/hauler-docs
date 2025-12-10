@@ -59,6 +59,7 @@ const sidebars = {
               ],
             },
             'hauler-usage/store/sync',
+            'hauler-usage/store/delete-artifact',
           ],
         },
         'hauler-usage/completion',
