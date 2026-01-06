@@ -65,7 +65,7 @@ hauler store add image busybox
 hauler store add image library/busybox:stable
 
 # fetch image with full image reference and specific platform
-hauler store add image ghcr.io/hauler-dev/hauler-debug:v1.0.7 --platform linux/amd74
+hauler store add image ghcr.io/hauler-dev/hauler-debug:v1.0.7 --platform linux/amd64
 
 # fetch image with full image reference via digest
 hauler store add image gcr.io/distroless/base@sha256:7fa7445dfbebae4f4b7ab0e6ef99276e96075ae42584af6286ba080750d6dfe5
