@@ -53,7 +53,7 @@ Flags:
       --username string            (Optional) Username to use for authentication
       --verify                     (Optional) Verify the chart before fetching it
       --version string             (Optional) Specifiy the version of the chart (v1.0.0 | 2.0.0 | ^2.0.0)
-      --rewrite                    (Optional) Rewrite the chart reference in the store
+      --rewrite                    (Optional) Rewrite the chart reference in the store (experimental)
 
 Flags for Keyless Verification:
   --certificate-identity-regexp string               (Optional) OIDC identity tied to certificate

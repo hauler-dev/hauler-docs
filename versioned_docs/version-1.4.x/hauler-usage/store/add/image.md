@@ -45,7 +45,7 @@ Flags:
   -k, --key string        (Optional) Location of public key to use for signature verification
   -p, --platform string   (Optional) Specifiy the platform of the image... i.e. linux/amd64 (defaults to all)
   --use-tlog-verify bool  (Optional) Set transparency log verification (defaults false)
-  --rewrite               (Optional) Rewrite the chart reference in the store
+  --rewrite               (Optional) Rewrite the chart reference in the store (experimental)
 
 Flags for Keyless Verification:
   --certificate-identity-regexp string               (Optional) OIDC identity tied to certificate

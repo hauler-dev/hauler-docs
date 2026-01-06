@@ -8,6 +8,8 @@ sidebar_label: Delete Artifact
 
 `hauler store delete-artifact` removes matching item(s) from the store using simple string matching.
 
+> Note: `delete-artifact` is an experimental feature as of Hauler v1.4.0.
+
 **An example...**
 
 ```bash
