@@ -54,6 +54,8 @@ Flags:
       --verify                     (Optional) Verify the chart before fetching it
       --version string             (Optional) Specifiy the version of the chart (v1.0.0 | 2.0.0 | ^2.0.0)
       --rewrite                    (Optional) Rewrite the chart reference in the store (experimental)
+      --add-images                 (Optional) Parse and add images in referenced chart(s) to store (experimental)
+      --add-dependencies           (Optional) Identify and fetch dependent helm chart(s) to referenced chart(s) (experimental)
 
 Flags for Keyless Verification:
   --certificate-identity-regexp string               (Optional) OIDC identity tied to certificate
@@ -91,6 +93,12 @@ hauler store add chart rancher --repo https://releases.rancher.com/server-charts
 
 # fetch remote helm chart and rewrite path
 hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --rewrite custom-path/hauler-chart:latest
+
+# fetch remote helm chart and associated images
+hauler store add chart gitea --repo https://dl.gitea.com/charts --add-images
+
+# fetch remote helm chart and dependent chart(s)
+hauler store add chart gitea --repo https://dl.gitea.com/charts --add-dependencies
 ```
 
 ### Hauler Manifest for Charts
@@ -145,4 +153,42 @@ spec:
       version: <chart-version>
       # rewrite in store
       rewrite: <desired-chart-reference>
+```
+
+### Example Manifest with Add Images
+
+```yaml title="hauler-chart-manifest.yaml"
+apiVersion: content.hauler.cattle.io/v1
+kind: Charts
+metadata:
+  name: hauler-content-charts-example
+spec:
+  charts:
+    # fetch helm chart
+    - name: <chart-name>
+      # https:// or http:// or oci://
+      repoURL: <chart-repository>
+      # semver complaint
+      version: <chart-version>
+      # add associated images
+      add-images: true
+```
+
+### Example Manifest with Dependent Charts
+
+```yaml title="hauler-chart-manifest.yaml"
+apiVersion: content.hauler.cattle.io/v1
+kind: Charts
+metadata:
+  name: hauler-content-charts-example
+spec:
+  charts:
+    # fetch helm chart
+    - name: <chart-name>
+      # https:// or http:// or oci://
+      repoURL: <chart-repository>
+      # semver complaint
+      version: <chart-version>
+      # add dependent charts
+      add-dependencies: true
 ```
