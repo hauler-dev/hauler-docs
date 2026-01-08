@@ -34,4 +34,5 @@ Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
       --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
   -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
+zackbradys@Zacks-MacBook-Pro hauler %
 ```

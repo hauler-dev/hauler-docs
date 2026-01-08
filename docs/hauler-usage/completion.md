@@ -31,7 +31,6 @@ Global Flags:
 Use "hauler completion [command] --help" for more information about a command.
 ```
 
-
 #### `hauler completion bash`:
 
 * Generate the autocompletion script for the bash shell.

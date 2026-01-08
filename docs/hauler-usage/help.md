@@ -16,11 +16,13 @@ Usage:
 Examples:
   View the Docs: https://docs.hauler.dev
   Environment Variables: HAULER_DIR | HAULER_TEMP_DIR | HAULER_STORE_DIR | HAULER_IGNORE_ERRORS
+  Warnings: Hauler commands and flags marked with (EXPERIMENTAL) are not yet stable and may have bugs or change in the future.
 
 Available Commands:
   completion  Generate auto-completion scripts for various shells
   help        Help about any command
   login       Log in to a registry
+  logout      Log out of a registry
   store       Interact with the content store
   version     Print the current version
 

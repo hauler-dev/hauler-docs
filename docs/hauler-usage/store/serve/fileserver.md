@@ -24,7 +24,7 @@ Flags:
       --directory string   (Optional) Directory to use for backend. Defaults to $PWD/fileserver (default "fileserver")
   -h, --help               help for fileserver
   -p, --port int           (Optional) Set the port to use for incoming connections (default 8080)
-  -t, --timeout int        (Optional) Timeout duration for HTTP Requests in seconds for both reads/writes (default 60)
+      --timeout int        (Optional) Timeout duration for HTTP Requests in seconds for both reads/writes (default 60)
       --tls-cert string    (Optional) Location of the TLS Certificate to use for server authenication
       --tls-key string     (Optional) Location of the TLS Key to use for server authenication
 
@@ -34,6 +34,7 @@ Global Flags:
   -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
   -r, --retries int        Set the number of retries for operations (default 3)
   -s, --store string       Set the directory to use for the content store
+  -t, --tempdir string     (Optional) Override the default temporary directory determined by the OS
 ```
 
 ## Example Commands for the Hauler Fileserver

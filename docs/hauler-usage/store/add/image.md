@@ -41,16 +41,16 @@ hauler store add image rgcrprod.azurecr.us/rancher/rke2-runtime:v1.31.5-rke2r1 -
 hauler store add image busybox --rewrite custom-path/busybox:latest
 
 Flags:
-  -h, --help              help for image
-  -k, --key string        (Optional) Location of public key to use for signature verification
-  -p, --platform string   (Optional) Specifiy the platform of the image... i.e. linux/amd64 (defaults to all)
-  --use-tlog-verify bool  (Optional) Set transparency log verification (defaults false)
-  --rewrite               (Optional) Rewrite the chart reference in the store (experimental)
-
-Flags for Keyless Verification:
-  --certificate-identity-regexp string               (Optional) OIDC identity tied to certificate
-  --certificate-oidc-issuer string                   (Optional) OIDC issuer
-  --certificate-github-workflow-repository string    (Optional) Repository claim from GH identity token for GitHub workflows
+      --certificate-github-workflow-repository string   (Optional) Cosign certificate-github-workflow-repository option
+      --certificate-identity string                     (Optional) Cosign certificate-identity (either --certificate-identity or --certificate-identity-regexp required for keyless verification)
+      --certificate-identity-regexp string              (Optional) Cosign certificate-identity-regexp (either --certificate-identity or --certificate-identity-regexp required for keyless verification)
+      --certificate-oidc-issuer string                  (Optional) Cosign option to validate oidc issuer
+      --certificate-oidc-issuer-regexp string           (Optional) Cosign option to validate oidc issuer with regex
+  -h, --help                                            help for image
+  -k, --key string                                      (Optional) Location of public key to use for signature verification
+  -p, --platform string                                 (Optional) Specifiy the platform of the image... i.e. linux/amd64 (defaults to all)
+      --rewrite string                                  (Optional) Rewrite artifact path to specified string (experimental)
+  -v, --use-tlog-verify                                 (Optional) Allow transparency log verification. (defaults to false)
 
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
@@ -58,6 +58,7 @@ Global Flags:
   -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
   -r, --retries int        Set the number of retries for operations (default 3)
   -s, --store string       Set the directory to use for the content store
+  -t, --tempdir string     (Optional) Override the default temporary directory determined by the OS
 ```
 
 ### Hauler Command Line for Images

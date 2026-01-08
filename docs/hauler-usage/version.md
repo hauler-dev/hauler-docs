@@ -38,7 +38,7 @@ Global Flags:
 |__|  |__| /__/     \__\  \______/  |_______||_______|| _| `._____|
 hauler: Airgap Swiss Army Knife
 
-GitVersion:    1.2.0
+GitVersion:    1.4.0
 GitCommit:     7d28df1
 GitTreeState:  clean
 BuildDate:     2025-02-05T18:34:07Z
@@ -49,7 +49,7 @@ Platform:      darwin/arm64
 
 ```json
 {
-  "gitVersion": "1.2.0",
+  "gitVersion": "1.4.0",
   "gitCommit": "7d28df1",
   "gitTreeState": "clean",
   "buildDate": "2025-02-05T18:34:07Z",

@@ -43,24 +43,22 @@ hauler store add chart rancher --repo https://releases.rancher.com/server-charts
 hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --rewrite custom-path/hauler-chart:latest
 
 Flags:
-      -h, --help                   help for chart
+      --add-dependencies           (Optional) Fetch dependent helm charts (EXPERIMENTAL)
+      --add-images                 (Optional) Fetch images referenced in helm charts (EXPERIMENTAL)
       --ca-file string             (Optional) Location of CA Bundle to enable certification verification
-      --cert-file string           (Optional) Location of the TLS Certificate to use for client authenication
+      --cert-file string           (Optional) Location of the TLS Certificate to use for client authentication
+  -h, --help                       help for chart
       --insecure-skip-tls-verify   (Optional) Skip TLS certificate verification
-      --key-file string            (Optional) Location of the TLS Key to use for client authenication
+      --key-file string            (Optional) Location of the TLS Key to use for client authentication
+      --kube-version string        (Optional) Override the kubernetes version for helm template rendering (EXPERIMENTAL) (default "v1.34.1")
       --password string            (Optional) Password to use for authentication
+  -p, --platform string            (Optional) Specify the platform of the image, e.g. linux/amd64 (EXPERIMENTAL)
       --repo string                Location of the chart (https:// | http:// | oci://)
+      --rewrite string             (Optional) Rewrite artifact path to specified string (EXPERIMENTAL)
       --username string            (Optional) Username to use for authentication
+      --values string              (Optional) Specify helm chart values when fetching images (EXPERIMENTAL)
       --verify                     (Optional) Verify the chart before fetching it
-      --version string             (Optional) Specifiy the version of the chart (v1.0.0 | 2.0.0 | ^2.0.0)
-      --rewrite                    (Optional) Rewrite the chart reference in the store (experimental)
-      --add-images                 (Optional) Parse and add images in referenced chart(s) to store (experimental)
-      --add-dependencies           (Optional) Identify and fetch dependent helm chart(s) to referenced chart(s) (experimental)
-
-Flags for Keyless Verification:
-  --certificate-identity-regexp string               (Optional) OIDC identity tied to certificate
-  --certificate-oidc-issuer string                   (Optional) OIDC issuer
-  --certificate-github-workflow-repository string    (Optional) Repository claim from GH identity token for GitHub workflows
+      --version string             (Optional) Specify the version of the chart (v1.0.0 | 2.0.0 | ^2.0.0)
 
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
@@ -68,6 +66,7 @@ Global Flags:
   -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
   -r, --retries int        Set the number of retries for operations (default 3)
   -s, --store string       Set the directory to use for the content store
+  -t, --tempdir string     (Optional) Override the default temporary directory determined by the OS
 ```
 
 ### Example Commands for Charts

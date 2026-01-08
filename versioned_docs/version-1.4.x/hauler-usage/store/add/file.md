@@ -34,17 +34,13 @@ Flags:
   -h, --help          help for file
   -n, --name string   (Optional) Rewrite the name of the file
 
-Flags for Keyless Verification:
-  --certificate-identity-regexp string               (Optional) OIDC identity tied to certificate
-  --certificate-oidc-issuer string                   (Optional) OIDC issuer
-  --certificate-github-workflow-repository string    (Optional) Repository claim from GH identity token for GitHub workflows
-
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
       --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
   -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
   -r, --retries int        Set the number of retries for operations (default 3)
   -s, --store string       Set the directory to use for the content store
+  -t, --tempdir string     (Optional) Override the default temporary directory determined by the OS
 ```
 
 ### Example Commands for Files

@@ -26,12 +26,10 @@ Usage:
   hauler store copy [flags]
 
 Flags:
-  -h, --help              help for copy
-      --insecure          (Optional) Allow insecure connections
-  -p, --password string   (Optional) Password to use for authentication
-      --plain-http        (Optional) Allow plain HTTP connections
-  -u, --username string   (Optional) Username to use for authentication
-  -o, --only string       (Optional) Copy only signature (sig) or attestation (att) for image
+  -h, --help          help for copy
+      --insecure      (Optional) Allow insecure connections
+  -o, --only string   (Optional) Custom string array to only copy specific 'image' items
+      --plain-http    (Optional) Allow plain HTTP connections
 
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
@@ -39,4 +37,5 @@ Global Flags:
   -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
   -r, --retries int        Set the number of retries for operations (default 3)
   -s, --store string       Set the directory to use for the content store
+  -t, --tempdir string     (Optional) Override the default temporary directory determined by the OS
 ```

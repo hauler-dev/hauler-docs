@@ -11,7 +11,7 @@ sidebar_label: Registry
 **An example with available flags...**
 
 ```bash
-hauler store serve fileserver --port <port> --timeout <timeout> --readonly --tls-cert <cert> --tls-key <key>
+hauler store serve registry --port <port> --timeout <timeout> --readonly --tls-cert <cert> --tls-key <key>
 ```
 
 ### Command Overview
@@ -35,6 +35,7 @@ Global Flags:
   -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
   -r, --retries int        Set the number of retries for operations (default 3)
   -s, --store string       Set the directory to use for the content store
+  -t, --tempdir string     (Optional) Override the default temporary directory determined by the OS
 ```
 
 ## Example Commands for the Hauler Registry
