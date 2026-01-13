@@ -31,7 +31,7 @@ hauler store copy registry://<registry-url>/<path>
 - Upgraded the `apiVersion` to `v1` from `v1alpha1`
   - Users are able to use `v1` and `v1alpha1`, but `v1alpha1` is now deprecated and will be removed in a future release. We will update the community when we fully deprecate and remove the functionality of `v1alpha1`
   - Users will see logging notices when using the old `apiVersion` such as...
-  - `!!! DEPRECATION WARNING !!! apiVersion [v1alpha1] will be removed in a future release !!! DEPRECATION WARNING !!!`
+  - `!!! DEPRECATION WARNING !!! apiVersion [v1alpha1] will be removed in a future release...`
 ---
 - Updated the behavior of `hauler store load` to default to loading a `haul` with the name of `haul.tar.zst` and requires the flag of `--filename/-f` to load a `haul` with a different name
 - Users can load multiple `hauls` by specifying multiple flags of `--filename/-f`

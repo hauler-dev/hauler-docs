@@ -1,6 +1,6 @@
 {
   "name": "hauler-docs",
-  "version": "1.3.x",
+  "version": "1.4.x",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",

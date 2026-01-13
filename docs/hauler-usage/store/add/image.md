@@ -37,16 +37,20 @@ hauler store add image gcr.io/distroless/base@sha256:7fa7445dfbebae4f4b7ab0e6ef9
 curl -sfOL https://raw.githubusercontent.com/rancherfederal/carbide-releases/main/carbide-key.pub
 hauler store add image rgcrprod.azurecr.us/rancher/rke2-runtime:v1.31.5-rke2r1 --platform linux/amd64 --key carbide-key.pub
 
-Flags:
-  -h, --help               help for image
-  -k, --key string         (Optional) Location of public key to use for signature verification
-  -p, --platform string    (Optional) Specifiy the platform of the image... i.e. linux/amd64 (defaults to all)
-  --use-tlog-verify bool   (Optional) Set transparency log verification (defaults false)
+# fetch image and rewrite path
+hauler store add image busybox --rewrite custom-path/busybox:latest
 
-Flags for Keyless Verification:
-  --certificate-identity-regexp string               (Optional) OIDC identity tied to certificate
-  --certificate-oidc-issuer string                   (Optional) OIDC issuer
-  --certificate-github-workflow-repository string    (Optional) Repository claim from GH identity token for GitHub workflows
+Flags:
+      --certificate-github-workflow-repository string   (Optional) Cosign certificate-github-workflow-repository option
+      --certificate-identity string                     (Optional) Cosign certificate-identity (either --certificate-identity or --certificate-identity-regexp required for keyless verification)
+      --certificate-identity-regexp string              (Optional) Cosign certificate-identity-regexp (either --certificate-identity or --certificate-identity-regexp required for keyless verification)
+      --certificate-oidc-issuer string                  (Optional) Cosign option to validate oidc issuer
+      --certificate-oidc-issuer-regexp string           (Optional) Cosign option to validate oidc issuer with regex
+  -h, --help                                            help for image
+  -k, --key string                                      (Optional) Location of public key to use for signature verification
+  -p, --platform string                                 (Optional) Specify the platform of the image... i.e. linux/amd64 (defaults to all)
+      --rewrite string                                  (EXPERIMENTAL & Optional) Rewrite artifact path to specified string
+      --use-tlog-verify                                 (Optional) Allow transparency log verification (defaults to false)
 
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
@@ -54,6 +58,7 @@ Global Flags:
   -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
   -r, --retries int        Set the number of retries for operations (default 3)
   -s, --store string       Set the directory to use for the content store
+  -t, --tempdir string     (Optional) Override the default temporary directory determined by the OS
 ```
 
 ### Hauler Command Line for Images
@@ -79,6 +84,9 @@ hauler store add image gcr.io/distroless/base@sha256:7fa7445dfbebae4f4b7ab0e6ef9
 
 # fetch image with full image reference, specific platform, and signature verification
 hauler store add image rgcrprod.azurecr.us/hauler/rke2-manifest.yaml:v1.28.12-rke2r1 --platform linux/amd64 --key carbide-key.pub
+
+# fetch image and rewrite path
+hauler store add image busybox --rewrite custom-path/busybox:latest
 ```
 
 ### Hauler Manifest for Images
@@ -135,4 +143,28 @@ spec:
     - name: docker.io/longhornio/longhorn-manager:v1.6.0
       key: cosign-public-key.pub
       platform: linux/amd64
+```
+
+### Example Manifest with Rewrite
+
+```yaml title="hauler-image-manifest.yaml"
+apiVersion: content.hauler.cattle.io/v1
+kind: Images
+metadata:
+  name: hauler-content-images-example
+  annotations:
+    # global flags for all images in the manifest
+    # image flags override global flags
+    # example: key set globally, but not observed if set per image
+    # example: platform set globally, but not observed if set per image
+    # example: registry set globally, but not observed if set per image
+    hauler.dev/key: <cosign-public-key>
+    hauler.dev/platform: <platform>
+    hauler.dev/registry: <registry>
+spec:
+  images:
+    - name: <image-reference>
+      rewrite: <desired-image-reference>
+      key: <cosign-public-key>
+      platform: <platform>
 ```
