@@ -48,9 +48,9 @@ Flags:
       --certificate-oidc-issuer-regexp string           (Optional) Cosign option to validate oidc issuer with regex
   -h, --help                                            help for image
   -k, --key string                                      (Optional) Location of public key to use for signature verification
-  -p, --platform string                                 (Optional) Specifiy the platform of the image... i.e. linux/amd64 (defaults to all)
-      --rewrite string                                  (Optional) Rewrite artifact path to specified string (experimental)
-  -v, --use-tlog-verify                                 (Optional) Allow transparency log verification. (defaults to false)
+  -p, --platform string                                 (Optional) Specify the platform of the image... i.e. linux/amd64 (defaults to all)
+      --rewrite string                                  (EXPERIMENTAL & Optional) Rewrite artifact path to specified string
+      --use-tlog-verify                                 (Optional) Allow transparency log verification (defaults to false)
 
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)

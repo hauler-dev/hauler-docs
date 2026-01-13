@@ -43,20 +43,21 @@ hauler store add chart rancher --repo https://releases.rancher.com/server-charts
 hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --rewrite custom-path/hauler-chart:latest
 
 Flags:
-      --add-dependencies           (Optional) Fetch dependent helm charts (EXPERIMENTAL)
-      --add-images                 (Optional) Fetch images referenced in helm charts (EXPERIMENTAL)
+      --add-dependencies           (EXPERIMENTAL & Optional) Fetch dependent helm charts
+      --add-images                 (EXPERIMENTAL & Optional) Fetch images referenced in helm charts
       --ca-file string             (Optional) Location of CA Bundle to enable certification verification
       --cert-file string           (Optional) Location of the TLS Certificate to use for client authentication
   -h, --help                       help for chart
       --insecure-skip-tls-verify   (Optional) Skip TLS certificate verification
       --key-file string            (Optional) Location of the TLS Key to use for client authentication
-      --kube-version string        (Optional) Override the kubernetes version for helm template rendering (EXPERIMENTAL) (default "v1.34.1")
+      --kube-version string        (EXPERIMENTAL & Optional) Override the kubernetes version for helm template rendering (default "v1.34.1")
       --password string            (Optional) Password to use for authentication
-  -p, --platform string            (Optional) Specify the platform of the image, e.g. linux/amd64 (EXPERIMENTAL)
+  -p, --platform string            (Optional) Specify the platform of the image, e.g. linux/amd64
+  -g, --registry string            (Optional) Specify the registry of the image for images that do not alredy define one
       --repo string                Location of the chart (https:// | http:// | oci://)
-      --rewrite string             (Optional) Rewrite artifact path to specified string (EXPERIMENTAL)
+      --rewrite string             (EXPERIMENTAL & Optional) Rewrite artifact path to specified string
       --username string            (Optional) Username to use for authentication
-      --values string              (Optional) Specify helm chart values when fetching images (EXPERIMENTAL)
+      --values string              (EXPERIMENTAL & Optional) Specify helm chart values when fetching images
       --verify                     (Optional) Verify the chart before fetching it
       --version string             (Optional) Specify the version of the chart (v1.0.0 | 2.0.0 | ^2.0.0)
 

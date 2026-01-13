@@ -42,6 +42,11 @@ spec:
     - name: docker.io/longhornio/longhorn-manager:v1.6.0
       key: cosign-public-key.pub
       platform: linux/amd64
+    # fetch image with full image reference, specific version, specific platform, signature verification, and rewrite
+    - name: docker.io/longhornio/longhorn-manager:v1.6.0
+      key: cosign-public-key.pub
+      platform: linux/amd64
+      rewrite: rancher.io/longhornio/longhorn-manager:v1.6.0
 ```
 
 ## Example Manifest for Charts
@@ -66,6 +71,12 @@ spec:
     - name: rancher-cluster-templates
       repoURL: oci://ghcr.io/rancherfederal/charts
       version: 0.6.1
+    # fetch helm chart with specific version and dependent helm charts and images
+    - name: rancher-cluster-templates
+      repoURL: oci://ghcr.io/rancherfederal/charts
+      version: 0.6.1
+      add-images: true
+      add-dependencies: true
 ```
 
 ## Example Manifest for Files

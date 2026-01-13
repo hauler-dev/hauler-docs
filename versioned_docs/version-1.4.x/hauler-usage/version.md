@@ -38,22 +38,22 @@ Global Flags:
 |__|  |__| /__/     \__\  \______/  |_______||_______|| _| `._____|
 hauler: Airgap Swiss Army Knife
 
-GitVersion:    1.4.0
-GitCommit:     7d28df1
+GitVersion:    v1.4.0-rc.1.0.20260112213839-e7082b6e2890
+GitCommit:     e7082b6
 GitTreeState:  clean
-BuildDate:     2025-02-05T18:34:07Z
-GoVersion:     go1.23.5 X:boringcrypto
+BuildDate:     2026-01-13T06:33:44Z
+GoVersion:     go1.25.5 X:boringcrypto
 Compiler:      gc
 Platform:      darwin/arm64
 ```
 
 ```json
 {
-  "gitVersion": "1.4.0",
-  "gitCommit": "7d28df1",
+  "gitVersion": "v1.4.0-rc.1.0.20260112213839-e7082b6e2890",
+  "gitCommit": "e7082b6",
   "gitTreeState": "clean",
-  "buildDate": "2025-02-05T18:34:07Z",
-  "goVersion": "go1.23.5 X:boringcrypto",
+  "buildDate": "2026-01-13T06:33:44Z",
+  "goVersion": "go1.25.5 X:boringcrypto",
   "compiler": "gc",
   "platform": "darwin/arm64"
 }
