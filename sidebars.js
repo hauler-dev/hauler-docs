@@ -80,6 +80,7 @@ const sidebars = {
         'guides-references/hauler-manifests',
         'guides-references/hauler-content',
         'guides-references/hauler-collections',
+        'guides-references/rewriting-artifacts',
       ],
     },
     'known-limits',
