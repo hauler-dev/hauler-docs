@@ -21,9 +21,10 @@ Usage:
   hauler store save [flags]
 
 Flags:
-  -f, --filename string   (Optional) Specify the name of outputted haul (default "haul.tar.zst")
-  -h, --help              help for save
-  -p, --platform string   (Optional) Specify the platform for runtime imports... i.e. linux/amd64 (unspecified implies all)
+  -f, --filename string    (Optional) Specify the name of outputted haul (default "haul.tar.zst")
+  -h, --help                help for save
+  -p, --platform string    (Optional) Specify the platform for runtime imports... i.e. linux/amd64 (unspecified implies all)
+      --containerd string  (Optional) Enable import directly to containerd
 
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
@@ -32,4 +33,14 @@ Global Flags:
   -r, --retries int        Set the number of retries for operations (default 3)
   -s, --store string       Set the directory to use for the content store
   -t, --tempdir string     (Optional) Override the default temporary directory determined by the OS
+```
+
+### Example for Containerd Import
+
+>Note: Available in Hauler v1.4.1+.
+
+If you intend to import the saved tarball directly to containerd, use the `containerd` flag to ensure the bundled artifacts are compatible, regardless of store contents. This will ensure the oci-layout file is not included, which may cause unexpected interpretation of artifact types by containerd. 
+
+```
+hauler store save --containerd --platform linux/amd64
 ```
