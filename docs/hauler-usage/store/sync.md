@@ -33,7 +33,6 @@ Flags:
   -c, --product-registry string                         (Optional) Specify the product registry. Defaults to RGS Carbide Registry (rgcrprod.azurecr.us)
       --products strings                                (Optional) Specify the product name to fetch collections from the product registry i.e. rancher=v2.10.1,rke2=v1.31.5+rke2r1
   -g, --registry string                                 (Optional) Specify the registry of the image for images that do not alredy define one
-      --rewrite string                                  (Optional) Rewrite artifact path to specified string (EXPERIMENTAL)
       --use-tlog-verify                                 (Optional) Allow transparency log verification (defaults to false)
 
 Global Flags:
