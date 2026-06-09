@@ -6,7 +6,11 @@ sidebar_label: Fileserver
 
 ### Overview
 
-`hauler store serve fileserver` serves the fileserver.
+`hauler store serve fileserver` runs a simple HTTP file server backed by the file and chart artifacts in the content store.
+
+Use it on the airgapped side to hand out the non-image content you collected — install scripts, binaries, tarballs, charts, and other files — to machines that can reach it over HTTP(S). It's the network-served counterpart to [`hauler store extract`](../extract.md), which writes the same artifacts to local disk instead. For example, you might serve `get.rke2.io`'s install script and the RKE2 binaries from one host so the rest of the airgapped fleet can `curl` them. Enable TLS with `--tls-cert`/`--tls-key`, and tune `--timeout` for large transfers.
+
+> **Note:** The fileserver only exposes files and charts. To serve container images, use [`hauler store serve registry`](./registry.md).
 
 **An example with available flags...**
 

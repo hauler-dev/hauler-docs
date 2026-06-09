@@ -4,7 +4,9 @@ description: Fetching Images on a Cluster Documentation
 sidebar_label: Fetch Cluster Images
 ---
 
-It may be difficult to understand exactly what `content` is actively within your environment. Below is a simple way to generate a list of all images running in your environment, store it as an environment variable, and show the list by echoing the environment variable.
+It can be difficult to know exactly what images are actively running in your environment. Below is a simple way to generate a list of every image in a running cluster, store it as an environment variable, and turn that list into a [Hauler manifest](hauler-manifests.md) you can sync into your store.
+
+Capturing your cluster's images as a manifest makes the set reproducible: you can version-control it, review changes over time, and re-sync the exact same content on demand — so rebuilding a haul or standing up the cluster again in a disconnected environment is repeatable rather than a manual scramble.
 
 ## Fetch Cluster Images
 
@@ -67,4 +69,12 @@ spec:
     - name: rancher/hardened-k8s-metrics-server:v0.5.0-build20211119
     - name: rancher/klipper-helm:v0.7.0-build20220315
     - name: rancher/nginx-ingress-controller:nginx-1.0.2-hardened4
+```
+
+## Sync the Manifest
+
+With the manifest generated, sync its images into your store with [`hauler store sync`](../hauler-usage/store/sync.md):
+
+```bash
+hauler store sync --filename hauler-manifest.yaml
 ```

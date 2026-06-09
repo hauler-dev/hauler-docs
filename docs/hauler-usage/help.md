@@ -4,7 +4,7 @@ description: Hauler Usage Documentation
 sidebar_label: Hauler Help
 ---
 
-`hauler` is the airgap swiss army knife.
+The `hauler help` command displays help information for `hauler` and any of its commands, including available subcommands, flags, and usage examples. Run `hauler [command] --help` to get detailed help for a specific command.
 
 ### Command Overview
 

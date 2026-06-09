@@ -6,12 +6,16 @@ sidebar_label: Registry
 
 ### Overview
 
-`hauler store serve registry` serves the OCI Compliant registry.
+`hauler store serve registry` runs an OCI-compliant container registry backed by the content store, making every image (and chart) it contains pullable over the network.
+
+This is how you put collected images to work inside the airgap without depending on an external registry. Point your cluster, container runtime, or `docker pull` at the address Hauler is serving and pull as you normally would. It's ideal for bootstrapping a cluster or standing up a lightweight, self-contained registry on the airgapped side. The registry runs **read-only** by default; pass `--readonly=false` if clients need to push into it. For anything beyond the basics, supply a full distribution config with `--config` (it overrides all other flags), and enable TLS with `--tls-cert`/`--tls-key`.
+
+> **Tip:** If you only need to seed an existing registry rather than serve one via Hauler, use [`hauler store copy registry://...`](../copy.md) instead. This is the recommended practice for long-running registry needs.
 
 **An example with available flags...**
 
 ```bash
-hauler store serve registry --port <port> --timeout <timeout> --readonly --tls-cert <cert> --tls-key <key>
+hauler store serve registry --port <port> --readonly=false --tls-cert <cert> --tls-key <key>
 ```
 
 ### Command Overview

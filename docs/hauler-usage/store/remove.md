@@ -6,9 +6,9 @@ sidebar_label: Remove
 
 ### Overview
 
-`hauler store remove` removes matching item(s) from the store using simple string matching.
+`hauler store remove` deletes matching artifact(s) from the content store using simple substring matching, then garbage-collects the unreferenced blobs to reclaim disk space.
 
-> Note: `remove` is an experimental feature as of Hauler v1.4.0.
+Use it to prune a store before saving — for example, to drop an image you added by mistake, remove an old version you no longer ship, or trim content down so the resulting `haul` is smaller. Because matching is substring-based, a reference like `:latest` or `busybox` can match several artifacts at once. Hauler lists what it found and prompts for confirmation before deleting (use `--force` to skip the prompt). Run [`hauler store info`](./info.md) first to see the exact references in the store.
 
 **An example with available flags...**
 

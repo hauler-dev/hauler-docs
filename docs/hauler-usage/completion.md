@@ -6,7 +6,7 @@ sidebar_label: Hauler Completion
 
 ### Overview
 
-`hauler completion` generate auto-completion scripts for various shells.
+`hauler completion` generates shell auto-completion scripts for bash, fish, zsh, and powershell, so you can tab-complete Hauler's commands and flags. Source the output for your shell (see the per-shell examples below) to enable it.
 
 ### Command Overview
 

@@ -4,9 +4,9 @@ description: Quickstart Documentation for Hauler
 sidebar_label: Quickstart
 ---
 
-Skipping past most of the documentation? Here's an easy to follow Quick Start Guide:
+This quickstart guide walks you through installing Hauler and getting started with the basics, including adding artifacts to the Hauler store, saving and loading content, and serving it.
 
-## Quick Installation
+## Installation
 
 ```bash
 # install latest release
@@ -96,17 +96,14 @@ hauler store info
 hauler store save --filename haul.tar.zst
 ```
 
----
----
----
-
 ### Airgap the `haul.tar.zst` (aka the "haul")
 
-For this quickstart and example use of `hauler`, we can simulate airgapping to the disconnected environment by deleting the "store" directory with the following command: `rm -rf store`
+In a real airgap workflow, you would physically transfer the `haul.tar.zst` tarball and the Hauler CLI to your disconnected environment. For this quickstart, we can simulate that move by deleting the local `store` directory:
 
----
----
----
+```bash
+# remove the local store to simulate moving to an airgapped environment
+rm -rf store
+```
 
 ### Load the Airgapped Hauler Store
 
@@ -138,10 +135,6 @@ hauler login <registry-url> --username <username> --password <password>
 # copy the content to a registry from the hauler store
 # copies oci compliant artifacts
 hauler store copy registry://<registry-url>
-
-# copy the content to a directory from the hauler store
-# copies non oci compliant artifacts
-hauler store copy dir://<path/to/directory>
 ```
 
 ### Extract Content from the Hauler Store

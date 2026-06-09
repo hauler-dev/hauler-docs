@@ -9,14 +9,12 @@ sidebar_label: Uninstall
 ### Linux/Darwin
 
 ```bash
-# uninstall hauler
 curl -sfL https://get.hauler.dev | HAULER_UNINSTALL=true bash
 ```
 
 ### Homebrew
 
 ```bash
-# installs latest release
 brew uninstall hauler
 ```
 
@@ -36,16 +34,4 @@ sudo rm -f /usr/local/bin/hauler
 
 # remove the working/installation directory
 rm -rf "$HOME/.hauler"
-```
-
-### Homebrew
-
-```bash
-# not applicable
-```
-
-### Windows
-
-```bash
-# coming soon
 ```

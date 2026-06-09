@@ -4,9 +4,13 @@ description: Hauler Manifests Documentation
 sidebar_label: Hauler Manifests
 ---
 
+A Hauler manifest is a declarative YAML description of the [content](hauler-content.md) you want in your store. Instead of adding artifacts one at a time, you list them in a manifest and apply it with [`hauler store sync`](../hauler-usage/store/sync.md), keeping your hauls reproducible and version-controlled.
+
+Each manifest describes a single content `kind` — `Images`, `Charts`, or `Files` — and a single file may hold multiple documents separated by `---`. Manifest-level `annotations` set defaults for every entry in the manifest, while per-artifact fields override those defaults. The examples below show the schema for each kind.
+
 ## Example Manifest for Images
 
-Please review the Hauler Content Pages for [Images](../hauler-usage/store/add/image.md) for more detailed information.
+Please review the [Images](../hauler-usage/store/add/image.md) content page for more detailed information.
 
 ```yaml title="hauler-image-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1
@@ -25,7 +29,7 @@ metadata:
     hauler.dev/certificate-oidc-issuer: <certificate-issuer>
     # repository claim from GH identity token for GitHub workflows
     hauler.dev/certificate-github-workflow-repository: <GH-repo>
-    # example: set transparency log verificaton to true (not compatible with airgap)
+    # example: set transparency log verification to true (not compatible with airgap)
     hauler.dev/use-tlog-verify: true
 spec:
   images:
@@ -51,7 +55,7 @@ spec:
 
 ## Example Manifest for Charts
 
-Please review the Hauler Content Pages for [Charts](../hauler-usage/store/add/chart.md) for more detailed information.
+Please review the [Charts](../hauler-usage/store/add/chart.md) content page for more detailed information.
 
 ```yaml title="hauler-chart-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1
@@ -59,9 +63,9 @@ kind: Charts
 metadata:
   name: hauler-content-charts-example
   annotations:
-  # example: key set globally, but not observed if set per image
-  hauler.dev/key: <cosign-public-key>
-  hauler.dev/registry: <registry>
+    # example: key set globally, but not observed if set per chart
+    hauler.dev/key: <cosign-public-key>
+    hauler.dev/registry: <registry>
 spec:
   charts:
     # fetch helm chart
@@ -81,7 +85,7 @@ spec:
 
 ## Example Manifest for Files
 
-Please review the Hauler Content Pages for [Files](../hauler-usage/store/add/file.md) for more detailed information.
+Please review the [Files](../hauler-usage/store/add/file.md) content page for more detailed information.
 
 ```yaml title="hauler-file-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1

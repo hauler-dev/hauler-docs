@@ -4,31 +4,39 @@ description: Core Concepts Documentation for Hauler
 sidebar_label: Core Concepts
 ---
 
+Hauler is built around a small set of concepts that work together to move artifacts across an airgap. Understanding how they nest makes everything else in these docs easier to follow:
+
+- A **Haul** is the portable archive you carry across the airgap.
+- It contains one or more **Collections**.
+- Each Collection groups one or more pieces of **Content** (the actual artifacts).
+
 ![hauler-diagram](/img/hauler-diagram.png)
 
 ## Haul
 
 :::tip SUMMARY:
 
-`Hauls` are Compressed Archive (Tarball) of Hauler Collections and Content.
+`Hauls` are a compressed archive (tarball) of Hauler Collections and Content.
 
 :::
 
-At the heart of Hauler lies the concept of a `Haul`. A `Haul` is a compressed archive, often in the form of a tarball, containing Hauler collections and content. It serves as a container for grouping and transporting various data types, making it a fundamental element in the Hauler ecosystem.
+At the heart of Hauler lies the concept of a `Haul`. A `Haul` is a compressed archive in the form of a tarball, containing Hauler collections and content. It serves as a convenient method for grouping and transporting various data types, making it a fundamental element in the Hauler ecosystem.
+
+Because a `Haul` is a single, self-contained tarball, it is the unit you actually move across the airgap. You build it on the connected side, transfer the file by whatever means your environment allows (physical media, one-way transfer, etc.), and then unpack and serve its contents on the disconnected side.
 
 ## Collections
 
 :::tip SUMMARY:
 
-`Collections` are Grouping of one or more Hauler Contents.
+`Collections` are a grouping of one or more Hauler Contents.
 
 :::
 
-`Collections` are the building blocks of Hauler. These are groupings of one or more Hauler `contents`. Think of `collections` as organized sets of data that collectively represent something desirable.
+`Collections` are the building blocks of Hauler. These are groupings of one or more Hauler `contents`. Think of `collections` as organized sets of data that collectively represent a desired end result — for example, every image, chart, and file needed to stand up a particular application.
 
 ### Community Collections
 
-While `collections` (and `contents`) are built into Hauler, our goal is to empower operators to define their own `collections`. This way, you can tailor Hauler to your unique requirements and take full control of your artifacts.
+While `collections` (and `contents`) are built into Hauler, our goal is to empower operators to define their own `collections`. This way, you can tailor Hauler to your unique requirements and take full control of your artifacts. See [Hauler Collections](guides-references/hauler-collections.md) for details on defining your own.
 
 ### RGS Carbide Collections
 
@@ -38,7 +46,7 @@ While `collections` (and `contents`) are built into Hauler, our goal is to empow
 
 :::tip SUMMARY:
 
-`Contents` are Artifacts such as Images, Charts, or Files.
+`Contents` are artifacts such as images, charts, or files.
 
 :::
 
@@ -48,23 +56,26 @@ In Hauler's terminology, `content` refers to artifacts such as **container image
 - `Artifact`: Anything that can be represented as an OCI (Open Container Initiative) Compliant Artifact.
   - OCI Compliant Artifacts provide a standardized way to store arbitrary files, making it easier to manage content efficiently.
 
+For a closer look at each content type and how it's handled, see [Hauler Content](guides-references/hauler-content.md).
+
 ### Declarative Content
 
-While manually adding content to `Hauler` is an easy way to get started, there is a more sustainable approach... `Hauler` provides a declarative and programmatic approach by allowing operators to define `content` within a configuration file, known as a manifest. This approach ensures a more reproducable workflow for managing the lifecycle of your `hauls`. Check it out [here](guides-references/hauler-manifests.md)!
-
+While manually adding content to `Hauler` is an easy way to get started, `Hauler` also provides a declarative and programmatic approach by allowing operators to define `content` within a configuration file, known as a manifest. This approach ensures a more reproducible workflow for managing the lifecycle of your `hauls`. Check it out [here](guides-references/hauler-manifests.md)!
 
 ## Signature Verification
 
 :::tip SUMMARY:
 
-As part of a secure supply chain, you can set Hauler to verify artifact signatures on both sides of the airgap, when adding to store and seeding registry. 
+As part of a secure supply chain, you can set Hauler to verify artifact signatures on both sides of the airgap, when adding to store and seeding registry.
 
 :::
 
+Hauler uses [cosign](https://github.com/sigstore/cosign) under the hood to verify artifact signatures. Verification can happen on both sides of the airgap — when adding content to the store on the connected side, and when seeding a registry on the disconnected side — so you can trust that artifacts haven't been tampered with in transit.
+
 ### Public Key
 
-The cosign public key can be set via the command line flag `--key` (`-k`) or as an annotation in the Hauler Manifest. 
+The cosign public key can be set via the command line flag `--key` (`-k`) or as an annotation in the Hauler Manifest.
 
 ### Keyless Verification
 
-New to Hauler v1.2.3+, keyless verification can also be performed. The flags `--certificate-identity-regexp`, `--certificate-oidc-issuer`, and `--certificate-github-workflow-repository` can be set or annotations added in the Hauler Manifest. Check out some examples [here](https://docs.hauler.dev/docs/guides-references/hauler-manifests)!
+As of Hauler v1.2.3+, keyless verification can also be performed. The flags `--certificate-identity-regexp`, `--certificate-oidc-issuer`, and `--certificate-github-workflow-repository` can be set or annotations added in the Hauler Manifest. Check out some examples [here](https://docs.hauler.dev/docs/guides-references/hauler-manifests)!
