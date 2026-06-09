@@ -10,11 +10,11 @@ Hauler is a purpose built to be a single binary with no prerequistes, depedencie
 
 ## Supported Architectures
 
-| Base Platform |    Architecture     |                  Latest Release                   |
-| :-----------: | :-----------------: | :-----------------------------------------------: |
-|     Linux     | `amd64` and `arm64` | https://github.com/hauler-dev/hauler/releases |
-|    Darwin     | `amd64` and `arm64` | https://github.com/hauler-dev/hauler/releases |
-|    Windows    | `amd64` and `arm64` | https://github.com/hauler-dev/hauler/releases |
+| Base Platform |    Architecture     |
+| :-----------: | :-----------------: |
+|     Linux     | `amd64` and `arm64` |
+|    Darwin     | `amd64` and `arm64` |
+|    Windows    | `amd64` and `arm64` |
 
 ## Installation Steps
 
@@ -72,16 +72,4 @@ export arch=ARCH
 curl -sOL https://github.com/hauler-dev/hauler/releases/download/v${vHauler}/hauler_${vHauler}_${platform}_${arch}.tar.gz
 tar -xf hauler_${vHauler}_${platform}_${arch}.tar.gz
 sudo mv hauler /usr/bin/hauler
-```
-
-### Homebrew
-
-```bash
-# not applicable
-```
-
-### Windows
-
-```bash
-# coming soon
 ```
