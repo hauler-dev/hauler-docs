@@ -12,7 +12,10 @@ Capturing your cluster's images as a manifest makes the set reproducible: you ca
 
 ```bash
 # fetch all images in the cluster, remove duplicates, alphabetize, and put on a newline
-export IMAGE_LIST=$(kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}" | sed 's/ /\n/g' | sort | uniq)
+export IMAGE_LIST=$({
+  kubectl get pods --all-namespaces -o jsonpath="{range .items[*]}{.spec.containers[*].image} {.spec.initContainers[*].image} {.spec.ephemeralContainers[*].image}{'\n'}{end}"
+  kubectl get cronjobs --all-namespaces -o jsonpath="{range .items[*]}{.spec.jobTemplate.spec.template.spec.containers[*].image} {.spec.jobTemplate.spec.template.spec.initContainers[*].image}{'\n'}{end}"
+} | tr ' ' '\n' | sort -u | sed '/^$/d')
 ```
 
 ## Example Output
