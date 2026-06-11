@@ -55,7 +55,23 @@ const config = {
         indexBaseUrl: true,
         highlightResult: true
       }
-    ]
+    ],
+    [
+      require.resolve('@docusaurus/plugin-client-redirects'),
+      {
+        // The "introduction" section was renamed to "getting-started".
+        // For every getting-started page, redirect its old introduction URL.
+        // While a released version still serves /docs/introduction/* (e.g. 1.4.x),
+        // that redirect collides with a live page and is ignored automatically;
+        // it activates once "getting-started" becomes the latest version.
+        createRedirects(existingPath) {
+          if (existingPath.includes('/getting-started/')) {
+            return [existingPath.replace('/getting-started/', '/introduction/')];
+          }
+          return undefined;
+        },
+      },
+    ],
   ],
 
   themeConfig:
@@ -105,6 +121,10 @@ const config = {
               },
               {
                 label: 'Quickstart Guide',
+                // Resolves to the latest version's quickstart. While 1.4.x is the
+                // latest this serves /introduction/quickstart directly; once 2.0
+                // (getting-started) becomes latest, the client-redirects plugin
+                // forwards this to /getting-started/quickstart automatically.
                 to: '/docs/introduction/quickstart',
               },
               {
