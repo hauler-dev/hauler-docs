@@ -23,14 +23,12 @@ const sidebars = {
       description: 'Usage Documentation for Hauler',
       collapsed: false,
       items: [
-        'hauler-usage/overview',
         {
           type: 'category',
           label: 'Hauler Store',
           description: 'Usage Documentation for Hauler Store',
           collapsed: true,
           items: [
-            'hauler-usage/store/overview',
             {
               type: 'category',
               label: 'Add',
@@ -73,7 +71,6 @@ const sidebars = {
       description: 'Reference Guides Documentation for Hauler',
       collapsed: false,
       items: [
-        'guides-references/overview',
         'guides-references/carbide-customers',
         'guides-references/hauler-content',
         'guides-references/hauler-collections',
