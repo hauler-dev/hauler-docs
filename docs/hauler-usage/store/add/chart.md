@@ -10,7 +10,7 @@ sidebar_label: Chart
 
 Reach for this on the internet-connected side when you need a chart available offline. Charts on their own are rarely enough, though: the container images a chart deploys live in separate registries and are **not** pulled automatically. Add `--add-images` to also collect the images referenced by the chart's templates, annotations, and image lock files, and `--add-dependencies` to pull dependent (subchart) charts as well. For a repeatable set of charts, define them in a [Hauler manifest](#hauler-manifest-for-charts) and run [`hauler store sync`](../sync.md) instead of adding them one by one.
 
-> **Note:** `--add-images`, `--add-dependencies`, `--values`, and `--kube-version` are experimental. Image discovery renders the chart with `helm template`, so results depend on the values and Kubernetes version used; review the collected images with [`hauler store info`](../info.md) before relying on them.
+> **Note:** Image discovery renders the chart with `helm template`, so results depend on the values and Kubernetes version used. Review the collected images with [`hauler store info`](../info.md) before relying on them.
 
 **An example with available flags...**
 
@@ -47,22 +47,22 @@ hauler store add chart rancher --repo https://releases.rancher.com/server-charts
 hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --rewrite custom-path/hauler-chart:latest
 
 Flags:
-      --add-dependencies           (EXPERIMENTAL & Optional) Fetch dependent helm charts
-      --add-images                 (EXPERIMENTAL & Optional) Fetch images referenced in helm charts
+      --add-dependencies           (Optional) Fetch dependent helm charts
+      --add-images                 (Optional) Fetch images referenced in helm charts
       --ca-file string             (Optional) Location of CA Bundle to enable certification verification
       --cert-file string           (Optional) Location of the TLS Certificate to use for client authentication
       --exclude-extras             (Optional) Exclude cosign signatures, attestations, SBOMs, and OCI referrers when pulling images discovered via --add-images
   -h, --help                       help for chart
       --insecure-skip-tls-verify   (Optional) Skip TLS certificate verification
       --key-file string            (Optional) Location of the TLS Key to use for client authentication
-      --kube-version string        (EXPERIMENTAL & Optional) Override the kubernetes version for helm template rendering (default "v1.34.1")
+      --kube-version string        (Optional) Override the kubernetes version for helm template rendering (default "v1.34.1")
       --password string            (Optional) Password to use for authentication
   -p, --platform string            (Optional) Specify the platform of the image, e.g. linux/amd64
   -g, --registry string            (Optional) Specify the registry of the image for images that do not alredy define one
       --repo string                Location of the chart (https:// | http:// | oci://)
       --rewrite string             (Optional) Rewrite artifact path to specified string
       --username string            (Optional) Username to use for authentication
-      --values string              (EXPERIMENTAL & Optional) Specify helm chart values when fetching images
+      --values string              (Optional) Specify helm chart values when fetching images
       --verify                     (Optional) Verify the chart before fetching it
       --version string             (Optional) Specify the version of the chart (v1.0.0 | 2.0.0 | ^2.0.0)
 
