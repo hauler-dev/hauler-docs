@@ -121,15 +121,14 @@ const config = {
               },
               {
                 label: 'Quickstart Guide',
-                // Resolves to the latest version's quickstart. While 1.4.x is the
-                // latest this serves /introduction/quickstart directly; once 2.0
-                // (getting-started) becomes latest, the client-redirects plugin
-                // forwards this to /getting-started/quickstart automatically.
-                to: '/docs/introduction/quickstart',
+                // Resolves to the latest version's quickstart. 2.0.x (getting-started)
+                // is now latest; the client-redirects plugin forwards the old
+                // /docs/introduction/quickstart URL here automatically.
+                to: '/docs/getting-started/quickstart',
               },
               {
                 label: 'Reference Guides',
-                to: '/docs/guides-references/overview',
+                to: '/docs/guides-references/carbide-customers',
               },
             ],
           },
