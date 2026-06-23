@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkhauler_docs=globalThis.webpackChunkhauler_docs||[]).push([[2634],{30192(r,s,u){u.r(s),u.d(s,{default:()=>c});u(96540);var a=u(56347),o=u(74848);function c(){return(0,o.jsx)(a.rd,{to:"/docs/intro"})}}}]);
