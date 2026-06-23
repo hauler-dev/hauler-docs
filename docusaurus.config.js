@@ -55,7 +55,23 @@ const config = {
         indexBaseUrl: true,
         highlightResult: true
       }
-    ]
+    ],
+    [
+      require.resolve('@docusaurus/plugin-client-redirects'),
+      {
+        // The "introduction" section was renamed to "getting-started".
+        // For every getting-started page, redirect its old introduction URL.
+        // While a released version still serves /docs/introduction/* (e.g. 1.4.x),
+        // that redirect collides with a live page and is ignored automatically;
+        // it activates once "getting-started" becomes the latest version.
+        createRedirects(existingPath) {
+          if (existingPath.includes('/getting-started/')) {
+            return [existingPath.replace('/getting-started/', '/introduction/')];
+          }
+          return undefined;
+        },
+      },
+    ],
   ],
 
   themeConfig:
@@ -105,11 +121,14 @@ const config = {
               },
               {
                 label: 'Quickstart Guide',
-                to: '/docs/introduction/quickstart',
+                // Resolves to the latest version's quickstart. 2.0.x (getting-started)
+                // is now latest; the client-redirects plugin forwards the old
+                // /docs/introduction/quickstart URL here automatically.
+                to: '/docs/getting-started/quickstart',
               },
               {
                 label: 'Reference Guides',
-                to: '/docs/guides-references/overview',
+                to: '/docs/guides-references/carbide-customers',
               },
             ],
           },
