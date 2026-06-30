@@ -74,7 +74,8 @@
         "guides-references/hauler-collections",
         "guides-references/hauler-manifests",
         "guides-references/rewriting-artifacts",
-        "guides-references/cluster-images"
+        "guides-references/cluster-images",
+        "guides-references/custom-product-manifests"
       ]
     },
     "known-limits",
