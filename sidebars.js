@@ -77,6 +77,7 @@ const sidebars = {
         'guides-references/hauler-manifests',
         'guides-references/rewriting-artifacts',
         'guides-references/cluster-images',
+        "guides-references/custom-product-manifests"
       ],
     },
     'known-limits',
