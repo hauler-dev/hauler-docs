@@ -104,15 +104,33 @@ hauler store add chart gitea --repo https://dl.gitea.com/charts --add-images
 
 # fetch remote helm chart and dependent chart(s)
 hauler store add chart gitea --repo https://dl.gitea.com/charts --add-dependencies
+
+# fetch remote helm chart from a repository with a private CA
+hauler store add chart internal-chart --repo https://charts.internal.example.com --ca-file /path/to/ca.pem
+
+# fetch remote helm chart from a repository with a self-signed or otherwise unverifiable certificate
+hauler store add chart internal-chart --repo https://charts.internal.example.com --insecure-skip-tls-verify
 ```
 
+### Configuring TLS for Chart Repositories
+
+Use `--ca-file` to trust a private or internal CA when fetching from an HTTP(S) or OCI chart repository that presents a certificate not signed by a public CA, or `--insecure-skip-tls-verify` to skip certificate verification entirely. Unlike `hauler store add image`, this command does **not** fall back to the `CA_FILE` / `INSECURE_SKIP_TLS_VERIFY` environment variables when run standalone — use the flags directly, or use [`hauler store sync`](../sync.md), which does support the environment variables for chart entries.
+
+> **Note:** `--ca-file` and `--insecure-skip-tls-verify` are mutually exclusive — supplying a CA file always forces certificate verification on, regardless of `--insecure-skip-tls-verify`. When neither is set, the system's default CA bundle is used.
+
 ### Hauler Manifest for Charts
+
+Used with [`hauler store sync`](../sync.md). CLI flags override per-chart fields, which override manifest-level annotations.
 
 ```yaml title="hauler-chart-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1
 kind: Charts
 metadata:
   name: hauler-content-charts-example
+  annotations:
+    # global TLS options for all charts in the manifest (mutually exclusive; ca-file wins if both are set)
+    hauler.dev/ca-file: <path-to-ca-bundle>
+    hauler.dev/insecure-skip-tls-verify: "true"
 spec:
   charts:
     # fetch helm chart
@@ -121,6 +139,9 @@ spec:
       repoURL: <chart-repository>
       # semver complaint
       version: <chart-version>
+      # TLS options for fetching this chart (mutually exclusive; ca-file wins if both are set)
+      caFile: <path-to-ca-bundle>
+      insecureSkipTLSVerify: false
 ```
 
 ### Example Manifest for Charts

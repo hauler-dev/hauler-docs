@@ -48,6 +48,7 @@ hauler store add image busybox --rewrite custom-path/busybox:latest
 hauler store add image my-local-app:latest --local
 
 Flags:
+      --ca-file string                                  (Optional) Location of CA Bundle to enable certification verification
       --certificate-github-workflow-repository string   (Optional) Cosign certificate-github-workflow-repository option
       --certificate-identity string                     (Optional) Cosign certificate-identity (either --certificate-identity or --certificate-identity-regexp required for keyless verification)
       --certificate-identity-regexp string              (Optional) Cosign certificate-identity-regexp (either --certificate-identity or --certificate-identity-regexp required for keyless verification)
@@ -55,6 +56,7 @@ Flags:
       --certificate-oidc-issuer-regexp string           (Optional) Cosign option to validate oidc issuer with regex
       --exclude-extras                                  (Optional) Exclude cosign signatures, attestations, SBOMs, and OCI referrers when pulling the image
   -h, --help                                            help for image
+      --insecure-skip-tls-verify                        (Optional) Skip TLS certificate verification
   -k, --key string                                      (Optional) Location of public key to use for signature verification
       --local                                           (Optional) Add image from the local Docker daemon instead of a remote registry
   -p, --platform string                                 (Optional) Specify the platform of the image... i.e. linux/amd64 (defaults to all)
@@ -102,7 +104,27 @@ hauler store add image busybox --exclude-extras
 
 # add image from the local Docker daemon instead of a remote registry
 hauler store add image my-local-app:latest --local
+
+# fetch image from a registry with a private CA
+hauler store add image registry.example.com/app:latest --ca-file /path/to/ca.pem
+
+# fetch image from a registry with a self-signed or otherwise unverifiable certificate
+hauler store add image registry.example.com/app:latest --insecure-skip-tls-verify
 ```
+
+### Configuring TLS for Registry Connections
+
+Use `--ca-file` to trust a private or internal CA when pulling from a registry that presents a certificate not signed by a public CA, or `--insecure-skip-tls-verify` to skip certificate verification entirely (self-signed certs, testing, etc.). Both flags can also be set via the `CA_FILE` and `INSECURE_SKIP_TLS_VERIFY` environment variables, which apply whenever the corresponding flag isn't explicitly passed.
+
+```bash
+# via flag
+hauler store add image registry.example.com/app:latest --ca-file /path/to/ca.pem
+
+# via environment variable
+CA_FILE=/path/to/ca.pem hauler store add image registry.example.com/app:latest
+```
+
+> **Note:** `--ca-file` and `--insecure-skip-tls-verify` are mutually exclusive — supplying a CA file always forces certificate verification on, regardless of `--insecure-skip-tls-verify`. When neither is set, the system's default CA bundle is used.
 
 ### Adding an Image from the Local Docker Daemon
 
@@ -124,7 +146,7 @@ hauler store add image busybox --exclude-extras
 
 ### Hauler Manifest for Images
 
-Per-image fields override manifest-level annotations, which override CLI flags. The following shows all supported per-image fields and annotations:
+Used with [`hauler store sync`](../sync.md). CLI flags override per-image fields, which override manifest-level annotations. The following shows all supported per-image fields and annotations:
 
 ```yaml title="hauler-image-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1
@@ -148,6 +170,9 @@ metadata:
     hauler.dev/certificate-oidc-issuer: <cosign-oidc-issuer>
     hauler.dev/certificate-oidc-issuer-regexp: <cosign-oidc-issuer-regexp>
     hauler.dev/certificate-github-workflow-repository: <cosign-github-workflow-repository>
+    # TLS options for pulling from the registry (mutually exclusive; ca-file wins if both are set)
+    hauler.dev/ca-file: <path-to-ca-bundle>
+    hauler.dev/insecure-skip-tls-verify: "true"
 spec:
   images:
     - name: <image-reference>
@@ -169,6 +194,9 @@ spec:
       certificate-oidc-issuer: <cosign-oidc-issuer>
       certificate-oidc-issuer-regexp: <cosign-oidc-issuer-regexp>
       certificate-github-workflow-repository: <cosign-github-workflow-repository>
+      # TLS options for pulling this image (mutually exclusive; ca-file wins if both are set)
+      ca-file: <path-to-ca-bundle>
+      insecure-skip-tls-verify: false
 ```
 
 ### Example Manifest for Images

@@ -33,8 +33,10 @@ hauler store add file https://get.rke2.io/install.sh
 hauler store add file https://get.hauler.dev --name hauler-install.sh
 
 Flags:
-  -h, --help          help for file
-  -n, --name string   (Optional) Rewrite the name of the file
+      --ca-file string             (Optional) Location of CA Bundle to enable certification verification for remote files
+  -h, --help                       help for file
+      --insecure-skip-tls-verify   (Optional) Skip TLS certificate verification for remote files
+  -n, --name string                (Optional) Rewrite the name of the file
 
 Global Flags:
   -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
@@ -56,19 +58,40 @@ hauler store add file https://get.rke2.io/install.sh
 
 # fetch remote file and assign new name
 hauler store add file https://get.hauler.dev --name hauler-install.sh
+
+# fetch remote file from a host with a private CA
+hauler store add file https://internal.example.com/install.sh --ca-file /path/to/ca.pem
+
+# fetch remote file from a host with a self-signed or otherwise unverifiable certificate
+hauler store add file https://internal.example.com/install.sh --insecure-skip-tls-verify
 ```
 
+### Configuring TLS for Remote Files
+
+`--ca-file` and `--insecure-skip-tls-verify` only affect files fetched over `http://`/`https://`; they're ignored for local paths. Unlike `hauler store add image`, this command does **not** fall back to the `CA_FILE` / `INSECURE_SKIP_TLS_VERIFY` environment variables — use the flags directly, or use [`hauler store sync`](../sync.md), which does support the environment variables.
+
+> **Note:** `--ca-file` and `--insecure-skip-tls-verify` are mutually exclusive — supplying a CA file always forces certificate verification on, regardless of `--insecure-skip-tls-verify`. When neither is set, the system's default CA bundle is used.
+
 ### Hauler Manifest for Files
+
+Used with [`hauler store sync`](../sync.md). CLI flags override per-file fields, which override manifest-level annotations.
 
 ```yaml title="hauler-file-manifest.yaml"
 apiVersion: content.hauler.cattle.io/v1
 kind: Files
 metadata:
   name: hauler-content-files-example
+  annotations:
+    # global TLS options for all remote files in the manifest (mutually exclusive; ca-file wins if both are set)
+    hauler.dev/ca-file: <path-to-ca-bundle>
+    hauler.dev/insecure-skip-tls-verify: "true"
 spec:
   files:
     - path: <file>
       name: <name>
+      # TLS options for fetching this file, if remote (mutually exclusive; ca-file wins if both are set)
+      ca-file: <path-to-ca-bundle>
+      insecure-skip-tls-verify: false
 ```
 
 ### Example Manifest for Files
@@ -90,4 +113,7 @@ spec:
     # fetch local file and assign new name
     - path: path/to/local/file.txt
       name: local-file.txt
+    # fetch remote file from a host with a private CA
+    - path: https://internal.example.com/install.sh
+      ca-file: /path/to/ca.pem
 ```

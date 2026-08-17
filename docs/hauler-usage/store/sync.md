@@ -21,6 +21,7 @@ Usage:
   hauler store sync [flags]
 
 Flags:
+      --ca-file string                                  (Optional) Location of CA Bundle to enable certification verification
       --certificate-github-workflow-repository string   (Optional) Cosign certificate-github-workflow-repository option
       --certificate-identity string                     (Optional) Cosign certificate-identity (either --certificate-identity or --certificate-identity-regexp required for keyless verification)
       --certificate-identity-regexp string              (Optional) Cosign certificate-identity-regexp (either --certificate-identity or --certificate-identity-regexp required for keyless verification)
@@ -31,6 +32,7 @@ Flags:
   -f, --filename strings                                Specify the name of manifest(s) to sync
   -h, --help                                            help for sync
   -i, --image-txt strings                               Specify local or remote image.txt file(s) to sync images
+      --insecure-skip-tls-verify                        (Optional) Skip TLS certificate verification
   -k, --key string                                      (Optional) Location of public key to use for signature verification
   -p, --platform string                                 (Optional) Specify the platform of the image... i.e linux/amd64 (defaults to all)
   -c, --product-registry string                         (Optional) Specify the product registry. Defaults to RGS Carbide Registry (rgcrprod.azurecr.us)
@@ -84,7 +86,7 @@ hauler store sync --image-txt images.txt --image-txt extra-images.txt
 hauler store sync --image-txt images.txt --platform linux/amd64
 ```
 
-> **Note:** Unlike the `Images` kind in a Hauler manifest, references listed in an `images.txt` file are pulled as-is. Per-image options such as cosign signature verification, registry relocation (`--registry`), and rewrites are **not** applied to entries sourced from an `images.txt` file. Use a Hauler manifest when you need those capabilities. The `--platform` and `--exclude-extras` flags do apply.
+> **Note:** Unlike the `Images` kind in a Hauler manifest, references listed in an `images.txt` file are pulled as-is. Per-image options such as cosign signature verification, registry relocation (`--registry`), and rewrites are **not** applied to entries sourced from an `images.txt` file. Use a Hauler manifest when you need those capabilities. The `--platform`, `--exclude-extras`, `--ca-file`, and `--insecure-skip-tls-verify` flags do apply.
 
 ### Syncing Rancher Products
 
@@ -124,3 +126,19 @@ By default, syncing an image also pulls its associated cosign signatures, attest
 ```bash
 hauler store sync --filename hauler-manifest.yaml --exclude-extras
 ```
+
+### Configuring TLS for Sync Sources
+
+`--ca-file` and `--insecure-skip-tls-verify` control how `hauler store sync` connects to registries and remote hosts for `Images`, `Charts`, and `Files` content, as well as `--image-txt` sources. Both flags can also be set via the `CA_FILE` and `INSECURE_SKIP_TLS_VERIFY` environment variables, which apply whenever the corresponding flag isn't explicitly passed.
+
+```bash
+# via flag, applied to every source synced in this run
+hauler store sync --filename hauler-manifest.yaml --ca-file /path/to/ca.pem
+
+# via environment variable
+CA_FILE=/path/to/ca.pem hauler store sync --filename hauler-manifest.yaml
+```
+
+For `Images`, `Charts`, and `Files` manifests, TLS settings can also be set per-entry or manifest-wide via annotations — see the [Image](./add/image.md#configuring-tls-for-registry-connections), [Chart](./add/chart.md#configuring-tls-for-chart-repositories), and [File](./add/file.md#configuring-tls-for-remote-files) pages. Precedence is CLI flag (or environment variable) &gt; per-entry field &gt; manifest annotation, and an explicit `--insecure-skip-tls-verify=false` on the CLI always wins over a per-entry or annotation value that tries to turn it on.
+
+> **Note:** `--ca-file`/`CA_FILE` and `--insecure-skip-tls-verify`/`INSECURE_SKIP_TLS_VERIFY` are mutually exclusive at the CLI/environment level — passing `--ca-file` (or setting `CA_FILE`) always forces certificate verification on for every entry in the sync, even if a per-entry field or annotation sets `insecure-skip-tls-verify: true`. A per-entry or annotation `ca-file` with no CLI/environment `--ca-file` does **not** override a `true` insecure-skip-tls-verify from another source for that same entry — avoid setting both on one entry. When nothing is set, the system's default CA bundle is used.
