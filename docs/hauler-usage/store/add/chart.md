@@ -62,7 +62,7 @@ Flags:
       --repo string                Location of the chart (https:// | http:// | oci://)
       --rewrite string             (Optional) Rewrite artifact path to specified string
       --username string            (Optional) Username to use for authentication
-      --values string              (Optional) Specify helm chart values when fetching images
+      --values stringArray         (Optional) Specify helm chart values when fetching images
       --verify                     (Optional) Verify the chart before fetching it
       --version string             (Optional) Specify the version of the chart (v1.0.0 | 2.0.0 | ^2.0.0)
 
@@ -105,7 +105,10 @@ hauler store add chart gitea --repo https://dl.gitea.com/charts --add-images
 # fetch remote helm chart and dependent chart(s)
 hauler store add chart gitea --repo https://dl.gitea.com/charts --add-dependencies
 
-# fetch remote helm chart from a repository with a private CA
+# fetch remote helm chart and associated images using custom helm values
+hauler store add chart policy-reporter --repo https://kyverno.github.io/policy-reporter --add-images --values values.yaml
+
+# fetch remote helm chart from a repository with a private ca
 hauler store add chart internal-chart --repo https://charts.internal.example.com --ca-file /path/to/ca.pem
 
 # fetch remote helm chart from a repository with a self-signed or otherwise unverifiable certificate
@@ -217,4 +220,47 @@ spec:
       version: <chart-version>
       # add dependent charts
       add-dependencies: true
+```
+
+### Example Manifest with Custom Helm Values
+
+```yaml title="hauler-chart-manifest.yaml"
+apiVersion: content.hauler.cattle.io/v1
+kind: Charts
+metadata:
+  name: hauler-content-charts-example
+spec:
+  charts:
+    # fetch helm chart
+    - name: <chart-name>
+      # https:// or http:// or oci://
+      repoURL: <chart-repository>
+      # semver complaint
+      version: <chart-version>
+      # add associated images
+      add-images: true
+      # values files used when extracting the container images
+      valuesFiles:
+        - "values.yaml"
+```
+
+### Example Manifest with Platform
+
+```yaml title="hauler-chart-manifest.yaml"
+apiVersion: content.hauler.cattle.io/v1
+kind: Charts
+metadata:
+  name: hauler-content-charts-example
+spec:
+  charts:
+    # fetch helm chart
+    - name: <chart-name>
+      # https:// or http:// or oci://
+      repoURL: <chart-repository>
+      # semver complaint
+      version: <chart-version>
+      # add associated images
+      add-images: true
+      # platform of the images
+      platform: <platform>
 ```

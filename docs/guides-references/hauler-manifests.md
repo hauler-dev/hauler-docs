@@ -81,6 +81,21 @@ spec:
       version: 0.6.1
       add-images: true
       add-dependencies: true
+    # fetch helm chart with specific version and images using custom values files, example use cases:
+    # * fix templating issues due to required Helm Values
+    # * enable a feature that requires additional images
+    - name: rancher-cluster-templates
+      repoURL: oci://ghcr.io/rancherfederal/charts
+      version: 0.6.1
+      add-images: true
+      valuesFiles:
+        - "values.yaml"
+    # fetch helm chart with specific version and images and set the platform used for the images
+    - name: kube-vip
+      repoURL: https://kube-vip.github.io/helm-charts/
+      version: 0.9.9
+      add-images: true
+      platform: linux/amd64
 ```
 
 ## Example Manifest for Files
