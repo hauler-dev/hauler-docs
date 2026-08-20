@@ -40,6 +40,15 @@ const sidebars = {
                 'hauler-usage/store/add/file',
               ],
             },
+            {
+              type: 'category',
+              label: 'Create',
+              description: 'Usage Documentation for Hauler Store Create',
+              collapsed: true,
+              items: [
+                'hauler-usage/store/create/manifest',
+              ],
+            },
             'hauler-usage/store/sync',
             'hauler-usage/store/info',
             'hauler-usage/store/remove',
