@@ -85,6 +85,7 @@ const sidebars = {
         'guides-references/hauler-collections',
         'guides-references/hauler-manifests',
         'guides-references/rewriting-artifacts',
+        'guides-references/artifact-reference',
         'guides-references/cluster-images',
         "guides-references/custom-product-manifests"
       ],
