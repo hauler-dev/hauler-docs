@@ -141,7 +141,6 @@ metadata:
     hauler.dev/platform: <platform>
     hauler.dev/registry: <registry>
     hauler.dev/use-tlog-verify: "true"
-    hauler.dev/rewrite: <rewrite-prefix>
     hauler.dev/exclude-extras: "true"
     hauler.dev/certificate-identity: <cosign-certificate-identity>
     hauler.dev/certificate-identity-regexp: <cosign-certificate-identity-regexp>

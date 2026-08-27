@@ -72,4 +72,4 @@ All components (registry, repository, tag) are changed in the rewrite reference.
 
 ## Rewriting in a Manifest
 
-The same behavior is available declaratively. Set a `rewrite` field on a per-artifact entry (or the `hauler.dev/rewrite` annotation for a manifest-wide prefix) and apply it with [`hauler store sync`](../hauler-usage/store/sync.md). See the [Hauler Manifests](hauler-manifests.md) guide and the [Image](../hauler-usage/store/add/image.md#hauler-manifest-for-images) and [Chart](../hauler-usage/store/add/chart.md) content pages for examples.
+The same behavior is available declaratively. Set a `rewrite` field on a per-artifact entry and apply it with [`hauler store sync`](../hauler-usage/store/sync.md). See the [Hauler Manifests](hauler-manifests.md) guide and the [Image](../hauler-usage/store/add/image.md#hauler-manifest-for-images) and [Chart](../hauler-usage/store/add/chart.md) content pages for examples.
