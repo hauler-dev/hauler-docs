@@ -6,7 +6,7 @@ sidebar_label: Chart
 
 ### Overview
 
-`hauler store add chart` fetches a Helm chart — from an HTTP(S) repository, an OCI registry, or a local path — and stores it as an OCI artifact in the content store.
+`hauler store add chart` fetches a Helm chart - from an HTTP(S) repository, an OCI registry, or a local path - and stores it as an OCI artifact in the content store.
 
 Reach for this on the internet-connected side when you need a chart available offline. Charts on their own are rarely enough, though: the container images a chart deploys live in separate registries and are **not** pulled automatically. Add `--add-images` to also collect the images referenced by the chart's templates, annotations, and image lock files, and `--add-dependencies` to pull dependent (subchart) charts as well. For a repeatable set of charts, define them in a [Hauler manifest](#hauler-manifest-for-charts) and run [`hauler store sync`](../sync.md) instead of adding them one by one.
 

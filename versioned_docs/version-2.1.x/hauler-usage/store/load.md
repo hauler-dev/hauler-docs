@@ -31,12 +31,15 @@ Flags:
   -h, --help               help for load
 
 Global Flags:
-  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
-      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
-  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
-  -r, --retries int        Set the number of retries for operations (default 3)
-  -s, --store string       Set the directory to use for the content store
-  -t, --tempdir string     (Optional) Override the default temporary directory determined by the OS
+      --audit-level string     Set the audit logging level (none, standard, verbose) (defaults standard)
+      --blob-concurrency int   (Optional) Override the maximum number of concurrent blob writes (0 auto-derives from --concurrency where set, otherwise defaults to 16)
+  -d, --haulerdir string       Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors          Warn and continue instead of failing on errors, including storing images that failed verification (defaults false)
+  -l, --log-level string       Set the logging level (i.e. info, debug, warn) (defaults info)
+  -r, --retries int            Set the number of retries for operations (0 uses HAULER_RETRIES, otherwise defaults to 3)
+  -s, --store string           Set the directory to use for the content store
+  -t, --tempdir string         (Optional) Override the default temporary directory determined by the OS
+  -w, --work-dir string        (Optional) Set the directory for output that commands would otherwise write to the current directory (default: current directory)
 ```
 
 ### Example Commands for Load

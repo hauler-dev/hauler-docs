@@ -32,7 +32,7 @@ Because a `Haul` is a single, self-contained tarball, it is the unit you actuall
 
 :::
 
-`Collections` are the building blocks of Hauler. These are groupings of one or more Hauler `contents`. Think of `collections` as organized sets of data that collectively represent a desired end result — for example, every image, chart, and file needed to stand up a particular application.
+`Collections` are the building blocks of Hauler. These are groupings of one or more Hauler `contents`. Think of `collections` as organized sets of data that collectively represent a desired end result - for example, every image, chart, and file needed to stand up a particular application.
 
 ### Community Collections
 
@@ -70,7 +70,7 @@ As part of a secure supply chain, you can set Hauler to verify artifact signatur
 
 :::
 
-Hauler uses [cosign](https://github.com/sigstore/cosign) under the hood to verify artifact signatures. Verification can happen on both sides of the airgap — when adding content to the store on the connected side, and when seeding a registry on the disconnected side — so you can trust that artifacts haven't been tampered with in transit.
+Hauler uses [cosign](https://github.com/sigstore/cosign) under the hood to verify artifact signatures. Verification can happen on both sides of the airgap - when adding content to the store on the connected side, and when seeding a registry on the disconnected side - so you can trust that artifacts haven't been tampered with in transit.
 
 ### Public Key
 

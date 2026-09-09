@@ -4,7 +4,7 @@ description: Hauler Store Create Manifest Usage Documentation
 sidebar_label: Manifest
 ---
 
-> **Note:** This command is **experimental**. It reports what the store's metadata says, which is not always a complete record of how the store was built. Always review the generated manifest before relying on it — see [Accuracy and Limitations](#accuracy-and-limitations).
+> **Note:** This command is **experimental**. It reports what the store's metadata says, which is not always a complete record of how the store was built. Always review the generated manifest before relying on it - see [Accuracy and Limitations](#accuracy-and-limitations).
 
 ### Overview
 
@@ -32,10 +32,10 @@ Examples:
   # print a manifest for the default store to stdout
   hauler store create manifest
 
-  # print a manifest for a specific store to stdout
+	# print a manifest for a specific store to stdout
   hauler store create manifest --store /path/to/my-store
 
-  # write a manifest for a specific store to a file
+	# write a manifest for a specific store to a file
   hauler store create manifest --store /path/to/store --output my-manifest.yaml
 
 Flags:
@@ -51,6 +51,7 @@ Global Flags:
   -r, --retries int            Set the number of retries for operations (0 uses HAULER_RETRIES, otherwise defaults to 3)
   -s, --store string           Set the directory to use for the content store
   -t, --tempdir string         (Optional) Override the default temporary directory determined by the OS
+  -w, --work-dir string        (Optional) Set the directory for output that commands would otherwise write to the current directory (default: current directory)
 ```
 
 ### Example Commands for Create Manifest
@@ -136,7 +137,7 @@ INF wrote manifest with [1] image(s), [1] chart(s), [1] file(s) to [/path/to/hau
 
 ### Rewritten Artifacts
 
-When an artifact was added with [`--rewrite`](../../../guides-references/rewriting-artifacts.md), the generated manifest records both halves of the relationship: `name` is the original, pullable reference and `rewrite` is the reference it is stored under. 
+When an artifact was added with [`--rewrite`](../../../guides-references/rewriting-artifacts.md), the generated manifest records both halves of the relationship: `name` is the original, pullable reference and `rewrite` is the reference it is stored under.
 
 ```bash
 hauler store add image busybox:stable --rewrite custom-path/busybox:latest --store rw-store

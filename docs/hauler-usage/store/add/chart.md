@@ -6,7 +6,7 @@ sidebar_label: Chart
 
 ### Overview
 
-`hauler store add chart` fetches a Helm chart — from an HTTP(S) repository, an OCI registry, or a local path — and stores it as an OCI artifact in the content store.
+`hauler store add chart` fetches a Helm chart - from an HTTP(S) repository, an OCI registry, or a local path - and stores it as an OCI artifact in the content store.
 
 Reach for this on the internet-connected side when you need a chart available offline. Charts on their own are rarely enough, though: the container images a chart deploys live in separate registries and are **not** pulled automatically. Add `--add-images` to also collect the images referenced by the chart's templates, annotations, and image lock files, and `--add-dependencies` to pull dependent (subchart) charts as well. For a repeatable set of charts, define them in a [Hauler manifest](#hauler-manifest-for-charts) and run [`hauler store sync`](../sync.md) instead of adding them one by one.
 
@@ -25,37 +25,40 @@ Usage:
   hauler store add chart [flags]
 
 Examples:
-# fetch local helm chart
-hauler store add chart path/to/chart/directory --repo .
+  # fetch local helm chart
+  hauler store add chart path/to/chart/directory --repo .
 
-# fetch local compressed helm chart
-hauler store add chart path/to/chart.tar.gz --repo .
+  # fetch local compressed helm chart
+  hauler store add chart path/to/chart.tar.gz --repo .
 
-# fetch remote oci helm chart
-hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev
+  # fetch remote oci helm chart
+  hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev
 
-# fetch remote oci helm chart with version
-hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --version 1.2.0
+  # fetch remote oci helm chart with version
+  hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --version 1.2.0
 
-# fetch remote helm chart
-hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable
+  # fetch remote helm chart
+  hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable
 
-# fetch remote helm chart with specific version
-hauler store add chart rancher --repo https://releases.rancher.com/server-charts/latest --version 2.10.1
+  # fetch remote helm chart with specific version
+  hauler store add chart rancher --repo https://releases.rancher.com/server-charts/latest --version 2.10.1
 
-# fetch remote helm chart and rewrite path
-hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --rewrite custom-path/hauler-chart:latest
+  # fetch remote helm chart and rewrite path
+  hauler store add chart hauler-helm --repo oci://ghcr.io/hauler-dev --rewrite custom-path/hauler-chart:latest
 
 Flags:
       --add-dependencies           (Optional) Fetch dependent helm charts
       --add-images                 (Optional) Fetch images referenced in helm charts
       --ca-file string             (Optional) Location of CA Bundle to enable certification verification
       --cert-file string           (Optional) Location of the TLS Certificate to use for client authentication
+  -j, --concurrency int            (Optional) Maximum number of charts and their discovered images to fetch and store concurrently (1 = serial; also via HAULER_CONCURRENCY, explicit flag wins) (default 5)
       --exclude-extras             (Optional) Exclude cosign signatures, attestations, SBOMs, and OCI referrers when pulling images discovered via --add-images
   -h, --help                       help for chart
       --insecure-skip-tls-verify   (Optional) Skip TLS certificate verification
       --key-file string            (Optional) Location of the TLS Key to use for client authentication
+      --keyring string             (Optional) Location of public keyring used by --verify (default: $HOME/.gnupg/pubring.gpg)
       --kube-version string        (Optional) Override the kubernetes version for helm template rendering (default "v1.34.1")
+      --no-progress                (Optional) Disable the live progress display
       --password string            (Optional) Password to use for authentication
   -p, --platform string            (Optional) Specify the platform of the image, e.g. linux/amd64
   -g, --registry string            (Optional) Specify the registry of the image for images that do not alredy define one
@@ -67,12 +70,15 @@ Flags:
       --version string             (Optional) Specify the version of the chart (v1.0.0 | 2.0.0 | ^2.0.0)
 
 Global Flags:
-  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
-      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
-  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
-  -r, --retries int        Set the number of retries for operations (default 3)
-  -s, --store string       Set the directory to use for the content store
-  -t, --tempdir string     (Optional) Override the default temporary directory determined by the OS
+      --audit-level string     Set the audit logging level (none, standard, verbose) (defaults standard)
+      --blob-concurrency int   (Optional) Override the maximum number of concurrent blob writes (0 auto-derives from --concurrency where set, otherwise defaults to 16)
+  -d, --haulerdir string       Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors          Warn and continue instead of failing on errors, including storing images that failed verification (defaults false)
+  -l, --log-level string       Set the logging level (i.e. info, debug, warn) (defaults info)
+  -r, --retries int            Set the number of retries for operations (0 uses HAULER_RETRIES, otherwise defaults to 3)
+  -s, --store string           Set the directory to use for the content store
+  -t, --tempdir string         (Optional) Override the default temporary directory determined by the OS
+  -w, --work-dir string        (Optional) Set the directory for output that commands would otherwise write to the current directory (default: current directory)
 ```
 
 ### Example Commands for Charts
@@ -117,9 +123,9 @@ hauler store add chart internal-chart --repo https://charts.internal.example.com
 
 ### Configuring TLS for Chart Repositories
 
-Use `--ca-file` to trust a private or internal CA when fetching from an HTTP(S) or OCI chart repository that presents a certificate not signed by a public CA, or `--insecure-skip-tls-verify` to skip certificate verification entirely. Unlike `hauler store add image`, this command does **not** fall back to the `CA_FILE` / `INSECURE_SKIP_TLS_VERIFY` environment variables when run standalone — use the flags directly, or use [`hauler store sync`](../sync.md), which does support the environment variables for chart entries.
+Use `--ca-file` to trust a private or internal CA when fetching from an HTTP(S) or OCI chart repository that presents a certificate not signed by a public CA, or `--insecure-skip-tls-verify` to skip certificate verification entirely. Unlike `hauler store add image`, this command does **not** fall back to the `CA_FILE` / `INSECURE_SKIP_TLS_VERIFY` environment variables when run standalone - use the flags directly, or use [`hauler store sync`](../sync.md), which does support the environment variables for chart entries.
 
-> **Note:** `--ca-file` and `--insecure-skip-tls-verify` are mutually exclusive — supplying a CA file always forces certificate verification on, regardless of `--insecure-skip-tls-verify`. When neither is set, the system's default CA bundle is used.
+> **Note:** `--ca-file` and `--insecure-skip-tls-verify` are mutually exclusive - supplying a CA file always forces certificate verification on, regardless of `--insecure-skip-tls-verify`. When neither is set, the system's default CA bundle is used.
 
 ### Hauler Manifest for Charts
 

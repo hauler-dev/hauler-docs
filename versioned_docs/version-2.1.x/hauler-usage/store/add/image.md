@@ -8,7 +8,7 @@ sidebar_label: Image
 
 `hauler store add image` pulls a container image from a registry (or the local Docker daemon) and stores it as an OCI artifact in the content store.
 
-This is one of the imperative "collect" commands you run on the internet-connected side of an airgap. Use it to grab images one at a time while exploring or testing — for example, to confirm a reference resolves or to quickly add a single dependency. Once you know the full set of images you need, prefer a declarative [Hauler manifest](#hauler-manifest-for-images) with [`hauler store sync`](../sync.md) so the collection is reproducible and version-controlled. After images are in the store, you move them across the airgap with [`hauler store save`](../save.md) / [`hauler store load`](../load.md) and serve or push them with [`hauler store serve registry`](../serve/registry.md) or [`hauler store copy`](../copy.md).
+This is one of the imperative "collect" commands you run on the internet-connected side of an airgap. Use it to grab images one at a time while exploring or testing - for example, to confirm a reference resolves or to quickly add a single dependency. Once you know the full set of images you need, prefer a declarative [Hauler manifest](#hauler-manifest-for-images) with [`hauler store sync`](../sync.md) so the collection is reproducible and version-controlled. After images are in the store, you move them across the airgap with [`hauler store save`](../save.md) / [`hauler store load`](../load.md) and serve or push them with [`hauler store serve registry`](../serve/registry.md) or [`hauler store copy`](../copy.md).
 
 By default each image is pulled for **all** platforms along with its cosign signatures, attestations, SBOMs, and OCI referrers. Use `--platform` to narrow the architecture and `--exclude-extras` to fetch only the image itself.
 
@@ -25,27 +25,27 @@ Usage:
   hauler store add image [flags]
 
 Examples:
-# fetch image
-hauler store add image busybox
+  # fetch image
+  hauler store add image busybox
 
-# fetch image with repository and tag
-hauler store add image library/busybox:stable
+  # fetch image with repository and tag
+  hauler store add image library/busybox:stable
 
-# fetch image with full image reference and specific platform
-hauler store add image ghcr.io/hauler-dev/hauler-debug:v1.2.0 --platform linux/amd64
+  # fetch image with full image reference and specific platform
+  hauler store add image ghcr.io/hauler-dev/hauler-debug:v1.2.0 --platform linux/amd64
 
-# fetch image with full image reference via digest
-hauler store add image gcr.io/distroless/base@sha256:7fa7445dfbebae4f4b7ab0e6ef99276e96075ae42584af6286ba080750d6dfe5
+  # fetch image with full image reference via digest
+  hauler store add image gcr.io/distroless/base@sha256:7fa7445dfbebae4f4b7ab0e6ef99276e96075ae42584af6286ba080750d6dfe5
 
-# fetch image with full image reference, specific platform, and signature verification
-curl -sfOL https://raw.githubusercontent.com/rancherfederal/carbide-releases/main/carbide-key.pub
-hauler store add image rgcrprod.azurecr.us/rancher/rke2-runtime:v1.31.5-rke2r1 --platform linux/amd64 --key carbide-key.pub
+  # fetch image with full image reference, specific platform, and signature verification
+  curl -sfOL https://raw.githubusercontent.com/rancherfederal/carbide-releases/main/carbide-key.pub
+  hauler store add image rgcrprod.azurecr.us/rancher/rke2-runtime:v1.31.5-rke2r1 --platform linux/amd64 --key carbide-key.pub
 
-# fetch image and rewrite path
-hauler store add image busybox --rewrite custom-path/busybox:latest
+  # fetch image and rewrite path
+  hauler store add image busybox --rewrite custom-path/busybox:latest
 
-# add image from local Docker daemon
-hauler store add image my-local-app:latest --local
+  # add image from local Docker daemon
+  hauler store add image my-local-app:latest --local
 
 Flags:
       --ca-file string                                  (Optional) Location of CA Bundle to enable certification verification
@@ -64,12 +64,15 @@ Flags:
       --use-tlog-verify                                 (Optional) Enable transparency log verification for key-based signature verification (keyless/OIDC verification always uses the tlog)
 
 Global Flags:
-  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
-      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
-  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
-  -r, --retries int        Set the number of retries for operations (default 3)
-  -s, --store string       Set the directory to use for the content store
-  -t, --tempdir string     (Optional) Override the default temporary directory determined by the OS
+      --audit-level string     Set the audit logging level (none, standard, verbose) (defaults standard)
+      --blob-concurrency int   (Optional) Override the maximum number of concurrent blob writes (0 auto-derives from --concurrency where set, otherwise defaults to 16)
+  -d, --haulerdir string       Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors          Warn and continue instead of failing on errors, including storing images that failed verification (defaults false)
+  -l, --log-level string       Set the logging level (i.e. info, debug, warn) (defaults info)
+  -r, --retries int            Set the number of retries for operations (0 uses HAULER_RETRIES, otherwise defaults to 3)
+  -s, --store string           Set the directory to use for the content store
+  -t, --tempdir string         (Optional) Override the default temporary directory determined by the OS
+  -w, --work-dir string        (Optional) Set the directory for output that commands would otherwise write to the current directory (default: current directory)
 ```
 
 ### Hauler Command Line for Images
@@ -124,7 +127,7 @@ hauler store add image registry.example.com/app:latest --ca-file /path/to/ca.pem
 CA_FILE=/path/to/ca.pem hauler store add image registry.example.com/app:latest
 ```
 
-> **Note:** `--ca-file` and `--insecure-skip-tls-verify` are mutually exclusive — supplying a CA file always forces certificate verification on, regardless of `--insecure-skip-tls-verify`. When neither is set, the system's default CA bundle is used.
+> **Note:** `--ca-file` and `--insecure-skip-tls-verify` are mutually exclusive - supplying a CA file always forces certificate verification on, regardless of `--insecure-skip-tls-verify`. When neither is set, the system's default CA bundle is used.
 
 ### Adding an Image from the Local Docker Daemon
 

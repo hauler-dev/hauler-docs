@@ -8,7 +8,7 @@ For all supported customers of Rancher Government, under the umbrella of Rancher
 
 `Hauler` can reference [`Collections`](hauler-collections.md) from various registries, including the `Carbide Secured Registry (CSR)`.
 
-`Hauler` is built to let operators fetch, store, package, and distribute artifacts — but knowing exactly *what* to fetch is often the hard part. That's where supported customers benefit: rather than assembling manifests by hand, they can leverage predefined `Collections` for all Rancher Government products and solutions, pulled from the `Carbide Secured Registry (CSR)` via the `--products` flag.
+`Hauler` is built to let operators fetch, store, package, and distribute artifacts - but knowing exactly *what* to fetch is often the hard part. That's where supported customers benefit: rather than assembling manifests by hand, they can leverage predefined `Collections` for all Rancher Government products and solutions, pulled from the `Carbide Secured Registry (CSR)` via the `--products` flag.
 
 ```bash
 hauler store sync --products <product>=<product-version>

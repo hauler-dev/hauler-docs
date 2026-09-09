@@ -27,6 +27,7 @@ Flags:
       --certificate-identity-regexp string              (Optional) Cosign certificate-identity-regexp (either --certificate-identity or --certificate-identity-regexp required for keyless verification)
       --certificate-oidc-issuer string                  (Optional) Cosign option to validate oidc issuer
       --certificate-oidc-issuer-regexp string           (Optional) Cosign option to validate oidc issuer with regex
+  -j, --concurrency int                                 (Optional) Maximum number of artifacts to fetch and store concurrently (1 = serial; also via HAULER_CONCURRENCY, explicit flag wins) (default 5)
       --dry-run                                         (Optional) Output product manifest content to stdout instead of processing it (requires --products)
       --exclude-extras                                  (Optional) Exclude cosign signatures, attestations, SBOMs, and OCI referrers when pulling images
   -f, --filename strings                                Specify the name of manifest(s) to sync
@@ -34,6 +35,7 @@ Flags:
   -i, --image-txt strings                               Specify local or remote image.txt file(s) to sync images
       --insecure-skip-tls-verify                        (Optional) Skip TLS certificate verification
   -k, --key string                                      (Optional) Location of public key to use for signature verification
+      --no-progress                                     (Optional) Disable the live progress display
   -p, --platform string                                 (Optional) Specify the platform of the image... i.e linux/amd64 (defaults to all)
   -c, --product-registry string                         (Optional) Specify the product registry. Defaults to RGS Carbide Registry (rgcrprod.azurecr.us)
       --products strings                                (Optional) Specify the product name to fetch collections from the product registry i.e. rancher=v2.10.1,rke2=v1.31.5+rke2r1
@@ -41,12 +43,15 @@ Flags:
       --use-tlog-verify                                 (Optional) Allow transparency log verification (defaults to false)
 
 Global Flags:
-  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
-      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
-  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
-  -r, --retries int        Set the number of retries for operations (default 3)
-  -s, --store string       Set the directory to use for the content store
-  -t, --tempdir string     (Optional) Override the default temporary directory determined by the OS
+      --audit-level string     Set the audit logging level (none, standard, verbose) (defaults standard)
+      --blob-concurrency int   (Optional) Override the maximum number of concurrent blob writes (0 auto-derives from --concurrency where set, otherwise defaults to 16)
+  -d, --haulerdir string       Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors          Warn and continue instead of failing on errors, including storing images that failed verification (defaults false)
+  -l, --log-level string       Set the logging level (i.e. info, debug, warn) (defaults info)
+  -r, --retries int            Set the number of retries for operations (0 uses HAULER_RETRIES, otherwise defaults to 3)
+  -s, --store string           Set the directory to use for the content store
+  -t, --tempdir string         (Optional) Override the default temporary directory determined by the OS
+  -w, --work-dir string        (Optional) Set the directory for output that commands would otherwise write to the current directory (default: current directory)
 ```
 
 ### Syncing from a Hauler Manifest
@@ -68,7 +73,7 @@ A value beginning with `http://` or `https://` is downloaded before processing, 
 
 ### Syncing from an images.txt File
 
-In addition to Hauler manifests, `hauler store sync` can populate the store directly from a plain-text list of image references using the `--image-txt` (`-i`) flag. This is useful when you already have a flat list of images — for example, the `*-images.txt` files published alongside many Rancher and Kubernetes distribution releases.
+In addition to Hauler manifests, `hauler store sync` can populate the store directly from a plain-text list of image references using the `--image-txt` (`-i`) flag. This is useful when you already have a flat list of images - for example, the `*-images.txt` files published alongside many Rancher and Kubernetes distribution releases.
 
 The file is a newline-delimited list of image references, one per line. Blank lines and lines beginning with `#` are ignored, and leading/trailing whitespace on each line is trimmed:
 
@@ -139,6 +144,6 @@ hauler store sync --filename hauler-manifest.yaml --ca-file /path/to/ca.pem
 CA_FILE=/path/to/ca.pem hauler store sync --filename hauler-manifest.yaml
 ```
 
-For `Images`, `Charts`, and `Files` manifests, TLS settings can also be set per-entry or manifest-wide via annotations — see the [Image](./add/image.md#configuring-tls-for-registry-connections), [Chart](./add/chart.md#configuring-tls-for-chart-repositories), and [File](./add/file.md#configuring-tls-for-remote-files) pages. Precedence is CLI flag (or environment variable) &gt; per-entry field &gt; manifest annotation, and an explicit `--insecure-skip-tls-verify=false` on the CLI always wins over a per-entry or annotation value that tries to turn it on.
+For `Images`, `Charts`, and `Files` manifests, TLS settings can also be set per-entry or manifest-wide via annotations - see the [Image](./add/image.md#configuring-tls-for-registry-connections), [Chart](./add/chart.md#configuring-tls-for-chart-repositories), and [File](./add/file.md#configuring-tls-for-remote-files) pages. Precedence is CLI flag (or environment variable) &gt; per-entry field &gt; manifest annotation, and an explicit `--insecure-skip-tls-verify=false` on the CLI always wins over a per-entry or annotation value that tries to turn it on.
 
-> **Note:** `--ca-file`/`CA_FILE` and `--insecure-skip-tls-verify`/`INSECURE_SKIP_TLS_VERIFY` are mutually exclusive at the CLI/environment level — passing `--ca-file` (or setting `CA_FILE`) always forces certificate verification on for every entry in the sync, even if a per-entry field or annotation sets `insecure-skip-tls-verify: true`. A per-entry or annotation `ca-file` with no CLI/environment `--ca-file` does **not** override a `true` insecure-skip-tls-verify from another source for that same entry — avoid setting both on one entry. When nothing is set, the system's default CA bundle is used.
+> **Note:** `--ca-file`/`CA_FILE` and `--insecure-skip-tls-verify`/`INSECURE_SKIP_TLS_VERIFY` are mutually exclusive at the CLI/environment level - passing `--ca-file` (or setting `CA_FILE`) always forces certificate verification on for every entry in the sync, even if a per-entry field or annotation sets `insecure-skip-tls-verify: true`. A per-entry or annotation `ca-file` with no CLI/environment `--ca-file` does **not** override a `true` insecure-skip-tls-verify from another source for that same entry - avoid setting both on one entry. When nothing is set, the system's default CA bundle is used.

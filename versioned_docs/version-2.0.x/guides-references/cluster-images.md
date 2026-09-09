@@ -6,7 +6,7 @@ sidebar_label: Fetch Cluster Images
 
 It can be difficult to know exactly what images are actively running in your environment. Below is a simple way to generate a list of every image in a running cluster, store it as an environment variable, and turn that list into a [Hauler manifest](hauler-manifests.md) you can sync into your store.
 
-Capturing your cluster's images as a manifest makes the set reproducible: you can version-control it, review changes over time, and re-sync the exact same content on demand — so rebuilding a haul or standing up the cluster again in a disconnected environment is repeatable rather than a manual scramble.
+Capturing your cluster's images as a manifest makes the set reproducible: you can version-control it, review changes over time, and re-sync the exact same content on demand - so rebuilding a haul or standing up the cluster again in a disconnected environment is repeatable rather than a manual scramble.
 
 ## Fetch Cluster Images
 

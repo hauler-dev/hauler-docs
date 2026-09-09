@@ -66,7 +66,7 @@ A value beginning with `http://` or `https://` is downloaded before processing, 
 
 ### Syncing from an images.txt File
 
-In addition to Hauler manifests, `hauler store sync` can populate the store directly from a plain-text list of image references using the `--image-txt` (`-i`) flag. This is useful when you already have a flat list of images — for example, the `*-images.txt` files published alongside many Rancher and Kubernetes distribution releases.
+In addition to Hauler manifests, `hauler store sync` can populate the store directly from a plain-text list of image references using the `--image-txt` (`-i`) flag. This is useful when you already have a flat list of images - for example, the `*-images.txt` files published alongside many Rancher and Kubernetes distribution releases.
 
 The file is a newline-delimited list of image references, one per line. Blank lines and lines beginning with `#` are ignored, and leading/trailing whitespace on each line is trimmed:
 
