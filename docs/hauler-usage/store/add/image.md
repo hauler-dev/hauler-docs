@@ -59,7 +59,7 @@ Flags:
       --insecure-skip-tls-verify                        (Optional) Skip TLS certificate verification
   -k, --key string                                      (Optional) Location of public key to use for signature verification
       --local                                           (Optional) Add image from the local Docker daemon instead of a remote registry
-  -p, --platform string                                 (Optional) Specify the platform of the image... i.e. linux/amd64 (defaults to all)
+  -p, --platform string                                 (Optional) Specify the platform of the image... i.e. linux/amd64 (defaults to all). Not allowed with a digest-pinned multi-platform image
       --rewrite string                                  (Optional) Rewrite artifact path to specified string
       --use-tlog-verify                                 (Optional) Enable transparency log verification for key-based signature verification (keyless/OIDC verification always uses the tlog)
 

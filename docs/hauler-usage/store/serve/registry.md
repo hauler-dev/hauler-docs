@@ -25,13 +25,15 @@ Usage:
   hauler store serve registry [flags]
 
 Flags:
-  -c, --config string      (Optional) Location of config file (overrides all flags)
-      --directory string   (Optional) Directory to use for backend. Defaults to $PWD/registry (default "registry")
-  -h, --help               help for registry
-  -p, --port int           (Optional) Set the port to use for incoming connections (default 5000)
-      --readonly           (Optional) Run the registry as readonly (default true)
-      --tls-cert string    (Optional) Location of the TLS Certificate to use for server authenication
-      --tls-key string     (Optional) Location of the TLS Key to use for server authenication
+      --basic-auth string         (EXPERIMENTAL) (Optional) Location of the htpasswd file to use for basic authentication
+      --basic-auth-realm string   (EXPERIMENTAL) (Optional) Realm to use for basic authentication (default "hauler-registry")
+  -c, --config string             (Optional) Location of the registry config file (overrides all flags)
+      --directory string          (Optional) Directory to use for backend. Defaults to $PWD/registry (default "registry")
+  -h, --help                      help for registry
+  -p, --port int                  (Optional) Set the port to use for incoming connections (default 5000)
+      --readonly                  (Optional) Run the registry as readonly (default true)
+      --tls-cert string           (Optional) Location of the TLS Certificate to use for server authenication
+      --tls-key string            (Optional) Location of the TLS Key to use for server authenication
 
 Global Flags:
       --audit-level string     Set the audit logging level (none, standard, verbose) (defaults standard)
@@ -43,6 +45,28 @@ Global Flags:
   -s, --store string           Set the directory to use for the content store
   -t, --tempdir string         (Optional) Override the default temporary directory determined by the OS
   -w, --work-dir string        (Optional) Set the directory for output that commands would otherwise write to the current directory (default: current directory)
+```
+
+### Basic Authentication
+
+The `--basic-auth` flag points at an `htpasswd` file to require HTTP basic authentication for the registry and `--basic-auth-realm` overrides the realm sent in the `WWW-Authenticate` challenge (defaults to `hauler-registry`).
+
+This feature is experimental and is a shortcut for the `auth.htpasswd` block in a full `--config` file below.
+
+Below is an example to generate the `htpasswd` file with the standard `htpasswd` utility, using bcrypt hashed passwords...
+
+```bash
+htpasswd -cB /path/to/htpasswd <username>
+```
+
+Then point the registry at it:
+
+```bash
+# serve registry with basic authentication
+hauler store serve registry --basic-auth /path/to/htpasswd
+
+# serve registry with basic authentication and a custom realm
+hauler store serve registry --basic-auth /path/to/htpasswd --basic-auth-realm my-realm
 ```
 
 ## Example Commands for the Hauler Registry

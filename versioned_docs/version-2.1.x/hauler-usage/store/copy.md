@@ -44,6 +44,7 @@ Flags:
       --insecure      (Optional) Allow insecure connections
   -o, --only string   (Optional) Custom string array to only copy specific 'image' items
       --plain-http    (Optional) Allow plain HTTP connections
+      --type string   (EXPERIMENTAL) (Optional) Filter on content type (image | chart | file | sigs | atts | sbom | referrer) (default "all")
 
 Global Flags:
       --audit-level string     Set the audit logging level (none, standard, verbose) (defaults standard)
@@ -63,6 +64,18 @@ The `--only` flag restricts the copy to artifacts whose reference contains the g
 
 ```bash
 hauler store copy registry://<registry-url> --only rancher
+```
+
+### Filtering with `--type`
+
+The `--type` flag restricts the copy to a single content type. Supported values are `image`, `chart`, `file`, `sigs`, `atts`, `sbom`, and `referrer`; it defaults to `all`. Combine it with `--only` to further narrow the copy to specific references within that type. This feature is experimental.
+
+```bash
+# only copy charts
+hauler store copy registry://<registry-url> --type chart
+
+# only copy images matching a substring
+hauler store copy registry://<registry-url> --type image --only rancher
 ```
 
 ### Authentication

@@ -25,12 +25,14 @@ Usage:
   hauler store serve fileserver [flags]
 
 Flags:
-      --directory string   (Optional) Directory to use for backend. Defaults to $PWD/fileserver (default "fileserver")
-  -h, --help               help for fileserver
-  -p, --port int           (Optional) Set the port to use for incoming connections (default 8080)
-      --timeout int        (Optional) Timeout duration for HTTP Requests in seconds for both reads/writes (default 60)
-      --tls-cert string    (Optional) Location of the TLS Certificate to use for server authenication
-      --tls-key string     (Optional) Location of the TLS Key to use for server authenication
+      --basic-auth string         (EXPERIMENTAL) (Optional) Location of the htpasswd file to use for basic authentication
+      --basic-auth-realm string   (EXPERIMENTAL) (Optional) Realm to use for basic authentication (default "hauler-fileserver")
+      --directory string          (Optional) Directory to use for backend. (defaults to $PWD/fileserver) (default "fileserver")
+  -h, --help                      help for fileserver
+  -p, --port int                  (Optional) Set the port to use for incoming connections (default 8080)
+      --timeout int               (Optional) Timeout duration for HTTP Requests in seconds for both reads/writes (default 60)
+      --tls-cert string           (Optional) Location of the TLS Certificate to use for server authenication
+      --tls-key string            (Optional) Location of the TLS Key to use for server authenication
 
 Global Flags:
       --audit-level string     Set the audit logging level (none, standard, verbose) (defaults standard)
@@ -42,6 +44,26 @@ Global Flags:
   -s, --store string           Set the directory to use for the content store
   -t, --tempdir string         (Optional) Override the default temporary directory determined by the OS
   -w, --work-dir string        (Optional) Set the directory for output that commands would otherwise write to the current directory (default: current directory)
+```
+
+### Basic Authentication
+
+The `--basic-auth` flag points at an `htpasswd` file to require HTTP basic authentication for the fileserver and `--basic-auth-realm` overrides the realm sent in the `WWW-Authenticate` challenge (defaults to `hauler-fileserver`).
+
+This feature is experimental and below is an example to generate the `htpasswd` file with the standard `htpasswd` utility, using bcrypt hashed passwords...
+
+```bash
+htpasswd -cB /path/to/htpasswd <username>
+```
+
+Then point the fileserver at it:
+
+```bash
+# serve fileserver with basic authentication
+hauler store serve fileserver --basic-auth /path/to/htpasswd
+
+# serve fileserver with basic authentication and a custom realm
+hauler store serve fileserver --basic-auth /path/to/htpasswd --basic-auth-realm my-realm
 ```
 
 ## Example Commands for the Hauler Fileserver

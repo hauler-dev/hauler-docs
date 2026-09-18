@@ -60,7 +60,7 @@ Flags:
       --kube-version string        (Optional) Override the kubernetes version for helm template rendering (default "v1.34.1")
       --no-progress                (Optional) Disable the live progress display
       --password string            (Optional) Password to use for authentication
-  -p, --platform string            (Optional) Specify the platform of the image, e.g. linux/amd64
+  -p, --platform string            (Optional) Specify the platform of the image, e.g. linux/amd64. Not allowed with a digest-pinned multi-platform image
   -g, --registry string            (Optional) Specify the registry of the image for images that do not alredy define one
       --repo string                Location of the chart (https:// | http:// | oci://)
       --rewrite string             (Optional) Rewrite artifact path to specified string

@@ -36,7 +36,7 @@ Flags:
       --insecure-skip-tls-verify                        (Optional) Skip TLS certificate verification
   -k, --key string                                      (Optional) Location of public key to use for signature verification
       --no-progress                                     (Optional) Disable the live progress display
-  -p, --platform string                                 (Optional) Specify the platform of the image... i.e linux/amd64 (defaults to all)
+  -p, --platform string                                 (Optional) Specify the platform of the image... i.e linux/amd64 (defaults to all). Not allowed with a digest-pinned multi-platform image
   -c, --product-registry string                         (Optional) Specify the product registry. Defaults to RGS Carbide Registry (rgcrprod.azurecr.us)
       --products strings                                (Optional) Specify the product name to fetch collections from the product registry i.e. rancher=v2.10.1,rke2=v1.31.5+rke2r1
   -g, --registry string                                 (Optional) Specify the registry of the image for images that do not alredy define one
