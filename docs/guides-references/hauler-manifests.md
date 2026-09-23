@@ -6,7 +6,7 @@ sidebar_label: Hauler Manifests
 
 A Hauler manifest is a declarative YAML description of the [content](hauler-content.md) you want in your store. Instead of adding artifacts one at a time, you list them in a manifest and apply it with [`hauler store sync`](../hauler-usage/store/sync.md), keeping your hauls reproducible and version-controlled.
 
-Each manifest describes a single content `kind` - `Images`, `Charts`, `Files`, or `Directories` - and a single file may hold multiple documents separated by `---`. Manifest-level `annotations` set defaults for every entry in the manifest, while per-artifact fields override those defaults. The examples below show the schema for each kind.
+Each manifest describes a single content `kind` - `Images`, `Charts`, `Files`, `Directories`, or `Git` - and a single file may hold multiple documents separated by `---`. Manifest-level `annotations` set defaults for every entry in the manifest, while per-artifact fields override those defaults. The examples below show the schema for each kind.
 
 ## Example Manifest for Images
 
@@ -137,4 +137,28 @@ spec:
     # add local directory and assign new name
     - path: path/to/local/configs
       name: my-configs
+```
+
+## Example Manifest for Git
+
+Please review the [Git](../hauler-usage/store/add/git.md) content page for more detailed information.
+
+```yaml title="hauler-git-manifest.yaml"
+apiVersion: content.hauler.cattle.io/v1
+kind: Git
+metadata:
+  name: hauler-content-git-example
+spec:
+  git:
+    # clone remote repository
+    - path: https://github.com/hauler-dev/hauler-helm.git
+    # clone remote repository and assign new name
+    - path: https://github.com/hauler-dev/hauler-helm.git
+      name: hauler-helm-chart
+    # add local bare repository (relative to this manifest)
+    - path: path/to/local/myrepo.git
+    # clone private repository using credentials from environment variables
+    - path: https://github.com/example/private-repo.git
+      usernameEnv: GIT_USERNAME
+      passwordEnv: GIT_TOKEN
 ```

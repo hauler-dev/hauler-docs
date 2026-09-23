@@ -39,6 +39,7 @@ const sidebars = {
                 'hauler-usage/store/add/chart',
                 'hauler-usage/store/add/file',
                 'hauler-usage/store/add/directory',
+                'hauler-usage/store/add/git',
               ],
             },
             {
@@ -65,6 +66,7 @@ const sidebars = {
               items: [
                 'hauler-usage/store/serve/registry',
                 'hauler-usage/store/serve/fileserver',
+                'hauler-usage/store/serve/git',
               ],
             },
           ],
