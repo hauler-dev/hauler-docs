@@ -8,7 +8,7 @@ sidebar_label: Copy
 
 `hauler store copy` pushes the entire contents of the store to another location.
 
-It's the command you use to "unload" a store into your real infrastructure on the airgapped side — typically seeding an existing OCI registry with every image, chart, and file at once, rather than running Hauler's built-in registry long-term. Unlike [`hauler store serve registry`](./serve/registry.md), which keeps a process running, `copy` performs a one-time transfer and exits. It can also extract the store's files and charts straight to a directory. The target is given as a single argument prefixed with the destination type:
+It's the command you use to "unload" a store into your real infrastructure on the airgapped side - typically seeding an existing OCI registry with every image, chart, and file at once, rather than running Hauler's built-in registry long-term. Unlike [`hauler store serve registry`](./serve/registry.md), which keeps a process running, `copy` performs a one-time transfer and exits. It can also extract the store's files and charts straight to a directory. The target is given as a single argument prefixed with the destination type:
 
 | Prefix | Behavior |
 |--------|----------|

@@ -15,8 +15,8 @@ Usage:
 
 Examples:
   View the Docs: https://docs.hauler.dev
-  Environment Variables: HAULER_DIR | HAULER_TEMP_DIR | HAULER_STORE_DIR | HAULER_IGNORE_ERRORS
-  Warnings: Hauler commands and flags marked with (EXPERIMENTAL) are not yet stable and may have bugs or change in the future.
+  Environment Variables: HAULER_DIR | HAULER_TEMP_DIR | HAULER_STORE_DIR | HAULER_IGNORE_ERRORS | HAULER_RETRIES | HAULER_LOG_LEVEL | HAULER_AUDIT_LEVEL | HAULER_CONCURRENCY | HAULER_BLOB_CONCURRENCY
+  Warnings: Hauler commands and flags marked with (EXPERIMENTAL) are not yet stable and may change in the future.
 
 Available Commands:
   completion  Generate auto-completion scripts for various shells
@@ -27,10 +27,12 @@ Available Commands:
   version     Print the current version
 
 Flags:
-  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
-  -h, --help               help for hauler
-      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
-  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
+      --audit-level string   Set the audit logging level (none, standard, verbose) (defaults standard)
+  -d, --haulerdir string     Set the location of the hauler directory (default $HOME/.hauler)
+  -h, --help                 help for hauler
+      --ignore-errors        Warn and continue instead of failing on errors, including storing images that failed verification (defaults false)
+  -l, --log-level string     Set the logging level (i.e. info, debug, warn) (defaults info)
+  -w, --work-dir string      (Optional) Set the directory for output that commands would otherwise write to the current directory (default: current directory)
 
 Use "hauler [command] --help" for more information about a command.
 ```

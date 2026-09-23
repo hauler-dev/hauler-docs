@@ -22,9 +22,11 @@ Flags:
       --json   Set the output format to JSON
 
 Global Flags:
-  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
-      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
-  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
+      --audit-level string   Set the audit logging level (none, standard, verbose) (defaults standard)
+  -d, --haulerdir string     Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors        Warn and continue instead of failing on errors, including storing images that failed verification (defaults false)
+  -l, --log-level string     Set the logging level (i.e. info, debug, warn) (defaults info)
+  -w, --work-dir string      (Optional) Set the directory for output that commands would otherwise write to the current directory (default: current directory)
 ```
 
 ### Example Outputs

@@ -6,7 +6,7 @@ sidebar_label: File
 
 ### Overview
 
-`hauler store add file` stores an arbitrary file — local or fetched from an HTTP(S) URL — as an OCI artifact in the content store.
+`hauler store add file` stores an arbitrary file - local or fetched from an HTTP(S) URL - as an OCI artifact in the content store.
 
 Use this to carry the bits that aren't images or charts but are still needed inside the airgap: install scripts, binaries, tarballs, RPMs, configuration, manifests, and the like. On the far side of the airgap these files can be handed out over HTTP with [`hauler store serve fileserver`](../serve/fileserver.md) or written back to disk with [`hauler store extract`](../extract.md). Pass `--name` to store the file under a friendlier name than the one derived from its path or URL (handy for URLs that don't end in a filename). For a repeatable set of files, list them in a [Hauler manifest](#hauler-manifest-for-files) and run [`hauler store sync`](../sync.md).
 
@@ -23,14 +23,14 @@ Usage:
   hauler store add file [flags]
 
 Examples:
-# fetch local file
-hauler store add file file.txt
+  # fetch local file
+  hauler store add file file.txt
 
-# fetch remote file
-hauler store add file https://get.rke2.io/install.sh
+  # fetch remote file
+  hauler store add file https://get.rke2.io/install.sh
 
-# fetch remote file and assign new name
-hauler store add file https://get.hauler.dev --name hauler-install.sh
+  # fetch remote file and assign new name
+  hauler store add file https://get.hauler.dev --name hauler-install.sh
 
 Flags:
       --ca-file string             (Optional) Location of CA Bundle to enable certification verification for remote files
@@ -39,12 +39,15 @@ Flags:
   -n, --name string                (Optional) Rewrite the name of the file
 
 Global Flags:
-  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
-      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
-  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
-  -r, --retries int        Set the number of retries for operations (default 3)
-  -s, --store string       Set the directory to use for the content store
-  -t, --tempdir string     (Optional) Override the default temporary directory determined by the OS
+      --audit-level string     Set the audit logging level (none, standard, verbose) (defaults standard)
+      --blob-concurrency int   (Optional) Override the maximum number of concurrent blob writes (0 auto-derives from --concurrency where set, otherwise defaults to 16)
+  -d, --haulerdir string       Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors          Warn and continue instead of failing on errors, including storing images that failed verification (defaults false)
+  -l, --log-level string       Set the logging level (i.e. info, debug, warn) (defaults info)
+  -r, --retries int            Set the number of retries for operations (0 uses HAULER_RETRIES, otherwise defaults to 3)
+  -s, --store string           Set the directory to use for the content store
+  -t, --tempdir string         (Optional) Override the default temporary directory determined by the OS
+  -w, --work-dir string        (Optional) Set the directory for output that commands would otherwise write to the current directory (default: current directory)
 ```
 
 ### Example Commands for Files
@@ -68,9 +71,9 @@ hauler store add file https://internal.example.com/install.sh --insecure-skip-tl
 
 ### Configuring TLS for Remote Files
 
-`--ca-file` and `--insecure-skip-tls-verify` only affect files fetched over `http://`/`https://`; they're ignored for local paths. Unlike `hauler store add image`, this command does **not** fall back to the `CA_FILE` / `INSECURE_SKIP_TLS_VERIFY` environment variables — use the flags directly, or use [`hauler store sync`](../sync.md), which does support the environment variables.
+`--ca-file` and `--insecure-skip-tls-verify` only affect files fetched over `http://`/`https://`; they're ignored for local paths. Unlike `hauler store add image`, this command does **not** fall back to the `CA_FILE` / `INSECURE_SKIP_TLS_VERIFY` environment variables - use the flags directly, or use [`hauler store sync`](../sync.md), which does support the environment variables.
 
-> **Note:** `--ca-file` and `--insecure-skip-tls-verify` are mutually exclusive — supplying a CA file always forces certificate verification on, regardless of `--insecure-skip-tls-verify`. When neither is set, the system's default CA bundle is used.
+> **Note:** `--ca-file` and `--insecure-skip-tls-verify` are mutually exclusive - supplying a CA file always forces certificate verification on, regardless of `--insecure-skip-tls-verify`. When neither is set, the system's default CA bundle is used.
 
 ### Hauler Manifest for Files
 

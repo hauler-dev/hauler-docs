@@ -24,9 +24,11 @@ Flags:
   -h, --help   help for completion
 
 Global Flags:
-  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
-      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
-  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
+      --audit-level string   Set the audit logging level (none, standard, verbose) (defaults standard)
+  -d, --haulerdir string     Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors        Warn and continue instead of failing on errors, including storing images that failed verification (defaults false)
+  -l, --log-level string     Set the logging level (i.e. info, debug, warn) (defaults info)
+  -w, --work-dir string      (Optional) Set the directory for output that commands would otherwise write to the current directory (default: current directory)
 
 Use "hauler completion [command] --help" for more information about a command.
 ```
@@ -43,20 +45,22 @@ Usage:
 Examples:
 To load completion run
 
-        . <(hauler completion bash)
+	. <(hauler completion bash)
 
-        To configure your bash shell to load completions for each session add to your bashrc
+	To configure your bash shell to load completions for each session add to your bashrc
 
-        # ~/.bashrc or ~/.profile
-        command -v hauler >/dev/null && . <(hauler completion bash)
+	# ~/.bashrc or ~/.profile
+	command -v hauler >/dev/null && . <(hauler completion bash)
 
 Flags:
   -h, --help   help for bash
 
 Global Flags:
-  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
-      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
-  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
+      --audit-level string   Set the audit logging level (none, standard, verbose) (defaults standard)
+  -d, --haulerdir string     Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors        Warn and continue instead of failing on errors, including storing images that failed verification (defaults false)
+  -l, --log-level string     Set the logging level (i.e. info, debug, warn) (defaults info)
+  -w, --work-dir string      (Optional) Set the directory for output that commands would otherwise write to the current directory (default: current directory)
 ```
 
 #### `hauler completion fish`:
@@ -70,17 +74,19 @@ Usage:
 Examples:
 To configure your fish shell to load completions for each session write this script to your completions dir:
 
-        hauler completion fish > ~/.config/fish/completions/hauler.fish
+	hauler completion fish > ~/.config/fish/completions/hauler.fish
 
-        See http://fishshell.com/docs/current/index.html#completion-own for more details
+	See http://fishshell.com/docs/current/index.html#completion-own for more details
 
 Flags:
   -h, --help   help for fish
 
 Global Flags:
-  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
-      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
-  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
+      --audit-level string   Set the audit logging level (none, standard, verbose) (defaults standard)
+  -d, --haulerdir string     Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors        Warn and continue instead of failing on errors, including storing images that failed verification (defaults false)
+  -l, --log-level string     Set the logging level (i.e. info, debug, warn) (defaults info)
+  -w, --work-dir string      (Optional) Set the directory for output that commands would otherwise write to the current directory (default: current directory)
 ```
 
 #### `hauler completion zsh`:
@@ -95,28 +101,30 @@ Usage:
 Examples:
 To load completion run
 
-        . <(hauler completion zsh)
+	. <(hauler completion zsh)
 
-        To configure your zsh shell to load completions for each session add to your zshrc
+	To configure your zsh shell to load completions for each session add to your zshrc
 
-        # ~/.zshrc or ~/.profile
-        command -v hauler >/dev/null && . <(hauler completion zsh)
+	# ~/.zshrc or ~/.profile
+	command -v hauler >/dev/null && . <(hauler completion zsh)
 
-        or write a cached file in one of the completion directories in your ${fpath}:
+	or write a cached file in one of the completion directories in your ${fpath}:
 
-        echo "${fpath// /\n}" | grep -i completion
-        hauler completion zsh > _hauler
+	echo "${fpath// /\n}" | grep -i completion
+	hauler completion zsh > _hauler
 
-        mv _hauler ~/.oh-my-zsh/completions  # oh-my-zsh
-        mv _hauler ~/.zprezto/modules/completion/external/src/  # zprezto
+	mv _hauler ~/.oh-my-zsh/completions  # oh-my-zsh
+	mv _hauler ~/.zprezto/modules/completion/external/src/  # zprezto
 
 Flags:
   -h, --help   help for zsh
 
 Global Flags:
-  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
-      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
-  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
+      --audit-level string   Set the audit logging level (none, standard, verbose) (defaults standard)
+  -d, --haulerdir string     Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors        Warn and continue instead of failing on errors, including storing images that failed verification (defaults false)
+  -l, --log-level string     Set the logging level (i.e. info, debug, warn) (defaults info)
+  -w, --work-dir string      (Optional) Set the directory for output that commands would otherwise write to the current directory (default: current directory)
 ```
 
 #### `hauler completion powershell`:
@@ -130,25 +138,27 @@ Usage:
 Examples:
 To load completion run
 
-        . <(hauler completion powershell)
+	. <(hauler completion powershell)
 
-        To configure your powershell shell to load completions for each session add to your powershell profile
+	To configure your powershell shell to load completions for each session add to your powershell profile
 
-        Windows:
+	Windows:
 
-        cd "$env:USERPROFILE\Documents\WindowsPowerShell\Modules"
-        hauler completion powershell >> hauler-completion.ps1
+	cd "$env:USERPROFILE\Documents\WindowsPowerShell\Modules"
+	hauler completion powershell >> hauler-completion.ps1
 
-        Linux:
+	Linux:
 
-        cd "${XDG_CONFIG_HOME:-"$HOME/.config/"}/powershell/modules"
-        hauler completion powershell >> hauler-completions.ps1
+	cd "${XDG_CONFIG_HOME:-"$HOME/.config/"}/powershell/modules"
+	hauler completion powershell >> hauler-completions.ps1
 
 Flags:
   -h, --help   help for powershell
 
 Global Flags:
-  -d, --haulerdir string   Set the location of the hauler directory (default $HOME/.hauler)
-      --ignore-errors      Ignore/Bypass errors (i.e. warn on error) (defaults false)
-  -l, --log-level string   Set the logging level (i.e. info, debug, warn) (default "info")
+      --audit-level string   Set the audit logging level (none, standard, verbose) (defaults standard)
+  -d, --haulerdir string     Set the location of the hauler directory (default $HOME/.hauler)
+      --ignore-errors        Warn and continue instead of failing on errors, including storing images that failed verification (defaults false)
+  -l, --log-level string     Set the logging level (i.e. info, debug, warn) (defaults info)
+  -w, --work-dir string      (Optional) Set the directory for output that commands would otherwise write to the current directory (default: current directory)
 ```
