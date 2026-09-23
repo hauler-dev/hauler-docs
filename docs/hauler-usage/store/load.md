@@ -60,8 +60,35 @@ hauler store load --filename https://example.com/haul.tar.zst
 
 ### Loading a Chunked Haul
 
-If the archive was split with [`hauler store save --chunk-size`](./save.md#splitting-the-archive-into-chunks), pass the base filename and Hauler automatically rejoins the chunks (matched by the `<base>_*<ext>` pattern) before loading:
+If the archive was split with [`hauler store save --chunk-size`](./save.md#splitting-the-archive-into-chunks), pass the base filename and Hauler automatically rejoins the chunks (matched by the `<filename>.<number>` pattern, i.e. `haul.tar.zst.001`) before loading:
 
 ```bash
 hauler store load --filename haul.tar.zst
 ```
+
+### Recovering Lost or Corrupted Chunks
+
+>Note: This feature is experimental.
+
+If the haul was saved with [`hauler store save --redundancy-percent`](./save.md#adding-recovery-chunks), `load` detects the recovery chunks and verifies every chunk's checksum. Any missing or corrupted chunks are rebuilt automatically before loading, with no extra flags:
+
+```bash
+# haul.tar.zst.002 was lost in transfer
+hauler store load --filename haul.tar.zst
+```
+
+```text
+INF loading haul [haul.tar.zst.001] to [/path/to/store]
+WRN recovering [1] of [6] chunk(s)
+INF successfully recovered [1] chunk(s)
+INF unarchiving completed successfully
+```
+
+If more chunks are lost or corrupted than there are recovery chunks, the load fails and no content is loaded into the store:
+
+```text
+WRN chunk [haul.tar.zst.004] failed checksum... treating as corrupted
+Error: [2] of [6] chunk(s) are lost or corrupted... only [1] can be recovered
+```
+
+When loading chunks from remote URLs, a chunk that fails to download is logged and skipped, so the haul can still be rebuilt from the chunks that did download.
