@@ -6,7 +6,7 @@ sidebar_label: Hauler Content
 
 `Content` is the smallest unit Hauler works with - the actual artifacts you collect, carry across the airgap, and serve on the other side. Every `Haul` is ultimately just a bundle of content grouped into [collections](hauler-collections.md). For how these pieces nest together, see [Core Concepts](../core-concepts.md).
 
-Hauler recognizes three kinds of content, and stores each one as an [OCI-compliant artifact](#oci-compliant-artifacts) in its content store.
+Hauler recognizes four kinds of content, and stores each one as an [OCI-compliant artifact](#oci-compliant-artifacts) in its content store.
 
 ## Content Types
 
@@ -28,9 +28,15 @@ Files cover everything that isn't an image or a chart but still needs to make it
 
 See [Hauler Store Add File](../hauler-usage/store/add/file.md) for details.
 
+### Directories
+
+Directories cover content that only makes sense as a folder rather than a single file - configuration trees, offline package repositories, playbooks, and documentation sites. A local directory is stored as a single artifact and extracted back into the same directory tree on the disconnected side. This feature is experimental.
+
+See [Hauler Store Add Directory](../hauler-usage/store/add/directory.md) for details.
+
 ## OCI Compliant Artifacts
 
-Whatever the content type, Hauler stores it as an artifact that conforms to the [Open Container Initiative (OCI)](https://opencontainers.org/) specification. Representing images, charts, and files in a single, standardized format is what lets Hauler treat them uniformly - bundling them into a `Haul`, pushing them to any OCI registry, and serving them on the disconnected side without per-type handling.
+Whatever the content type, Hauler stores it as an artifact that conforms to the [Open Container Initiative (OCI)](https://opencontainers.org/) specification. Representing images, charts, files, and directories in a single, standardized format is what lets Hauler treat them uniformly - bundling them into a `Haul`, pushing them to any OCI registry, and serving them on the disconnected side without per-type handling.
 
 ## Adding Content
 

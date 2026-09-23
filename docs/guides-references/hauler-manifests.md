@@ -6,7 +6,7 @@ sidebar_label: Hauler Manifests
 
 A Hauler manifest is a declarative YAML description of the [content](hauler-content.md) you want in your store. Instead of adding artifacts one at a time, you list them in a manifest and apply it with [`hauler store sync`](../hauler-usage/store/sync.md), keeping your hauls reproducible and version-controlled.
 
-Each manifest describes a single content `kind` - `Images`, `Charts`, or `Files` - and a single file may hold multiple documents separated by `---`. Manifest-level `annotations` set defaults for every entry in the manifest, while per-artifact fields override those defaults. The examples below show the schema for each kind.
+Each manifest describes a single content `kind` - `Images`, `Charts`, `Files`, or `Directories` - and a single file may hold multiple documents separated by `---`. Manifest-level `annotations` set defaults for every entry in the manifest, while per-artifact fields override those defaults. The examples below show the schema for each kind.
 
 ## Example Manifest for Images
 
@@ -119,4 +119,22 @@ spec:
     # fetch local file and assign new name
     - path: path/to/local/file.txt
       name: local-file.txt
+```
+
+## Example Manifest for Directories
+
+Please review the [Directories](../hauler-usage/store/add/directory.md) content page for more detailed information.
+
+```yaml title="hauler-directory-manifest.yaml"
+apiVersion: content.hauler.cattle.io/v1
+kind: Directories
+metadata:
+  name: hauler-content-directories-example
+spec:
+  directories:
+    # add local directory (relative to this manifest)
+    - path: path/to/local/configs
+    # add local directory and assign new name
+    - path: path/to/local/configs
+      name: my-configs
 ```
