@@ -8,7 +8,7 @@ sidebar_label: Save
 
 `hauler store save` packages a content store into a single compressed archive (a `haul`, `.tar.zst` by default) that can be carried across the airgap.
 
-This is the hand-off point between the two sides of the workflow: after you've collected everything with `add`/`sync` on the connected side, `save` produces one portable file to move onto physical media or through an approved transfer process. On the other side, [`hauler store load`](./load.md) unpacks it back into a content store. Use `--platform` to keep only the architecture you need (smaller archive), `--chunk-size` to split the output for media with file-size limits, and `--containerd` when the haul will be imported directly into containerd rather than loaded by Hauler.
+This is the hand-off point between the two sides of the workflow: after you've collected everything with `add`/`sync` on the connected side, `save` produces one portable file to move onto physical media or through an approved transfer process. On the other side, [`hauler store load`](./load.md) unpacks it back into a content store. Use `--platform` to keep only the architecture you need (smaller archive), `--chunk-size` to split the output for media with file-size limits (with `--redundancy-percent` to add recovery chunks), and `--containerd` when the haul will be imported directly into containerd rather than loaded by Hauler.
 
 **An example with available flags...**
 
@@ -23,11 +23,12 @@ Usage:
   hauler store save [flags]
 
 Flags:
-      --chunk-size string   (Optional) Split the output archive into chunks of the specified size (e.g. 1G, 500M, 2048M)
-      --containerd          (Optional) Enable import compatibility with containerd... filters index.json to image content, preserving the full index as a sidecar
-  -f, --filename string     (Optional) Specify the name of outputted haul (default "haul.tar.zst")
-  -h, --help                help for save
-  -p, --platform string     (Optional) Specify the platform for runtime imports... i.e. linux/amd64 (unspecified implies all)
+      --chunk-size string        (Optional) Split the output archive into chunks of the specified size (i.e. 1G, 500M, 2048M)
+      --containerd               (Optional) Enable import compatibility with containerd... filters index.json to image content, preserving the full index as a sidecar
+  -f, --filename string          (Optional) Specify the name of outputted haul (default "haul.tar.zst")
+  -h, --help                     help for save
+  -p, --platform string          (Optional) Specify the platform for runtime imports... i.e. linux/amd64 (unspecified implies all)
+      --redundancy-percent int   (EXPERIMENTAL) (Optional) Percentage of recovery chunks for rebuilding lost/corrupted chunks (requires --chunk-size)
 
 Global Flags:
       --audit-level string     Set the audit logging level (none, standard, verbose) (defaults standard)
@@ -60,6 +61,39 @@ For large stores, use `--chunk-size` to split the output archive into multiple s
 hauler store save --chunk-size 2G
 ```
 
-The chunks are produced as `<base>_*<ext>` files (e.g. `haul_0.tar.zst`, `haul_1.tar.zst`). [`hauler store load`](./load.md) automatically rejoins them when given the base filename.
+The chunks are produced as `<filename>.<number>` files (i.e. `haul.tar.zst.001`, `haul.tar.zst.002`). [`hauler store load`](./load.md) automatically rejoins them when given the base filename. Saving again with fewer chunks removes any higher-numbered chunks left behind by the previous save.
 
 > **Note:** A chunked store must be reassembled with `hauler store load` before it can be imported into containerd. Chunked output cannot be combined directly with `--containerd` for a one-step import.
+
+### Adding Recovery Chunks
+
+>Note: This feature is experimental.
+
+Media fails, and transfers drop or corrupt files. Use `--redundancy-percent` with `--chunk-size` to add recovery chunks to a chunked haul, so [`hauler store load`](./load.md) can rebuild lost or corrupted chunks instead of failing. The value is the percentage of recovery chunks to add relative to the data chunks, between `0` and `100`. Any recovery percentage above `0` always adds at least one recovery chunk.
+
+```bash
+# split the haul into 1 GB chunks with 20% recovery chunks
+hauler store save --chunk-size 1G --redundancy-percent 20
+```
+
+For example, saving a store that splits into 5 data chunks with `--redundancy-percent 20` adds 1 recovery chunk:
+
+```bash
+hauler store save --chunk-size 1M --redundancy-percent 20
+```
+
+```text
+INF split [haul.tar.zst] into 6 chunk(s) with 1 recovery chunk(s)
+INF haul can recover up to [1] lost or corrupted chunk(s)
+```
+
+The haul can then be loaded as long as no more chunks are lost or corrupted than there are recovery chunks. Each chunk carries a checksum, so a corrupted chunk is detected and rebuilt the same way as a missing one. Recovery chunks are named and moved like any other chunk (i.e. `haul.tar.zst.006`) and must be carried across the airgap with the rest of the set.
+
+| Data Chunks | Redundancy Percent | Recovery Chunks | Total Chunks | Chunks That Can Be Lost |
+|:---:|:---:|:---:|:---:|:---:|
+| 5 | 20 | 1 | 6 | 1 |
+| 5 | 50 | 3 | 8 | 3 |
+| 10 | 30 | 3 | 13 | 3 |
+| 10 | 100 | 10 | 20 | 10 |
+
+> **Note:** `--redundancy-percent` requires `--chunk-size`, and a haul with recovery chunks is limited to 256 total chunks. If a save exceeds the limit, use a larger `--chunk-size` or a lower `--redundancy-percent`.
