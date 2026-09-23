@@ -6,7 +6,7 @@ sidebar_label: Hauler Content
 
 `Content` is the smallest unit Hauler works with - the actual artifacts you collect, carry across the airgap, and serve on the other side. Every `Haul` is ultimately just a bundle of content grouped into [collections](hauler-collections.md). For how these pieces nest together, see [Core Concepts](../core-concepts.md).
 
-Hauler recognizes four kinds of content, and stores each one as an [OCI-compliant artifact](#oci-compliant-artifacts) in its content store.
+Hauler recognizes five kinds of content, and stores each one as an [OCI-compliant artifact](#oci-compliant-artifacts) in its content store.
 
 ## Content Types
 
@@ -34,9 +34,15 @@ Directories cover content that only makes sense as a folder rather than a single
 
 See [Hauler Store Add Directory](../hauler-usage/store/add/directory.md) for details.
 
+### Git
+
+Git repositories cover source code, GitOps repositories, and infrastructure as code that tools inside the airgap expect to `git clone`. Repositories can be added from a local bare repository, a local working copy, or a remote HTTP(S) or SSH URL, and are served for cloning on the disconnected side with `hauler store serve git`. This feature is experimental.
+
+See [Hauler Store Add Git](../hauler-usage/store/add/git.md) and [Hauler Store Serve Git](../hauler-usage/store/serve/git.md) for details.
+
 ## OCI Compliant Artifacts
 
-Whatever the content type, Hauler stores it as an artifact that conforms to the [Open Container Initiative (OCI)](https://opencontainers.org/) specification. Representing images, charts, files, and directories in a single, standardized format is what lets Hauler treat them uniformly - bundling them into a `Haul`, pushing them to any OCI registry, and serving them on the disconnected side without per-type handling.
+Whatever the content type, Hauler stores it as an artifact that conforms to the [Open Container Initiative (OCI)](https://opencontainers.org/) specification. Representing images, charts, files, directories, and git repositories in a single, standardized format is what lets Hauler treat them uniformly - bundling them into a `Haul`, pushing them to any OCI registry, and serving them on the disconnected side without per-type handling.
 
 ## Adding Content
 
