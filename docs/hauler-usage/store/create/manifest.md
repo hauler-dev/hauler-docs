@@ -10,7 +10,7 @@ sidebar_label: Manifest
 
 `hauler store create manifest` reconstructs a [Hauler manifest](../../../guides-references/hauler-manifests.md) from an existing content store, producing the YAML needed to recreate that store's contents with [`hauler store sync`](../sync.md).
 
-Hauler walks the store's OCI index and the metadata recorded alongside each artifact, then groups what it finds into `Images`, `Charts`, and `Files` documents. This is useful a store was built imperatively with [`hauler store add`](../add/image.md) and you want a declarative, version-controllable manifest after the fact, or when you've inherited a store and need to know how to rebuild it.
+Hauler walks the store's OCI index and the metadata recorded alongside each artifact, then groups what it finds into `Images`, `Charts`, `Files`, and `Directories` documents. This is useful a store was built imperatively with [`hauler store add`](../add/image.md) and you want a declarative, version-controllable manifest after the fact, or when you've inherited a store and need to know how to rebuild it.
 
 The manifest is written to stdout by default, or to a file with `--output`.
 
@@ -132,7 +132,7 @@ hauler store create manifest --output hauler-manifest.yaml
 ```
 
 ```text
-INF wrote manifest with [1] image(s), [1] chart(s), [1] file(s) to [/path/to/hauler-manifest.yaml]
+INF wrote manifest with [1] image(s), [1] chart(s), [1] file(s), [0] directory(s) to [/path/to/hauler-manifest.yaml]
 ```
 
 ### Rewritten Artifacts
@@ -176,6 +176,7 @@ spec:
 | Images | `name` is the full image reference. `platform` is set only for single-platform images; a stored multi-arch index is left unset so a later sync re-pulls every platform, matching what is actually in the store. |
 | Charts | `name`, `repoURL`, and `version` are recovered from the reference recorded when the chart was added. |
 | Files | `path` is the original local path or URL the file was added from, and `name` is the name it is stored under. |
+| Directories | `path` is the absolute local path the directory was added from, and `name` is the name it is stored under. |
 | Signatures, attestations, SBOMs, and referrers | Omitted. These are rediscovered and pulled automatically when the parent image is re-added, so they do not need their own manifest entries. |
 
 ### Accuracy and Limitations

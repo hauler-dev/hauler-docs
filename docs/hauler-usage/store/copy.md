@@ -8,12 +8,12 @@ sidebar_label: Copy
 
 `hauler store copy` pushes the entire contents of the store to another location.
 
-It's the command you use to "unload" a store into your real infrastructure on the airgapped side - typically seeding an existing OCI registry with every image, chart, and file at once, rather than running Hauler's built-in registry long-term. Unlike [`hauler store serve registry`](./serve/registry.md), which keeps a process running, `copy` performs a one-time transfer and exits. It can also extract the store's files and charts straight to a directory. The target is given as a single argument prefixed with the destination type:
+It's the command you use to "unload" a store into your real infrastructure on the airgapped side - typically seeding an existing OCI registry with every image, chart, file, and directory at once, rather than running Hauler's built-in registry long-term. Unlike [`hauler store serve registry`](./serve/registry.md), which keeps a process running, `copy` performs a one-time transfer and exits. It can also extract the store's files, charts, and directories straight to a directory. The target is given as a single argument prefixed with the destination type:
 
 | Prefix | Behavior |
 |--------|----------|
-| `registry://`, `reg://`, `oci://` | Pushes the store (images, charts, files, and cosign metadata) to an OCI registry |
-| `directory://`, `dir://` | Extracts the store's files and charts to a local directory (container images and cosign metadata are skipped) |
+| `registry://`, `reg://`, `oci://` | Pushes the store (images, charts, files, directories, and cosign metadata) to an OCI registry |
+| `directory://`, `dir://` | Extracts the store's files, charts, and directories to a local directory (container images and cosign metadata are skipped) |
 
 **An example with available flags...**
 
@@ -44,7 +44,7 @@ Flags:
       --insecure      (Optional) Allow insecure connections
   -o, --only string   (Optional) Custom string array to only copy specific 'image' items
       --plain-http    (Optional) Allow plain HTTP connections
-      --type string   (EXPERIMENTAL) (Optional) Filter on content type (image | chart | file | sigs | atts | sbom | referrer) (default "all")
+      --type string   (EXPERIMENTAL) (Optional) Filter on content type (image | chart | file | directory | sigs | atts | sbom | referrer) (default "all")
 
 Global Flags:
       --audit-level string     Set the audit logging level (none, standard, verbose) (defaults standard)
@@ -68,7 +68,7 @@ hauler store copy registry://<registry-url> --only rancher
 
 ### Filtering with `--type`
 
-The `--type` flag restricts the copy to a single content type. Supported values are `image`, `chart`, `file`, `sigs`, `atts`, `sbom`, and `referrer`; it defaults to `all`. Combine it with `--only` to further narrow the copy to specific references within that type. This feature is experimental.
+The `--type` flag restricts the copy to a single content type. Supported values are `image`, `chart`, `file`, `directory`, `sigs`, `atts`, `sbom`, and `referrer`; it defaults to `all`. Combine it with `--only` to further narrow the copy to specific references within that type. This feature is experimental.
 
 ```bash
 # only copy charts

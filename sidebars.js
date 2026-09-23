@@ -38,6 +38,7 @@ const sidebars = {
                 'hauler-usage/store/add/image',
                 'hauler-usage/store/add/chart',
                 'hauler-usage/store/add/file',
+                'hauler-usage/store/add/directory',
               ],
             },
             {
