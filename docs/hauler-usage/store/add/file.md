@@ -8,7 +8,7 @@ sidebar_label: File
 
 `hauler store add file` stores an arbitrary file - local or fetched from an HTTP(S) URL - as an OCI artifact in the content store.
 
-Use this to carry the bits that aren't images or charts but are still needed inside the airgap: install scripts, binaries, tarballs, RPMs, configuration, manifests, and the like. On the far side of the airgap these files can be handed out over HTTP with [`hauler store serve fileserver`](../serve/fileserver.md) or written back to disk with [`hauler store extract`](../extract.md). Pass `--name` to store the file under a friendlier name than the one derived from its path or URL (handy for URLs that don't end in a filename). For a repeatable set of files, list them in a [Hauler manifest](#hauler-manifest-for-files) and run [`hauler store sync`](../sync.md).
+Use this to carry the bits that aren't images or charts but are still needed inside the airgap: install scripts, binaries, tarballs, RPMs, configuration, manifests, and the like. On the far side of the airgap these files can be handed out over HTTP with [`hauler store serve fileserver`](../serve/fileserver.md) or written back to disk with [`hauler store extract`](../extract.md). Pass `--name` to store the file under a friendlier name than the one derived from its path or URL (handy for URLs that don't end in a filename). To add a local directory that extracts back as a directory, use [`hauler store add directory`](./directory.md) instead. For a repeatable set of files, list them in a [Hauler manifest](#hauler-manifest-for-files) and run [`hauler store sync`](../sync.md).
 
 **An example with available flags...**
 

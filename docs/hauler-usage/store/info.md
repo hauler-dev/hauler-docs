@@ -29,7 +29,7 @@ Flags:
   -h, --help            help for info
       --list-repos      (Optional) List all repository names
   -o, --output string   (Optional) Specify the output format (table | json) (default "table")
-      --type string     (Optional) Filter on content type (image | chart | file | sigs | atts | sbom | referrer) (default "all")
+      --type string     (Optional) Filter on content type (image | chart | file | directory | sigs | atts | sbom | referrer) (default "all")
 
 Global Flags:
       --audit-level string     Set the audit logging level (none, standard, verbose) (defaults standard)
@@ -56,6 +56,7 @@ hauler store ls
 hauler store info --type image
 hauler store info --type chart
 hauler store info --type file
+hauler store info --type directory
 
 # show artifact digests in the table
 hauler store info --digests
@@ -77,6 +78,7 @@ The `--type` flag filters the output to a single content type. Valid values are:
 | `image` | Container images (listed per-platform for multi-arch images) |
 | `chart` | Helm charts |
 | `file` | Files |
+| `directory` | Directories |
 | `sigs` | Cosign signatures |
 | `atts` | Cosign attestations |
 | `sbom` | SBOMs |

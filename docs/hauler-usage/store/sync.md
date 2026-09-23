@@ -56,7 +56,9 @@ Global Flags:
 
 ### Syncing from a Hauler Manifest
 
-The most common way to sync content is from one or more Hauler manifests. Each manifest is a YAML document (or multi-document file) describing `Images`, `Charts`, or `Files` content. See the [Image](./add/image.md), [Chart](./add/chart.md), and [File](./add/file.md) pages for the manifest schema of each content kind.
+The most common way to sync content is from one or more Hauler manifests. Each manifest is a YAML document (or multi-document file) describing `Images`, `Charts`, `Files`, or `Directories` content. See the [Image](./add/image.md), [Chart](./add/chart.md), [File](./add/file.md), and [Directory](./add/directory.md) pages for the manifest schema of each content kind.
+
+> **Note:** `Directories` documents are only accepted from local manifests, and relative directory paths are resolved against the manifest's own directory. See [Hauler Manifest for Directories](./add/directory.md#hauler-manifest-for-directories).
 
 ```bash
 # sync a single manifest
