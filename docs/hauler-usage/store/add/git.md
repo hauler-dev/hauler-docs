@@ -138,7 +138,7 @@ spec:
       insecureSkipTLSVerify: false
 ```
 
-> **Note:** When a `Git` document comes from a remote (`http://`/`https://`) manifest, every `path` must be a remote URL and no credential or TLS file fields (`usernameEnv`, `passwordEnv`, `sshKey`, `certFile`, `keyFile`, `caFile`) are allowed. This keeps a remote manifest from reading local repositories or sending local secrets to a server of its choosing.
+> **Note:** When a `Git` document comes from a remote (`http://`/`https://`) manifest, every `path` must be a remote URL and no credential or TLS file fields (`usernameEnv`, `passwordEnv`, `sshKey`, `certFile`, `keyFile`, `caFile`) are allowed. This keeps a remote manifest from reading local repositories or sending local secrets to a server of its choosing. Use `hauler store sync --trust-remote-manifests` to allow them from a remote manifest you trust.
 
 ### Example Manifest for Git
 
