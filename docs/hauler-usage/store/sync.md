@@ -40,6 +40,7 @@ Flags:
   -c, --product-registry string                         (Optional) Specify the product registry. Defaults to RGS Carbide Registry (rgcrprod.azurecr.us)
       --products strings                                (Optional) Specify the product name to fetch collections from the product registry i.e. rancher=v2.10.1,rke2=v1.31.5+rke2r1
   -g, --registry string                                 (Optional) Specify the registry of the image for images that do not alredy define one
+      --trust-remote-manifests                          (Optional) Allow remote manifests to use local paths and credentials... only use with manifests you trust
       --use-tlog-verify                                 (Optional) Allow transparency log verification (defaults to false)
 
 Global Flags:
@@ -58,9 +59,9 @@ Global Flags:
 
 The most common way to sync content is from one or more Hauler manifests. Each manifest is a YAML document (or multi-document file) describing `Images`, `Charts`, `Files`, `Directories`, or `Git` content. See the [Image](./add/image.md), [Chart](./add/chart.md), [File](./add/file.md), [Directory](./add/directory.md), and [Git](./add/git.md) pages for the manifest schema of each content kind.
 
-> **Note:** `Directories` documents are only accepted from local manifests, and relative directory paths are resolved against the manifest's own directory. See [Hauler Manifest for Directories](./add/directory.md#hauler-manifest-for-directories).
+> **Note:** Remote manifests (including `--products`) may not use local paths or credentials... `Files` and `Git` must reference remote URLs, `Charts` must come from a remote repository without credential, TLS file, or values file fields, and `Directories` documents are refused. Use `--trust-remote-manifests` only for remote manifests you trust, which allows them to use local paths and credentials like a local manifest.
 
-> **Note:** `Git` documents from a remote manifest may only reference remote URLs and may not set credential or TLS file fields. See [Hauler Manifest for Git](./add/git.md#hauler-manifest-for-git).
+> **Note:** Relative directory paths are resolved against the manifest's own directory. See [Hauler Manifest for Directories](./add/directory.md#hauler-manifest-for-directories).
 
 ```bash
 # sync a single manifest
@@ -71,6 +72,9 @@ hauler store sync --filename images.yaml --filename charts.yaml
 
 # sync a remote manifest
 hauler store sync --filename https://example.com/hauler-manifest.yaml
+
+# sync a trusted remote manifest that uses local paths or credentials
+hauler store sync --filename https://example.com/hauler-manifest.yaml --trust-remote-manifests
 ```
 
 A value beginning with `http://` or `https://` is downloaded before processing, so manifests can be referenced directly by URL.

@@ -105,7 +105,7 @@ spec:
       name: <name>
 ```
 
-> **Note:** A `Directories` manifest must be synced from a local manifest file. Hauler refuses a `Directories` document from a remote (`http://`/`https://`) manifest, and every `path` must be a local path rather than a URL.
+> **Note:** A `Directories` manifest must be synced from a local manifest file. Hauler refuses a `Directories` document from a remote (`http://`/`https://`) manifest, and every `path` must be a local path rather than a URL. Use `hauler store sync --trust-remote-manifests` to allow it from a remote manifest you trust.
 
 ### Example Manifest for Directories
 
