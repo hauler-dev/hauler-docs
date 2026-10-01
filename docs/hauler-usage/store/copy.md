@@ -26,6 +26,12 @@ hauler store copy dir://<directory-path>
 
 # only copy image references containing a given string
 hauler store copy registry://<registry-url> --only <substring>
+
+# push the store to a registry with a private CA
+hauler store copy registry://<registry-url> --ca-file /path/to/ca.pem
+
+# push the store to a registry with a self-signed or otherwise unverifiable certificate
+hauler store copy registry://<registry-url> --insecure
 ```
 
 ### Command Overview
@@ -40,11 +46,12 @@ Examples:
   directory:// | dir://          - Extracts the store to a directory
 
 Flags:
-  -h, --help          help for copy
-      --insecure      (Optional) Allow insecure connections
-  -o, --only string   (Optional) Custom string array to only copy specific 'image' items
-      --plain-http    (Optional) Allow plain HTTP connections
-      --type string   (EXPERIMENTAL) (Optional) Filter on content type (image | chart | file | directory | git | sigs | atts | sbom | referrer) (default "all")
+      --ca-file string   (Optional) Location of CA Bundle to enable certification verification
+  -h, --help             help for copy
+      --insecure         (Optional) Allow insecure connections
+  -o, --only string      (Optional) Custom string array to only copy specific 'image' items
+      --plain-http       (Optional) Allow plain HTTP connections
+      --type string      (EXPERIMENTAL) (Optional) Filter on content type (image | chart | file | directory | git | sigs | atts | sbom | referrer) (default "all")
 
 Global Flags:
       --audit-level string     Set the audit logging level (none, standard, verbose) (defaults standard)
