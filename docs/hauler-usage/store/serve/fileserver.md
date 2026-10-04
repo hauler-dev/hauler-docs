@@ -31,8 +31,8 @@ Flags:
   -h, --help                      help for fileserver
   -p, --port int                  (Optional) Set the port to use for incoming connections (default 8080)
       --timeout int               (Optional) Timeout duration for HTTP Requests in seconds for both reads/writes (default 60)
-      --tls-cert string           (Optional) Location of the TLS Certificate to use for server authenication
-      --tls-key string            (Optional) Location of the TLS Key to use for server authenication
+      --tls-cert string           (Optional) Location of the TLS Certificate to use for server authentication
+      --tls-key string            (Optional) Location of the TLS Key to use for server authentication
 
 Global Flags:
       --audit-level string     Set the audit logging level (none, standard, verbose) (defaults standard)

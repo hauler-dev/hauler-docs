@@ -28,12 +28,12 @@ Flags:
       --basic-auth string         (EXPERIMENTAL) (Optional) Location of the htpasswd file to use for basic authentication
       --basic-auth-realm string   (EXPERIMENTAL) (Optional) Realm to use for basic authentication (default "hauler-registry")
   -c, --config string             (Optional) Location of the registry config file (overrides all flags)
-      --directory string          (Optional) Directory to use for backend. Defaults to $PWD/registry (default "registry")
+      --directory string          (Optional) Directory to use for backend. (defaults to $PWD/registry) (default "registry")
   -h, --help                      help for registry
   -p, --port int                  (Optional) Set the port to use for incoming connections (default 5000)
       --readonly                  (Optional) Run the registry as readonly (default true)
-      --tls-cert string           (Optional) Location of the TLS Certificate to use for server authenication
-      --tls-key string            (Optional) Location of the TLS Key to use for server authenication
+      --tls-cert string           (Optional) Location of the TLS Certificate to use for server authentication
+      --tls-key string            (Optional) Location of the TLS Key to use for server authentication
 
 Global Flags:
       --audit-level string     Set the audit logging level (none, standard, verbose) (defaults standard)

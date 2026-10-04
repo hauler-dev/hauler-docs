@@ -125,7 +125,7 @@ hauler store add chart internal-chart --repo https://charts.internal.example.com
 
 Use `--ca-file` to trust a private or internal CA when fetching from an HTTP(S) or OCI chart repository that presents a certificate not signed by a public CA, or `--insecure-skip-tls-verify` to skip certificate verification entirely. Unlike `hauler store add image`, this command does **not** fall back to the `CA_FILE` / `INSECURE_SKIP_TLS_VERIFY` environment variables when run standalone - use the flags directly, or use [`hauler store sync`](../sync.md), which does support the environment variables for chart entries.
 
-> **Note:** `--ca-file` and `--insecure-skip-tls-verify` are mutually exclusive - supplying a CA file always forces certificate verification on, regardless of `--insecure-skip-tls-verify`. When neither is set, the system's default CA bundle is used.
+> **Note:** Avoid setting `--ca-file` and `--insecure-skip-tls-verify` together - if both are set, `--insecure-skip-tls-verify` takes precedence and the CA file is not read. When neither is set, the system's default CA bundle is used.
 
 ### Hauler Manifest for Charts
 
@@ -137,7 +137,7 @@ kind: Charts
 metadata:
   name: hauler-content-charts-example
   annotations:
-    # global TLS options for all charts in the manifest (mutually exclusive; ca-file wins if both are set)
+    # global TLS options for all charts in the manifest (avoid setting both... insecure-skip-tls-verify wins if both are set)
     hauler.dev/ca-file: <path-to-ca-bundle>
     hauler.dev/insecure-skip-tls-verify: "true"
 spec:
@@ -148,7 +148,7 @@ spec:
       repoURL: <chart-repository>
       # semver complaint
       version: <chart-version>
-      # TLS options for fetching this chart (mutually exclusive; ca-file wins if both are set)
+      # TLS options for fetching this chart (avoid setting both... insecureSkipTLSVerify wins if both are set)
       caFile: <path-to-ca-bundle>
       insecureSkipTLSVerify: false
 ```
