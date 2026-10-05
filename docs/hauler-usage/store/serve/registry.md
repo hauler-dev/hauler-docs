@@ -12,6 +12,8 @@ This is how you put collected images to work inside the airgap without depending
 
 > **Tip:** If you only need to seed an existing registry rather than serve one via Hauler, use [`hauler store copy registry://...`](../copy.md) instead. This is the recommended practice for long-running registry needs.
 
+> **Note:** If the store contains no artifacts, the registry still starts with an empty catalog and logs a warning to add some with `hauler store add` or `hauler store sync`.
+
 **An example with available flags...**
 
 ```bash

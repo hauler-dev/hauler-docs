@@ -83,7 +83,7 @@ available repositories:
 git clone http://localhost:8090/hauler-helm
 ```
 
-> **Note:** The git server fails to start if the store contains no git repositories.
+> **Note:** If the store contains no git repositories, the git server still starts with an empty list and logs a warning to add some with `hauler store add` or `hauler store sync`.
 
 ### Basic Authentication
 
