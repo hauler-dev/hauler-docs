@@ -59,9 +59,7 @@ Global Flags:
 
 The most common way to sync content is from one or more Hauler manifests. Each manifest is a YAML document (or multi-document file) describing `Images`, `Charts`, `Files`, `Directories`, or `Git` content. See the [Image](./add/image.md), [Chart](./add/chart.md), [File](./add/file.md), [Directory](./add/directory.md), and [Git](./add/git.md) pages for the manifest schema of each content kind.
 
-> **Note:** `Directories` documents are only accepted from local manifests, and relative directory paths are resolved against the manifest's own directory. See [Hauler Manifest for Directories](./add/directory.md#hauler-manifest-for-directories).
-
-> **Note:** `Git` documents from a remote manifest may only reference remote URLs and may not set credential or TLS file fields. See [Hauler Manifest for Git](./add/git.md#hauler-manifest-for-git).
+> **Note:** Relative directory paths are resolved against the manifest's own directory. Remote manifests can't use local paths or credentials... see [Syncing from a Remote Manifest](#syncing-from-a-remote-manifest).
 
 ```bash
 # sync a single manifest
