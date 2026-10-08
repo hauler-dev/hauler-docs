@@ -10,7 +10,7 @@ sidebar_label: Introduction
 
 ## What is Hauler?
 
-`Hauler` simplifies delivering software into disconnected and airgapped environments without requiring operators to adopt a specific workflow. Hauler represents artifacts (images, charts, files, and more) as content and collections, so operators can fetch, store, package, and distribute them with declarative manifests or the command line.
+`Hauler` simplifies delivering software into disconnected and airgapped environments without requiring operators to adopt a specific workflow on either side of the airgap. We represent artifacts, such as images, charts, files, and more, as content and collections, so operators can fetch, store, package, and distribute them with declarative manifests or the command line.
 
 `Hauler` carries your artifacts and their supply chain into disconnected and airgapped environments. Every artifact keeps its signatures, attestations, and SBOMs, and can be verified before it is saved and again after it is loaded, so teams on the disconnected and airgapped side know exactly what they received and where it originated.
 
