@@ -10,7 +10,7 @@ sidebar_label: Introduction
 
 ## What is Hauler?
 
-`Hauler` is a free and open source tool that simplifies delivering artifacts into disconnected and airgapped environments without requiring operators to adopt a specific workflow on either side. We represent artifacts, such as images, charts, files, and more, as content and collections, so operators can fetch, store, package, and distribute them with declarative manifests or the command line, whether the destination is disconnected, airgapped, limited, constrained, or anywhere else your artifacts need to go.
+`Hauler` is a free and open source tool that simplifies delivering artifacts into disconnected and airgapped environments without requiring operators to adopt a specific workflow on either side. It represents artifacts, such as images, charts, files, and more, as content and collections, so operators can fetch, store, package, and distribute them with declarative manifests or the command line, whether the destination is disconnected, airgapped, limited, constrained, or anywhere else your artifacts need to go.
 
 `Hauler` carries your artifacts and their supply chain into disconnected and airgapped environments. Every artifact keeps its signatures, attestations, and SBOMs, and can be verified before it is saved and again after it is loaded, so teams on the disconnected and airgapped side know exactly what they received and where it originated.
 
@@ -23,7 +23,7 @@ sidebar_label: Introduction
 Moving software into disconnected and airgapped environments usually means juggling several tools and bespoke scripts. `Hauler` consolidates that work into a single binary:
 
 - **Fetch** images, charts, and files from registries, helm repositories, and urls.
-- **Validate** signatures and attestations with [cosign](https://github.com/sigstore/cosign) before anything is saved.
+- **Validate** signatures with [cosign](https://github.com/sigstore/cosign) before anything is saved, when a key or keyless identity is provided.
 - **Save** everything as OCI artifacts into a single portable `haul`.
 - **Airgap** the `haul` into disconnected and airgapped environments, chunked if your transfer media requires it.
 - **Load** the `haul` on the disconnected and airgapped side and validate it again.
@@ -33,7 +33,7 @@ Operators can drive all of this declaratively with [manifests](guides-references
 
 ## Next Steps
 
-- New to Hauler? Start with the [Core Concepts](core-concepts.md) to learn how Hauls, Collections, and Content fit together.
+- New to Hauler? Start with the [Core Concepts](core-concepts.md) to learn how Content, Stores, and Hauls fit together.
 - Ready to try it? Head to the [Quickstart](getting-started/quickstart.md).
 
 ## Acknowledgements
