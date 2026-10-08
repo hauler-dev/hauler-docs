@@ -43,6 +43,14 @@ curl -sfL https://get.hauler.dev | HAULER_DIR=$HOME/.hauler bash
 # install latest release
 brew tap hauler-dev/homebrew-tap
 brew install hauler
+
+# install specific release
+brew tap hauler-dev/homebrew-tap
+brew install hauler@2.1.1
+
+# install latest release, release candidate, or dev build
+brew tap hauler-dev/homebrew-tap
+brew install hauler-dev
 ```
 
 ### Windows

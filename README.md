@@ -1,6 +1,6 @@
 # Hauler Docs
 
-![rancher-government-hauler-logo](/static/img/rgs-hauler-logo.png)
+![hauler-logo](/static/img/hauler-logo.png)
 
 ## Local Development
 

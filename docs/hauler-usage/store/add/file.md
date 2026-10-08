@@ -73,7 +73,7 @@ hauler store add file https://internal.example.com/install.sh --insecure-skip-tl
 
 `--ca-file` and `--insecure-skip-tls-verify` only affect files fetched over `http://`/`https://`; they're ignored for local paths. Unlike `hauler store add image`, this command does **not** fall back to the `CA_FILE` / `INSECURE_SKIP_TLS_VERIFY` environment variables - use the flags directly, or use [`hauler store sync`](../sync.md), which does support the environment variables.
 
-> **Note:** `--ca-file` and `--insecure-skip-tls-verify` are mutually exclusive - supplying a CA file always forces certificate verification on, regardless of `--insecure-skip-tls-verify`. When neither is set, the system's default CA bundle is used.
+> **Note:** Avoid setting `--ca-file` and `--insecure-skip-tls-verify` together - if both are set, `--insecure-skip-tls-verify` takes precedence and the CA file is not read. When neither is set, the system's default CA bundle is used.
 
 ### Hauler Manifest for Files
 
@@ -85,14 +85,14 @@ kind: Files
 metadata:
   name: hauler-content-files-example
   annotations:
-    # global TLS options for all remote files in the manifest (mutually exclusive; ca-file wins if both are set)
+    # global TLS options for all remote files in the manifest (avoid setting both... insecure-skip-tls-verify wins if both are set)
     hauler.dev/ca-file: <path-to-ca-bundle>
     hauler.dev/insecure-skip-tls-verify: "true"
 spec:
   files:
     - path: <file>
       name: <name>
-      # TLS options for fetching this file, if remote (mutually exclusive; ca-file wins if both are set)
+      # TLS options for fetching this file, if remote (avoid setting both... insecure-skip-tls-verify wins if both are set)
       ca-file: <path-to-ca-bundle>
       insecure-skip-tls-verify: false
 ```

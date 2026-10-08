@@ -127,7 +127,7 @@ hauler store add image registry.example.com/app:latest --ca-file /path/to/ca.pem
 CA_FILE=/path/to/ca.pem hauler store add image registry.example.com/app:latest
 ```
 
-> **Note:** `--ca-file` and `--insecure-skip-tls-verify` are mutually exclusive - supplying a CA file always forces certificate verification on, regardless of `--insecure-skip-tls-verify`. When neither is set, the system's default CA bundle is used.
+> **Note:** Avoid setting `--ca-file` and `--insecure-skip-tls-verify` together - if both are set, `--insecure-skip-tls-verify` takes precedence and the CA file is not read. When neither is set, the system's default CA bundle is used.
 
 ### Adding an Image from the Local Docker Daemon
 
@@ -172,7 +172,7 @@ metadata:
     hauler.dev/certificate-oidc-issuer: <cosign-oidc-issuer>
     hauler.dev/certificate-oidc-issuer-regexp: <cosign-oidc-issuer-regexp>
     hauler.dev/certificate-github-workflow-repository: <cosign-github-workflow-repository>
-    # TLS options for pulling from the registry (mutually exclusive; ca-file wins if both are set)
+    # TLS options for pulling from the registry (avoid setting both... insecure-skip-tls-verify wins if both are set)
     hauler.dev/ca-file: <path-to-ca-bundle>
     hauler.dev/insecure-skip-tls-verify: "true"
 spec:
@@ -196,7 +196,7 @@ spec:
       certificate-oidc-issuer: <cosign-oidc-issuer>
       certificate-oidc-issuer-regexp: <cosign-oidc-issuer-regexp>
       certificate-github-workflow-repository: <cosign-github-workflow-repository>
-      # TLS options for pulling this image (mutually exclusive; ca-file wins if both are set)
+      # TLS options for pulling this image (avoid setting both... insecure-skip-tls-verify wins if both are set)
       ca-file: <path-to-ca-bundle>
       insecure-skip-tls-verify: false
 ```

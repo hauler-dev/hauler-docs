@@ -40,6 +40,7 @@ Flags:
   -c, --product-registry string                         (Optional) Specify the product registry. Defaults to RGS Carbide Registry (rgcrprod.azurecr.us)
       --products strings                                (Optional) Specify the product name to fetch collections from the product registry i.e. rancher=v2.10.1,rke2=v1.31.5+rke2r1
   -g, --registry string                                 (Optional) Specify the registry of the image for images that do not alredy define one
+      --trust-remote-manifests                          (Optional) Allow remote manifests to use local paths and credentials
       --use-tlog-verify                                 (Optional) Allow transparency log verification (defaults to false)
 
 Global Flags:
@@ -58,9 +59,7 @@ Global Flags:
 
 The most common way to sync content is from one or more Hauler manifests. Each manifest is a YAML document (or multi-document file) describing `Images`, `Charts`, `Files`, `Directories`, or `Git` content. See the [Image](./add/image.md), [Chart](./add/chart.md), [File](./add/file.md), [Directory](./add/directory.md), and [Git](./add/git.md) pages for the manifest schema of each content kind.
 
-> **Note:** `Directories` documents are only accepted from local manifests, and relative directory paths are resolved against the manifest's own directory. See [Hauler Manifest for Directories](./add/directory.md#hauler-manifest-for-directories).
-
-> **Note:** `Git` documents from a remote manifest may only reference remote URLs and may not set credential or TLS file fields. See [Hauler Manifest for Git](./add/git.md#hauler-manifest-for-git).
+> **Note:** Relative directory paths are resolved against the manifest's own directory. Remote manifests can't use local paths or credentials... see [Syncing from a Remote Manifest](#syncing-from-a-remote-manifest).
 
 ```bash
 # sync a single manifest
@@ -74,6 +73,21 @@ hauler store sync --filename https://example.com/hauler-manifest.yaml
 ```
 
 A value beginning with `http://` or `https://` is downloaded before processing, so manifests can be referenced directly by URL.
+
+### Syncing from a Remote Manifest
+
+A manifest downloaded over `http://`/`https://` (or fetched with `--products`) can't read local files or use local credentials, since it could otherwise copy them into the store or send them to a server of its choosing:
+
+- `Files` - every `path` must be an `http://`/`https://` URL
+- `Charts` - every chart must come from a remote repository, with no `usernameEnv`, `passwordEnv`, `certFile`, `keyFile`, `caFile`, or `valuesFiles`
+- `Git` - every `path` must be a remote URL, with no `usernameEnv`, `passwordEnv`, `sshKey`, `certFile`, `keyFile`, or `caFile`
+- `Directories` - refused entirely
+
+Pass `--trust-remote-manifests` to lift these restrictions for a manifest you trust. Hauler logs a warning for each remote manifest it trusts.
+
+```bash
+hauler store sync --filename https://example.com/hauler-manifest.yaml --trust-remote-manifests
+```
 
 ### Syncing from an images.txt File
 
@@ -150,4 +164,4 @@ CA_FILE=/path/to/ca.pem hauler store sync --filename hauler-manifest.yaml
 
 For `Images`, `Charts`, and `Files` manifests, TLS settings can also be set per-entry or manifest-wide via annotations - see the [Image](./add/image.md#configuring-tls-for-registry-connections), [Chart](./add/chart.md#configuring-tls-for-chart-repositories), and [File](./add/file.md#configuring-tls-for-remote-files) pages. Precedence is CLI flag (or environment variable) &gt; per-entry field &gt; manifest annotation, and an explicit `--insecure-skip-tls-verify=false` on the CLI always wins over a per-entry or annotation value that tries to turn it on.
 
-> **Note:** `--ca-file`/`CA_FILE` and `--insecure-skip-tls-verify`/`INSECURE_SKIP_TLS_VERIFY` are mutually exclusive at the CLI/environment level - passing `--ca-file` (or setting `CA_FILE`) always forces certificate verification on for every entry in the sync, even if a per-entry field or annotation sets `insecure-skip-tls-verify: true`. A per-entry or annotation `ca-file` with no CLI/environment `--ca-file` does **not** override a `true` insecure-skip-tls-verify from another source for that same entry - avoid setting both on one entry. When nothing is set, the system's default CA bundle is used.
+> **Note:** `ca-file` and `insecure-skip-tls-verify` are resolved separately for each entry, and if an entry ends up with both, `insecure-skip-tls-verify` takes precedence and the CA file is not read. Pass `--insecure-skip-tls-verify=false` to force certificate verification for every entry. When nothing is set, the system's default CA bundle is used.

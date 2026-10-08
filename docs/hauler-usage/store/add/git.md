@@ -109,7 +109,7 @@ Credentials embedded in a URL (i.e. `https://user:token@host/repo.git`) are remo
 
 `--ca-file` and `--insecure-skip-tls-verify` only affect repositories cloned over `https://`; they're ignored for local paths and SSH URLs.
 
-> **Note:** Avoid setting `--ca-file` and `--insecure-skip-tls-verify` together - for git repositories, `--insecure-skip-tls-verify` takes precedence and certificate verification is skipped. When neither is set, the system's default CA bundle is used.
+> **Note:** Avoid setting `--ca-file` and `--insecure-skip-tls-verify` together - if both are set, `--insecure-skip-tls-verify` takes precedence and the CA file is not read. When neither is set, the system's default CA bundle is used.
 
 ### Hauler Manifest for Git
 
@@ -133,12 +133,12 @@ spec:
       # TLS client certificate (https:// URLs)
       certFile: <path-to-cert>
       keyFile: <path-to-key>
-      # TLS options for cloning this repository (avoid setting both; insecureSkipTLSVerify wins if both are set)
+      # TLS options for cloning this repository (avoid setting both... insecureSkipTLSVerify wins if both are set)
       caFile: <path-to-ca-bundle>
       insecureSkipTLSVerify: false
 ```
 
-> **Note:** When a `Git` document comes from a remote (`http://`/`https://`) manifest, every `path` must be a remote URL and no credential or TLS file fields (`usernameEnv`, `passwordEnv`, `sshKey`, `certFile`, `keyFile`, `caFile`) are allowed. This keeps a remote manifest from reading local repositories or sending local secrets to a server of its choosing.
+> **Note:** When a `Git` document comes from a remote (`http://`/`https://`) manifest, every `path` must be a remote URL and no credential or TLS file fields (`usernameEnv`, `passwordEnv`, `sshKey`, `certFile`, `keyFile`, `caFile`) are allowed. This keeps a remote manifest from reading local repositories or sending local secrets to a server of its choosing. Pass `--trust-remote-manifests` to `hauler store sync` to allow them for a manifest you trust.
 
 ### Example Manifest for Git
 

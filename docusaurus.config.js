@@ -90,7 +90,7 @@ const config = {
         title: '',
         logo: {
           alt: 'Carbide Logo',
-          src: 'img/rgs-hauler-logo.png',
+          src: 'img/hauler-logo.png',
         },
         items: [
           {

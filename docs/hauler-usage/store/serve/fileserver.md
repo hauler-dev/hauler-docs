@@ -12,6 +12,8 @@ Use it on the airgapped side to hand out the non-image content you collected - i
 
 > **Note:** The fileserver only exposes files, charts, and directories (served as browsable folders). To serve container images, use [`hauler store serve registry`](./registry.md). To serve git repositories for cloning, use [`hauler store serve git`](./git.md). Some files are packaged with OCI image metadata so they can be pulled from a registry. Despite carrying the `image` type, these artifacts are served automatically by the fileserver.
 
+> **Note:** If the store contains no files, charts, or directories, the fileserver still starts with an empty listing and logs a warning to add some with `hauler store add` or `hauler store sync`.
+
 **An example with available flags...**
 
 ```bash
@@ -31,8 +33,8 @@ Flags:
   -h, --help                      help for fileserver
   -p, --port int                  (Optional) Set the port to use for incoming connections (default 8080)
       --timeout int               (Optional) Timeout duration for HTTP Requests in seconds for both reads/writes (default 60)
-      --tls-cert string           (Optional) Location of the TLS Certificate to use for server authenication
-      --tls-key string            (Optional) Location of the TLS Key to use for server authenication
+      --tls-cert string           (Optional) Location of the TLS Certificate to use for server authentication
+      --tls-key string            (Optional) Location of the TLS Key to use for server authentication
 
 Global Flags:
       --audit-level string     Set the audit logging level (none, standard, verbose) (defaults standard)
