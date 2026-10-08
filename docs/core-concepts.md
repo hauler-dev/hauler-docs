@@ -4,78 +4,94 @@ description: Core Concepts Documentation for Hauler
 sidebar_label: Core Concepts
 ---
 
-Hauler is built around a small set of concepts that work together to move artifacts across an airgap. Understanding how they nest makes everything else in these docs easier to follow:
+Hauler is built around a small set of concepts that follow your artifacts from where they are published to where they are needed in disconnected and airgapped environments. Understanding how they fit together makes the rest of these docs easier to follow:
 
-- A **Haul** is the portable archive you carry across the airgap.
-- It contains one or more **Collections**.
-- Each Collection groups one or more pieces of **Content** (the actual artifacts).
+- **Content** is the artifacts you want to move, such as images, charts, and files.
+- **Stores** are where Hauler keeps that content locally as OCI artifacts.
+- **Manifests** and **Collections** declare which content belongs in a store.
+- **Hauls** are portable archives of a store that you carry into disconnected and airgapped environments.
+- **Distribution** is how that content is served or copied once it arrives.
+- **Verification** is how you confirm that content is exactly what was published.
 
 ![hauler-diagram](/img/hauler-diagram.png)
-
-## Haul
-
-:::tip SUMMARY:
-
-`Hauls` are a compressed archive (tarball) of Hauler Collections and Content.
-
-:::
-
-At the heart of Hauler lies the concept of a `Haul`. A `Haul` is a compressed archive in the form of a tarball, containing Hauler collections and content. It serves as a convenient method for grouping and transporting various data types, making it a fundamental element in the Hauler ecosystem.
-
-Because a `Haul` is a single, self-contained tarball, it is the unit you actually move across the airgap. You build it on the connected side, transfer the file by whatever means your environment allows (physical media, one-way transfer, etc.), and then unpack and serve its contents on the disconnected side.
-
-## Collections
-
-:::tip SUMMARY:
-
-`Collections` are a grouping of one or more Hauler Contents.
-
-:::
-
-`Collections` are the building blocks of Hauler. These are groupings of one or more Hauler `contents`. Think of `collections` as organized sets of data that collectively represent a desired end result - for example, every image, chart, and file needed to stand up a particular application.
-
-### Community Collections
-
-While `collections` (and `contents`) are built into Hauler, our goal is to empower operators to define their own `collections`. This way, you can tailor Hauler to your unique requirements and take full control of your artifacts. See [Hauler Collections](guides-references/hauler-collections.md) for details on defining your own.
-
-### RGS Carbide Collections
-
-`Hauler` provides the ability to import `collections` for the Rancher products, making it seamless for RGS Supported Customers to airgap any of the Rancher products or projects. If you haven't heard of Rancher Government Carbide, check it out [here](https://ranchergovernment.com/carbide)!
 
 ## Content
 
 :::tip SUMMARY:
 
-`Contents` are artifacts such as images, charts, or files.
+`Content` is the artifacts Hauler moves, such as images, charts, and files, along with their supporting artifacts.
 
 :::
 
-In Hauler's terminology, `content` refers to artifacts such as **container images, helm charts, or files.** These are the fundamental types of artifacts for `Hauler`. To understand it a little bit better, let's break it down:
+In Hauler's terminology, `content` refers to the artifacts you want to deliver: **container images, helm charts, and files**. Every piece of content is stored as an OCI (Open Container Initiative) artifact, which gives Hauler a single, standardized way to store, inspect, and move any type of artifact.
 
-- `Content`: The fundamental type of artifacts that Hauler recognizes (images, charts, and files).
-- `Artifact`: Anything that can be represented as an OCI (Open Container Initiative) Compliant Artifact.
-  - OCI Compliant Artifacts provide a standardized way to store arbitrary files, making it easier to manage content efficiently.
+Images also bring their **supporting artifacts** with them, such as signatures, attestations, SBOMs, and OCI referrers. These travel with the image into disconnected and airgapped environments, so its supply chain information is never left behind.
 
-For a closer look at each content type and how it's handled, see [Hauler Content](guides-references/hauler-content.md).
+See [Hauler Content](guides-references/hauler-content.md) for details on each content type.
 
-### Declarative Content
-
-While manually adding content to `Hauler` is an easy way to get started, `Hauler` also provides a declarative and programmatic approach by allowing operators to define `content` within a configuration file, known as a manifest. This approach ensures a more reproducible workflow for managing the lifecycle of your `hauls`. Check it out [here](guides-references/hauler-manifests.md)!
-
-## Signature Verification
+## Store
 
 :::tip SUMMARY:
 
-As part of a secure supply chain, you can set Hauler to verify artifact signatures on both sides of the airgap, when adding to store and seeding registry.
+The `Store` is the local OCI layout where Hauler keeps all of your content.
 
 :::
 
-Hauler uses [cosign](https://github.com/sigstore/cosign) under the hood to verify artifact signatures. Verification can happen on both sides of the airgap - when adding content to the store on the connected side, and when seeding a registry on the disconnected side - so you can trust that artifacts haven't been tampered with in transit.
+Every `hauler store` command works against a store, which is a directory on disk (`store` by default) organized as an OCI layout. Content is added to the store, inspected in the store, packaged from the store, and served from the store.
 
-### Public Key
+Each store has a unique store ID and keeps an audit log of the changes made to it, and `hauler store info --check` validates every artifact in the store to confirm nothing is missing or corrupted.
 
-The cosign public key can be set via the command line flag `--key` (`-k`) or as an annotation in the Hauler Manifest.
+## Manifests and Collections
 
-### Keyless Verification
+:::tip SUMMARY:
 
-As of Hauler v1.2.3+, keyless verification can also be performed. The flags `--certificate-identity-regexp`, `--certificate-oidc-issuer`, and `--certificate-github-workflow-repository` can be set or annotations added in the Hauler Manifest. Check out some examples [here](https://docs.hauler.dev/docs/guides-references/hauler-manifests)!
+`Manifests` declare content in a file, and `Collections` group content that represents a desired end result.
+
+:::
+
+Content can be added one artifact at a time from the command line, but Hauler also supports a declarative approach with manifests. A manifest is a YAML file that lists the images (`kind: Images`), charts (`kind: Charts`), and files (`kind: Files`) you want, so the same store can be rebuilt reliably for every release with `hauler store sync`. Manifests can be kept locally or fetched from a remote url.
+
+A `collection` is a group of content that together represents a desired end result, such as every image, chart, and file needed to stand up an application. Operators can define their own collections with manifests, and RGS Supported Customers can sync collections for the Rancher products directly from the RGS Carbide Registry.
+
+See [Hauler Manifests](guides-references/hauler-manifests.md) and [Hauler Collections](guides-references/hauler-collections.md) for more details.
+
+## Haul
+
+:::tip SUMMARY:
+
+A `Haul` is a compressed archive of a store that you carry into disconnected and airgapped environments.
+
+:::
+
+`hauler store save` packages a store into a haul, a single compressed archive (`haul.tar.zst` by default). The haul is the unit you actually transfer, by whatever means your environment allows, such as physical media or a one-way transfer. On the other side, `hauler store load` unpacks one or more hauls back into a store.
+
+Hauls can be split into chunks to fit your transfer media, limited to a specific platform, and saved in a format that containerd can import directly.
+
+## Distribution
+
+:::tip SUMMARY:
+
+Hauler serves or copies content once it reaches disconnected and airgapped environments.
+
+:::
+
+Once a haul is loaded, Hauler can distribute its content in a few ways:
+
+- `hauler store serve registry` serves images and charts through an embedded OCI registry.
+- `hauler store serve fileserver` serves files through an embedded fileserver.
+- `hauler store copy` seeds an existing registry or a directory with the content of the store.
+- `hauler store extract` writes individual artifacts back out to disk.
+
+## Verification
+
+:::tip SUMMARY:
+
+Hauler can verify image signatures with cosign before content is saved to the store.
+
+:::
+
+Hauler uses [cosign](https://github.com/sigstore/cosign) to verify image signatures as content is added to the store, whenever a public key (`--key`) or a keyless identity (the certificate identity and OIDC issuer flags) is provided. Each image is resolved to a digest once, and that exact digest is verified and stored, so what you verified is exactly what you stored.
+
+Because signatures and attestations travel with the image, teams on the disconnected and airgapped side can verify the same artifacts again with cosign once they are served or copied into a registry.
+
+See [Hauler Manifests](guides-references/hauler-manifests.md) for verification examples.
