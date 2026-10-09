@@ -28,7 +28,7 @@ curl -sfL https://get.hauler.dev | bash
 curl -sfL https://get.hauler.dev | HAULER_DEBUG=true bash
 
 # install specific release
-curl -sfL https://get.hauler.dev | HAULER_VERSION=1.2.0 bash
+curl -sfL https://get.hauler.dev | HAULER_VERSION=2.1.1 bash
 
 # install at different directory
 curl -sfL https://get.hauler.dev | HAULER_INSTALL_DIR=/usr/bin bash
@@ -46,13 +46,18 @@ brew install hauler
 
 # install specific release
 brew tap hauler-dev/homebrew-tap
-brew install hauler@1.2.0
+brew install hauler@2.1.1
+
+# install latest release, release candidate, or dev build
+brew tap hauler-dev/homebrew-tap
+brew install hauler-dev
 ```
 
 ### Windows
 
 ```bash
-# coming soon
+# install latest release
+irm https://get.hauler.dev/install.ps1 | iex
 ```
 
 ## Manual Installation Steps
@@ -60,7 +65,7 @@ brew install hauler@1.2.0
 ### Linux/Darwin
 
 ```bash
-# set the hauler version (i.e. HAULER_VERSION=1.2.0)
+# set the hauler version (i.e. HAULER_VERSION=2.1.1)
 export vHauler=HAULER_VERSION
 
 # set the specific platform (i.e. PLATFORM=linux)
@@ -72,4 +77,20 @@ export arch=ARCH
 curl -sOL https://github.com/hauler-dev/hauler/releases/download/v${vHauler}/hauler_${vHauler}_${platform}_${arch}.tar.gz
 tar -xf hauler_${vHauler}_${platform}_${arch}.tar.gz
 sudo mv hauler /usr/bin/hauler
+```
+
+### Windows
+
+```bash
+# set the hauler version (i.e. HAULER_VERSION=2.1.1)
+$vHauler="HAULER_VERSION"
+
+# set the specific arch (i.e. ARCH=amd64)
+$arch="ARCH"
+
+curl.exe -sOL https://github.com/hauler-dev/hauler/releases/download/v${vHauler}/hauler_${vHauler}_windows_${arch}.tar.gz
+tar -xf hauler_${vHauler}_windows_${arch}.tar.gz
+New-Item -ItemType Directory -Force -Path "$env:LOCALAPPDATA\Programs\hauler" | Out-Null
+Move-Item -Force hauler.exe "$env:LOCALAPPDATA\Programs\hauler\hauler.exe"
+[Environment]::SetEnvironmentVariable("PATH", "$([Environment]::GetEnvironmentVariable('PATH', 'User'));$env:LOCALAPPDATA\Programs\hauler", "User")
 ```
