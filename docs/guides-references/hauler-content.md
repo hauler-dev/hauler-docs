@@ -55,4 +55,4 @@ Per-artifact fields override manifest-level annotations, which override CLI flag
 
 ## Signature Verification
 
-As part of a secure supply chain, content can be verified against cosign signatures both when it is added to the store and when it is used to seed a registry on the far side of the airgap. Verification supports both public-key and keyless (certificate-based) workflows. See [Signature Verification](../core-concepts.md#signature-verification) and the [Hauler Manifests](hauler-manifests.md) guide for examples.
+As part of a secure supply chain, image signatures can be verified with cosign when content is added to the store, and because signatures travel with each image, they can be verified again with cosign in disconnected and airgapped environments. Verification supports both public-key and keyless (certificate-based) workflows. See [Verification](../core-concepts.md#verification) and the [Hauler Manifests](hauler-manifests.md) guide for examples.
