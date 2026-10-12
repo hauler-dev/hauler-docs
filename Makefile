@@ -30,6 +30,14 @@ serve:
 clean:
 	npm run clear && rm -rf node_modules
 
+# check for dependency updates
+outdated:
+	npm outdated || true
+
+# bump dependencies to the latest versions their ranges allow
+bump-outdated:
+	npm update --save
+
 # sync known limits from hauler-dev/hauler readme
 # make known-limits HAULER_REF=release/2.1
 HAULER_REF ?= main

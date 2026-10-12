@@ -1,41 +1,45 @@
 ---
 title: Introduction
-description: Docs for Hauler, An Airgap Swiss-Army Knife provided by Rancher Government
+description: Docs for Hauler, an Airgap Swiss Army Knife, developed and maintained by Rancher Government
 sidebar_label: Introduction
 ---
 
 # Hauler - Airgap Swiss Army Knife
 
-![hauler-logo](/img/rgs-hauler-logo.png)
+![hauler-logo](/img/hauler-logo.png)
 
 ## What is Hauler?
 
-`Hauler` simplifies the airgap experience without forcing operators to adopt a specific workflow. It represents assets - images, charts, files, and more - as **content** and **collections**, so you can easily fetch, store, package, and distribute them using declarative manifests or the command line.
+`Hauler` is a free and open source tool that simplifies delivering artifacts into disconnected and airgapped environments without requiring operators to adopt a specific workflow on either side. It represents artifacts, such as images, charts, files, and more, as content and collections, so operators can fetch, store, package, and distribute them with declarative manifests or the command line, whether the destination is disconnected, airgapped, limited, constrained, or anywhere else your artifacts need to go.
 
-Under the hood, `Hauler` stores content and collections as OCI Artifacts and can serve them on the disconnected side through an embedded registry and fileserver. It can also store and inspect a variety of non-image OCI Artifacts.
+`Hauler` does this by storing content and collections as OCI artifacts and serving them through embedded services, such as a registry, fileserver, and more. Every artifact keeps its signatures, attestations, and SBOMs, which can be verified before it is saved and again after it is loaded, so teams on the disconnected and airgapped side know exactly what they received and where it originated.
+
+`Hauler` replaces the custom scripts and ad hoc tooling that disconnected and airgapped delivery usually requires. It is one binary, one archive, and one workflow, from a single file to entire product suites on Linux, macOS, or Windows, so teams spend less time moving software and more time using it.
+
+`Hauler` is proudly developed and maintained by **[Rancher Government](https://github.com/ranchergovernment)!!**
 
 ## Why Hauler?
 
-Moving software into an airgapped environment usually means juggling several tools and bespoke scripts. `Hauler` consolidates that work into a single binary:
+Moving software into disconnected and airgapped environments usually means juggling several tools and bespoke scripts. `Hauler` consolidates that work into a single binary:
 
-- **Fetch** images, charts, and files from any OCI-compatible source.
-- **Store** them together as OCI Artifacts in a portable, self-contained archive (a `Haul`).
-- **Package** everything into a single tarball you can carry across the airgap.
-- **Serve** the contents on the disconnected side with the built-in registry and fileserver.
-- **Seed** an existing private registry with the contents of your `Haul`.
-- **Verify** artifact signatures with [cosign](https://github.com/sigstore/cosign) on both sides of the airgap.
+- **Fetch** images, charts, and files from registries, helm repositories, and urls.
+- **Validate** signatures with [cosign](https://github.com/sigstore/cosign) before anything is saved, when a key or keyless identity is provided.
+- **Save** everything as OCI artifacts into a single portable `haul`.
+- **Airgap** the `haul` into disconnected and airgapped environments, chunked if your transfer media requires it.
+- **Load** the `haul` on the disconnected and airgapped side and validate it again.
+- **Distribute** the contents through the built-in registry and fileserver, or copy them into an existing registry.
 
 Operators can drive all of this declaratively with [manifests](guides-references/hauler-manifests.md) for a reproducible workflow, or interactively through the CLI.
 
 ## Next Steps
 
-- New to Hauler? Start with the [Core Concepts](core-concepts.md) to learn how Hauls, Collections, and Content fit together.
+- New to Hauler? Start with the [Core Concepts](core-concepts.md) to learn how Content, Stores, and Hauls fit together.
 - Ready to try it? Head to the [Quickstart](getting-started/quickstart.md).
 
 ## Acknowledgements
 
 `Hauler` wouldn't be possible without the open-source community, but there are a few projects that stand out:
 
-- [oras cli](https://github.com/oras-project/oras)
-- [cosign](https://github.com/sigstore/cosign)
+- [containerd](https://github.com/containerd/containerd)
 - [go-containerregistry](https://github.com/google/go-containerregistry)
+- [cosign](https://github.com/sigstore/cosign)

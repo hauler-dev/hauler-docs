@@ -15,7 +15,14 @@ curl -sfL https://get.hauler.dev | HAULER_UNINSTALL=true bash
 ### Homebrew
 
 ```bash
+# uninstall latest release
 brew uninstall hauler
+
+# uninstall specific release
+brew uninstall hauler@2.1.1
+
+# uninstall latest release, release candidate, or dev build
+brew uninstall hauler-dev
 ```
 
 ### Windows
