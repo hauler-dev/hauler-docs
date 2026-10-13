@@ -26,7 +26,7 @@ hauler store add image neuvector/scanner:latest
 
 # add a image with a specific platform and with supply chain artifacts
 # may not work for all users due to the specified registry
-hauler store add image rgcrprod.azurecr.us/longhornio/longhorn-ui:v1.7.1 --platform linux/amd64 --key carbide-key.pub
+hauler store add image registry.ranchercarbide.dev/longhornio/longhorn-ui:v1.7.1 --platform linux/amd64 --key carbide-key.pub
 
 # add a helm chart with a specific version
 hauler store add chart rancher --repo https://releases.rancher.com/server-charts/stable --version 2.20.1
