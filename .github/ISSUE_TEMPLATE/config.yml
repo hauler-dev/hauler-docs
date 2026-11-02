@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Hauler Documentation
+    url: https://docs.hauler.dev
+    about: the live site built from this repository
+  - name: Hauler Issues
+    url: https://github.com/hauler-dev/hauler/issues
+    about: report an issue with the hauler cli itself

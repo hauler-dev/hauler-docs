@@ -1,0 +1,68 @@
+name: Bug Report
+description: report incorrect, outdated, or broken content in the hauler documentation
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        thank you for helping us improve hauler... please fill out each section so we can better assist you. bugs in the `hauler` cli itself belong in [hauler-dev/hauler](https://github.com/hauler-dev/hauler/issues).
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Before Submitting
+      options:
+        - label: I searched the existing issues and this problem has not been reported
+          required: true
+
+  - type: input
+    id: page
+    attributes:
+      label: Page URL
+      description: provide the full url of the affected page
+      placeholder: https://docs.hauler.dev/docs/hauler-usage/store/add/image
+    validations:
+      required: true
+
+  - type: input
+    id: docs-version
+    attributes:
+      label: Docs Version
+      description: provide the docs version selected in the dropdown (i.e. 2.1.x or next)
+      placeholder: 2.1.x
+    validations:
+      required: true
+
+  - type: textarea
+    id: hauler-version
+    attributes:
+      label: Hauler Version
+      description: provide the output of `hauler version` if the docs do not match the behavior you see
+      render: text
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the Problem
+      description: provide a clear and concise description of what is wrong, missing, or unclear
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested Fix
+      description: provide the corrected text or command if you know it
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: provide any other context about the problem (i.e. screenshots, browser, related pages)
+    validations:
+      required: false
