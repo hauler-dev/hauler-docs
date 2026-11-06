@@ -1,0 +1,49 @@
+name: Feature Request
+description: request new or expanded content in the hauler documentation
+title: "[FEATURE] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        thank you for helping us improve hauler... we welcome all requests for new docs, guides, and examples. please fill out each section so we can better assist you. requests for the `hauler` cli itself belong in [hauler-dev/hauler](https://github.com/hauler-dev/hauler/issues).
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Before Submitting
+      options:
+        - label: I searched the existing issues and docs and this content does not already exist
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Related Problem
+      description: what were you trying to do that the docs did not help with? provide a clear and concise description
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Content
+      description: provide a clear and concise description of the page, section, guide, or example you want added
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Suggested Location
+      description: where in the sidebar should it live? (i.e. guides and references, hauler usage > store)
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: provide any other context, draft text, or links about the request
+    validations:
+      required: false
