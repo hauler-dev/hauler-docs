@@ -19,7 +19,7 @@ curl -sfL https://get.hauler.dev | HAULER_UNINSTALL=true bash
 brew uninstall hauler
 
 # uninstall specific release
-brew uninstall hauler@2.1.1
+brew uninstall hauler@2.1.2
 
 # uninstall latest release, release candidate, or dev build
 brew uninstall hauler-dev

@@ -91,7 +91,7 @@ hauler store copy registry://<registry-url> --ca-file /path/to/ca.pem
 hauler store copy registry://<registry-url> --insecure
 ```
 
-> **Note:** Avoid setting `--ca-file` and `--insecure` together - if both are set, `--insecure` takes precedence and the CA file is not read. When neither is set, the system's default CA bundle is used.
+> **Note:** Avoid setting `--ca-file` and `--insecure` together - if both are set, `--insecure` takes precedence and the CA file is not read. When neither is set, the system's default CA bundle is used. `--ca-file` adds the CA file to the system's default CA bundle instead of replacing it, and a CA file that can't be read or holds no certificates fails the command.
 
 ### Authentication
 

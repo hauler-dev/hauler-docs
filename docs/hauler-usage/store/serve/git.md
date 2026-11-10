@@ -85,6 +85,8 @@ git clone http://localhost:8090/hauler-helm
 
 > **Note:** If the store contains no git repositories, the git server still starts with an empty list and logs a warning to add some with `hauler store add` or `hauler store sync`.
 
+> **Note:** The `hauler` container image includes a `/git` directory, alongside `/registry` and `/fileserver`, owned by the `hauler` user for use as the `--directory` backend.
+
 ### Basic Authentication
 
 The `--basic-auth` flag points at an `htpasswd` file to require HTTP basic authentication for the git server and `--basic-auth-realm` overrides the realm sent in the `WWW-Authenticate` challenge (defaults to `hauler-git`).

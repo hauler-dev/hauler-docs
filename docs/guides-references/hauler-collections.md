@@ -4,7 +4,7 @@ description: Hauler Collections Documentation
 sidebar_label: Hauler Collections
 ---
 
-`Collections` are the building blocks of Hauler. A collection is a grouping of one or more pieces of [content](hauler-content.md) - images, charts, and files - that together represent a desired end result, such as everything needed to stand up a particular application. One or more collections, in turn, make up the `Haul` you carry across the airgap. See [Core Concepts](../core-concepts.md) for how content, collections, and hauls nest together.
+`Collections` are the building blocks of Hauler. A collection is a grouping of one or more pieces of [content](hauler-content.md) - images, charts, files, directories, and git repositories - that together represent a desired end result, such as everything needed to stand up a particular application. One or more collections, in turn, make up the `Haul` you carry across the airgap. See [Core Concepts](../core-concepts.md) for how content, collections, and hauls nest together.
 
 Grouping content into collections means you describe an outcome ("the artifacts for product X at version Y") once, then fetch, store, and distribute that whole set as a unit rather than tracking each artifact by hand.
 

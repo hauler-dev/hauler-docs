@@ -81,6 +81,8 @@ out/configs/sub/b.yaml
 
 > **Note:** Extracting a directory **replaces** any existing directory of the same name in the output directory, so files that are not part of the stored directory are removed. The archive is verified and fully extracted before the existing directory is swapped out, so a failed extract never leaves a partial directory behind.
 
+> **Note:** Symlinks in the directory are stored as symlinks. On extract, a symlink is restored only when its target is a relative path that stays inside the extracted directory, even when resolved through other symlinks. Absolute targets, targets outside the directory, symlinks nested under another symlink, and missing targets are skipped with a warning.
+
 ### Directory vs. File
 
 `hauler store add file` also accepts a local directory, but stores it as a single opaque archive (i.e. `hauler/configs.tar.zst:latest`) that is extracted as that archive file. Use `hauler store add directory` when the directory should come back out as a directory.

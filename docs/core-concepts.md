@@ -6,7 +6,7 @@ sidebar_label: Core Concepts
 
 Hauler is built around a small set of concepts that follow your artifacts from where they are published to where they are needed in disconnected and airgapped environments. Understanding how they fit together makes the rest of these docs easier to follow:
 
-- **Content** is the artifacts you want to move, such as images, charts, and files.
+- **Content** is the artifacts you want to move, such as images, charts, files, directories, and git repositories.
 - **Stores** are where Hauler keeps that content locally as OCI artifacts.
 - **Manifests** and **Collections** declare which content belongs in a store.
 - **Hauls** are portable archives of a store that you carry into disconnected and airgapped environments.
@@ -19,11 +19,11 @@ Hauler is built around a small set of concepts that follow your artifacts from w
 
 :::tip SUMMARY:
 
-`Content` is the artifacts Hauler moves, such as images, charts, and files, along with their supporting artifacts.
+`Content` is the artifacts Hauler moves, such as images, charts, files, directories, and git repositories, along with their supporting artifacts.
 
 :::
 
-In Hauler's terminology, `content` refers to the artifacts you want to deliver: **container images, helm charts, and files**. Every piece of content is stored as an OCI (Open Container Initiative) artifact, which gives Hauler a single, standardized way to store, inspect, and move any type of artifact.
+In Hauler's terminology, `content` refers to the artifacts you want to deliver: **container images, helm charts, files, directories, and git repositories**. Every piece of content is stored as an OCI (Open Container Initiative) artifact, which gives Hauler a single, standardized way to store, inspect, and move any type of artifact.
 
 Images also bring their **supporting artifacts** with them, such as signatures, attestations, SBOMs, and OCI referrers. These travel with the image into disconnected and airgapped environments, so its supply chain information is never left behind.
 
@@ -39,6 +39,8 @@ The `Store` is the local OCI layout where Hauler keeps all of your content.
 
 Every `hauler store` command works against a store, which is a directory on disk (`store` by default) organized as an OCI layout. Content is added to the store, inspected in the store, packaged from the store, and served from the store.
 
+Layers already in the store are not downloaded again. `hauler store add` and `hauler store sync` log how many layers were fetched and how many were already cached, i.e. `✓ added ghcr.io/hauler-dev/library/busybox:stable (1 layer, 2.2 MB, 1.9s, 1 cached)`.
+
 Each store has a unique store ID and keeps an audit log of the changes made to it, and `hauler store info --check` validates every artifact in the store to confirm nothing is missing or corrupted.
 
 ## Manifests and Collections
@@ -49,7 +51,7 @@ Each store has a unique store ID and keeps an audit log of the changes made to i
 
 :::
 
-Content can be added one artifact at a time from the command line, but Hauler also supports a declarative approach with manifests. A manifest is a YAML file that lists the images (`kind: Images`), charts (`kind: Charts`), and files (`kind: Files`) you want, so the same store can be rebuilt reliably for every release with `hauler store sync`. Manifests can be kept locally or fetched from a remote url.
+Content can be added one artifact at a time from the command line, but Hauler also supports a declarative approach with manifests. A manifest is a YAML file that lists the images (`kind: Images`), charts (`kind: Charts`), files (`kind: Files`), directories (`kind: Directories`), and git repositories (`kind: Git`) you want, so the same store can be rebuilt reliably for every release with `hauler store sync`. Manifests can be kept locally or fetched from a remote url.
 
 A `collection` is a group of content that together represents a desired end result, such as every image, chart, and file needed to stand up an application. Operators can define their own collections with manifests, and RGS Supported Customers can sync collections for the Rancher products directly from the RGS Carbide Registry.
 

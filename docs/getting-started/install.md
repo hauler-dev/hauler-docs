@@ -28,7 +28,7 @@ curl -sfL https://get.hauler.dev | bash
 curl -sfL https://get.hauler.dev | HAULER_DEBUG=true bash
 
 # install specific release
-curl -sfL https://get.hauler.dev | HAULER_VERSION=2.1.1 bash
+curl -sfL https://get.hauler.dev | HAULER_VERSION=2.1.2 bash
 
 # install at different directory
 curl -sfL https://get.hauler.dev | HAULER_INSTALL_DIR=/usr/bin bash
@@ -46,7 +46,7 @@ brew install hauler
 
 # install specific release
 brew tap hauler-dev/homebrew-tap
-brew install hauler@2.1.1
+brew install hauler@2.1.2
 
 # install latest release, release candidate, or dev build
 brew tap hauler-dev/homebrew-tap
@@ -65,7 +65,7 @@ irm https://get.hauler.dev/install.ps1 | iex
 ### Linux/Darwin
 
 ```bash
-# set the hauler version (i.e. HAULER_VERSION=2.1.1)
+# set the hauler version (i.e. HAULER_VERSION=2.1.2)
 export vHauler=HAULER_VERSION
 
 # set the specific platform (i.e. PLATFORM=linux)
@@ -82,7 +82,7 @@ sudo mv hauler /usr/bin/hauler
 ### Windows
 
 ```bash
-# set the hauler version (i.e. HAULER_VERSION=2.1.1)
+# set the hauler version (i.e. HAULER_VERSION=2.1.2)
 $vHauler="HAULER_VERSION"
 
 # set the specific arch (i.e. ARCH=amd64)

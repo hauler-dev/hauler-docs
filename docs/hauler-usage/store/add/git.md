@@ -109,7 +109,7 @@ Credentials embedded in a URL (i.e. `https://user:token@host/repo.git`) are remo
 
 `--ca-file` and `--insecure-skip-tls-verify` only affect repositories cloned over `https://`; they're ignored for local paths and SSH URLs.
 
-> **Note:** Avoid setting `--ca-file` and `--insecure-skip-tls-verify` together - if both are set, `--insecure-skip-tls-verify` takes precedence and the CA file is not read. When neither is set, the system's default CA bundle is used.
+> **Note:** Avoid setting `--ca-file` and `--insecure-skip-tls-verify` together - if both are set, `--insecure-skip-tls-verify` takes precedence and the CA file is not read. When neither is set, the system's default CA bundle is used. `--ca-file` adds the CA file to the system's default CA bundle instead of replacing it, and a CA file that can't be read or holds no certificates fails the command.
 
 ### Hauler Manifest for Git
 

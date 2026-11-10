@@ -61,7 +61,7 @@ Flags:
       --no-progress                (Optional) Disable the live progress display
       --password string            (Optional) Password to use for authentication
   -p, --platform string            (Optional) Specify the platform of the image, e.g. linux/amd64. Not allowed with a digest-pinned multi-platform image
-  -g, --registry string            (Optional) Specify the registry of the image for images that do not alredy define one
+  -g, --registry string            (Optional) Specify the registry of the image for images that do not already define one
       --repo string                Location of the chart (https:// | http:// | oci://)
       --rewrite string             (Optional) Rewrite artifact path to specified string
       --username string            (Optional) Username to use for authentication
@@ -125,7 +125,7 @@ hauler store add chart internal-chart --repo https://charts.internal.example.com
 
 Use `--ca-file` to trust a private or internal CA when fetching from an HTTP(S) or OCI chart repository that presents a certificate not signed by a public CA, or `--insecure-skip-tls-verify` to skip certificate verification entirely. Unlike `hauler store add image`, this command does **not** fall back to the `CA_FILE` / `INSECURE_SKIP_TLS_VERIFY` environment variables when run standalone - use the flags directly, or use [`hauler store sync`](../sync.md), which does support the environment variables for chart entries.
 
-> **Note:** Avoid setting `--ca-file` and `--insecure-skip-tls-verify` together - if both are set, `--insecure-skip-tls-verify` takes precedence and the CA file is not read. When neither is set, the system's default CA bundle is used.
+> **Note:** Avoid setting `--ca-file` and `--insecure-skip-tls-verify` together - if both are set, `--insecure-skip-tls-verify` takes precedence and the CA file is not read. When neither is set, the system's default CA bundle is used. For `oci://` chart repositories, `--ca-file` adds the CA file to the system's default CA bundle instead of replacing it. For `https://` chart repositories, Helm trusts only the CA file. A CA file that can't be read or holds no certificates fails the command.
 
 ### Hauler Manifest for Charts
 

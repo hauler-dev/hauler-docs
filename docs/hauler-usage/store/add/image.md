@@ -127,7 +127,7 @@ hauler store add image registry.example.com/app:latest --ca-file /path/to/ca.pem
 CA_FILE=/path/to/ca.pem hauler store add image registry.example.com/app:latest
 ```
 
-> **Note:** Avoid setting `--ca-file` and `--insecure-skip-tls-verify` together - if both are set, `--insecure-skip-tls-verify` takes precedence and the CA file is not read. When neither is set, the system's default CA bundle is used.
+> **Note:** Avoid setting `--ca-file` and `--insecure-skip-tls-verify` together - if both are set, `--insecure-skip-tls-verify` takes precedence and the CA file is not read. When neither is set, the system's default CA bundle is used. `--ca-file` adds the CA file to the system's default CA bundle instead of replacing it, and a CA file that can't be read or holds no certificates fails the command.
 
 ### Adding an Image from the Local Docker Daemon
 
@@ -138,6 +138,8 @@ hauler store add image my-local-app:latest --local
 ```
 
 > **Note:** `--local` cannot be combined with cosign verification flags (`--key`, `--certificate-identity`, etc.) or `--platform`, since the image is read directly from the daemon.
+
+> **Note:** With `--local`, the image is exported from the daemon (the same as `docker save`) to a temporary file under `--tempdir` (or `HAULER_TEMP_DIR`, otherwise the OS temp directory), so that location needs free space for the full image. The file is removed once the image is stored.
 
 ### Excluding Extras
 

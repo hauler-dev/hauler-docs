@@ -73,7 +73,7 @@ hauler store add file https://internal.example.com/install.sh --insecure-skip-tl
 
 `--ca-file` and `--insecure-skip-tls-verify` only affect files fetched over `http://`/`https://`; they're ignored for local paths. Unlike `hauler store add image`, this command does **not** fall back to the `CA_FILE` / `INSECURE_SKIP_TLS_VERIFY` environment variables - use the flags directly, or use [`hauler store sync`](../sync.md), which does support the environment variables.
 
-> **Note:** Avoid setting `--ca-file` and `--insecure-skip-tls-verify` together - if both are set, `--insecure-skip-tls-verify` takes precedence and the CA file is not read. When neither is set, the system's default CA bundle is used.
+> **Note:** Avoid setting `--ca-file` and `--insecure-skip-tls-verify` together - if both are set, `--insecure-skip-tls-verify` takes precedence and the CA file is not read. When neither is set, the system's default CA bundle is used. `--ca-file` adds the CA file to the system's default CA bundle instead of replacing it, and a CA file that can't be read or holds no certificates fails the command.
 
 ### Hauler Manifest for Files
 

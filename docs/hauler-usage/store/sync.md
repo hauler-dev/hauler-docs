@@ -39,7 +39,7 @@ Flags:
   -p, --platform string                                 (Optional) Specify the platform of the image... i.e linux/amd64 (defaults to all). Not allowed with a digest-pinned multi-platform image
   -c, --product-registry string                         (Optional) Specify the product registry. Defaults to RGS Carbide Registry (rgcrprod.azurecr.us)
       --products strings                                (Optional) Specify the product name to fetch collections from the product registry i.e. rancher=v2.10.1,rke2=v1.31.5+rke2r1
-  -g, --registry string                                 (Optional) Specify the registry of the image for images that do not alredy define one
+  -g, --registry string                                 (Optional) Specify the registry of the image for images that do not already define one
       --trust-remote-manifests                          (Optional) Allow remote manifests to use local paths and credentials
       --use-tlog-verify                                 (Optional) Allow transparency log verification (defaults to false)
 
@@ -164,4 +164,4 @@ CA_FILE=/path/to/ca.pem hauler store sync --filename hauler-manifest.yaml
 
 For `Images`, `Charts`, and `Files` manifests, TLS settings can also be set per-entry or manifest-wide via annotations - see the [Image](./add/image.md#configuring-tls-for-registry-connections), [Chart](./add/chart.md#configuring-tls-for-chart-repositories), and [File](./add/file.md#configuring-tls-for-remote-files) pages. Precedence is CLI flag (or environment variable) &gt; per-entry field &gt; manifest annotation, and an explicit `--insecure-skip-tls-verify=false` on the CLI always wins over a per-entry or annotation value that tries to turn it on.
 
-> **Note:** `ca-file` and `insecure-skip-tls-verify` are resolved separately for each entry, and if an entry ends up with both, `insecure-skip-tls-verify` takes precedence and the CA file is not read. Pass `--insecure-skip-tls-verify=false` to force certificate verification for every entry. When nothing is set, the system's default CA bundle is used.
+> **Note:** `ca-file` and `insecure-skip-tls-verify` are resolved separately for each entry, and if an entry ends up with both, `insecure-skip-tls-verify` takes precedence and the CA file is not read. Pass `--insecure-skip-tls-verify=false` to force certificate verification for every entry. When nothing is set, the system's default CA bundle is used. A CA file adds to the system's default CA bundle instead of replacing it (except for `https://` chart repositories, where Helm trusts only the CA file), and a CA file that can't be read or holds no certificates is an error.
